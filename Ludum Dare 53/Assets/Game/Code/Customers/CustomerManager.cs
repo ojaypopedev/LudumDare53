@@ -7,9 +7,12 @@ using UnityEngine;
 public class CustomerManager : MonoBehaviour
 {
 
-    public Recipie[] RecipiesInLevel;
-    public Customer[] Customers;
+    public List<Recipie> RecipiesInLevel = new List<Recipie>();
+    public List<Customer> Customers = new List<Customer>();
     public float OrderTimeMin = 2, OrderTimeMax = 5;
+
+    public static CustomerManager instance;
+
     public Customer GetRandomAvailableCustomer()
     {
         return Customers.Where(c => c.HasFoodOrder == false).RandomElement();
@@ -19,6 +22,7 @@ public class CustomerManager : MonoBehaviour
     private void Awake()
     {
         Customers.ToList().ForEach(e => e.Init(this));
+        instance = this;
     }
 
     // Update is called once per frame
