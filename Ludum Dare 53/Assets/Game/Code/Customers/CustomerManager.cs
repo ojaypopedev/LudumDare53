@@ -6,7 +6,7 @@ using UnityEngine;
 public class CustomerManager : MonoBehaviour
 {
 
-    public Recipe[] potentialRecipies;
+    public FoodOrder[] potentialRecipies;
 
     // Update is called once per frame
     void Update()
