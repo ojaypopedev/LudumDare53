@@ -6,7 +6,7 @@ using static HotDogCannon.FoodPrep.FoodObject;
 
 namespace HotDogCannon.FoodPrep
 {
-    [CreateAssetMenu(fileName = "Ingredient", menuName = "HotDogCannon/Scirptables/FoodPrep/Ingredient")]
+    [CreateAssetMenu(fileName = "Ingredient", menuName = "HotDogCannon/Ingredient")]
     public class Ingredient : ScriptableObject
     {
         public string foodName;
