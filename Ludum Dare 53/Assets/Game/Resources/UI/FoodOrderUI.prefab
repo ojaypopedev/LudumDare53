@@ -160,6 +160,7 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
+  recipieIcon: {fileID: 7282392263546679472}
 --- !u!1 &5251940100894038512
 GameObject:
   m_ObjectHideFlags: 0

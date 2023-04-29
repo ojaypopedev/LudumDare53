@@ -149,7 +149,7 @@ public struct ArcData
         float distanceB = HorizontalDistance(positions[0], positions[index]); //Vector3.Distance(new Vector3(positions[0].x, 0, positions[0].z), new Vector3(positions[index].x, 0, positions[index].z));
 
         float delta = (horizontalDistanceTravelled - distanceA) / (distanceB- distanceA);
-        Debug.Log("DELTA: " + delta);
+        //Debug.Log("DELTA: " + delta);
         return Vector3.Lerp(positions[index - 1], positions[index], delta);
     }
 
