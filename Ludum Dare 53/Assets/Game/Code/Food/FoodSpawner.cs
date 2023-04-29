@@ -15,19 +15,34 @@ namespace HotDogCannon.FoodPrep
 
         List<FoodObject> foodObjects = new List<FoodObject>();
 
+
+        private void Awake()
+        {
+            GameManager.onReset += OnReset;
+        }
+
         public void SpawnItem()
         {
             var newitem = ingredient.SpawnWorldObject();
+            newitem.transform.position = spawnPos.position;
             newitem.LinkSpawner(this);
+            newitem.onGrabbed += OnItemGrabbed;
             foodObjects.Add(newitem);
         }
 
-        public void Init()
+        public void OnReset()
         {
             foodObjects.ForEach(f => Destroy(f.gameObject));
             foodObjects.Clear();
             StartCoroutine(StartSpawn());
            
+        }
+
+        public void OnItemGrabbed(FoodObject foodObject)
+        {
+            foodObjects.Remove(foodObject);
+            foodObject.onGrabbed -= OnItemGrabbed;
+            SpawnItem();
         }
 
         IEnumerator StartSpawn()

@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 443189106996118279}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.029999994, y: 0.023000002, z: 0.45800003}
-  m_LocalScale: {x: 0.16795, y: 0.054724496, z: 1}
+  m_LocalPosition: {x: 0.03, y: 0.023, z: 0.849}
+  m_LocalScale: {x: 0.16795, y: 0.054724496, z: 0.12772}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 443189107904049765}
@@ -132,7 +132,7 @@ Transform:
   - {fileID: 443189108417314453}
   - {fileID: 443189107904049765}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &443189107585651523
 MeshFilter:
@@ -211,7 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pivotPoint: {fileID: 443189107904049765}
-  ForwardAxis: {x: 0, y: 0, z: 1}
+  rayCastPoint: {fileID: 443189106996118276}
   moveSensitivity: 1
   rotSensitivity: 20
   minMaxForward: {x: -0.34, y: 0.1}

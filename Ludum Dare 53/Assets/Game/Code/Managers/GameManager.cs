@@ -41,9 +41,9 @@ public class GameManager : MonoBehaviour
     // PUBLIC
     public static void Reset()
     {
-        if (gameState == GameState.INIT) return;
+        if (gameState == GameState.MENU) return;
 
-        gameState = GameState.INIT;
+        gameState = GameState.MENU;
 
         onReset?.Invoke();
     }

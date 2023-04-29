@@ -4,19 +4,24 @@ using UnityEngine;
 
 namespace HotDogCannon.Utils
 {
-    public class PosAnim : MonoBehaviour
+    public class PositionAnims : MonoBehaviour
     {
         public Transform model;
         public Vector3 startPos;
         public Transform targetPos;
         public float time;
+        public System.Action callback;
 
-        public PosAnim(Transform model, Vector3 startPos, Transform targetPos, float time)
+        public PositionAnims(Transform model, Vector3 startPos, Transform targetPos, float time)
         {
             this.model = model;
             this.startPos = startPos;
             this.targetPos = targetPos;
             this.time = time;
+        }
+
+        public void StartAnim()
+        {
             StartCoroutine(DoAnim());
         }
 
@@ -36,21 +41,25 @@ namespace HotDogCannon.Utils
             }
 
             model.position = targetPos.position;
-
+            callback?.Invoke();
             Destroy(gameObject);
         }
     }
 
-    public static class PositionAnims
+    public static class PosAnims
     {
 
-        public static void AnimatPos(Transform model, Vector3 startPos, Transform targetPos, float time)
+        public static void AnimatPos(Transform model, Vector3 startPos, Transform targetPos, float time, System.Action callback = null)
         {
             var animObj = new GameObject("posAnim");
 
-            var posAnimScript = animObj.AddComponent<PosAnim>();
-            posAnimScript = new PosAnim(model, startPos, targetPos, time);
-
+            var posAnimScript = animObj.AddComponent<PositionAnims>();
+            posAnimScript.model = model;
+            posAnimScript.startPos = startPos;
+            posAnimScript.targetPos = targetPos;
+            posAnimScript.time = time;
+            posAnimScript.callback = callback;
+            posAnimScript.StartAnim();
         }
 
     }
