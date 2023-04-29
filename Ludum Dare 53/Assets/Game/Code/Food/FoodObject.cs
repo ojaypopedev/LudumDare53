@@ -26,6 +26,18 @@ namespace HotDogCannon.FoodPrep
 
         public List<FoodObject> mergedItems = new List<FoodObject>();
 
+        public List<Ingredient> ingredients
+        {
+            get
+            {
+                List<Ingredient> allIngredients = new List<Ingredient>();
+                allIngredients.Add(ingredient);
+                allIngredients.AddRange(mergedItems.Select(m => m.ingredient));
+
+                return allIngredients;
+            }
+        }
+
         // Actions
         public System.Action<FoodObject> onGrabbed;
         static System.Action<FoodObject> onGrabItemChanged;

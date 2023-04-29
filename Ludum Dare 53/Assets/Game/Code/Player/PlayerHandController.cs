@@ -23,6 +23,9 @@ namespace HotDogCannon.Player
         float currentLeft;
         float currentForward;
         float currentRot;
+        float upAxisDT;
+
+        Animator anim;
 
         Vector3 startPos;
 
@@ -34,6 +37,7 @@ namespace HotDogCannon.Player
         {
             startPos = pivotPoint.transform.position;
             Cursor.lockState = CursorLockMode.Locked;
+            anim = GetComponent<Animator>();
         }
 
         // Update is called once per frame
@@ -41,7 +45,7 @@ namespace HotDogCannon.Player
         {
             Grabbing();
             Movement();
-
+            Gun();
         }
 
         public void Grabbing()
@@ -86,6 +90,11 @@ namespace HotDogCannon.Player
             }
         }
 
+        public void Gun()
+        {
+            anim.SetBool("IsShooting", upAxisDT > 0.6f);
+        }
+
         public void Movement()
         {
             Vector2 inputDelta = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
@@ -113,11 +122,11 @@ namespace HotDogCannon.Player
 
             var forwardDot = Vector3.Dot(Vector3.forward, transform.forward);
 
-            float moveAxisDT = Mathf.Clamp01(Mathf.InverseLerp(0, -1, forwardDot));
+            upAxisDT = Mathf.Clamp01(Mathf.InverseLerp(0, -1, forwardDot));
 
-            var axis = Vector3.Lerp(Vector3.forward, Vector3.up, moveAxisDT);
+            var axis = Vector3.Lerp(Vector3.forward, Vector3.up, upAxisDT);
 
-            var moveAmount = Mathf.Lerp(localzPos, localyPos, moveAxisDT);
+            var moveAmount = Mathf.Lerp(localzPos, localyPos, upAxisDT);
 
             var forwardMove = axis * moveAmount;
 

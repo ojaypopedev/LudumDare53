@@ -27,5 +27,13 @@ namespace HotDogCannon.FoodPrep
             foodObj.name = foodName;
             return foodObj;
         }
+        public override bool Equals(object other)
+        {
+            var otherFood = other as Ingredient;
+
+            if (otherFood == null) return false;
+
+            return otherFood.foodName == foodName;
+        }
     }
 }
