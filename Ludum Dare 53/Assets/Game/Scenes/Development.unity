@@ -2855,3 +2855,4 @@ MonoBehaviour:
   roundsPerRecipe: 5
   isActive: 0
   maxForce: 40
+  minMaxHeight: {x: 0, y: 0}

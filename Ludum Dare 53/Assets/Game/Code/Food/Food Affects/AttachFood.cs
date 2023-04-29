@@ -26,16 +26,28 @@ namespace HotDogCannon.FoodPrep {
 
             toItem.mergedItems.Add(fromItem);
 
-            PosAnims.AnimatPos(fromItem.transform, startPos, topItem.mergepos, 0.1f, () =>
+            if (!Application.isPlaying)
             {
-                //Particles Here;
-
                 toItem.rb.transform.rotation = Quaternion.Euler(Vector3.zero);
                 fromItem.transform.rotation = topItem.mergepos.rotation;
                 fromItem.transform.position = topItem.mergepos.position;
 
                 fromItem.transform.SetParent(toItem.mergepos);
-            });
+            }
+            else
+            {
+
+                PosAnims.AnimatPos(fromItem.transform, startPos, topItem.mergepos, 0.1f, () =>
+                {
+                    //Particles Here;
+
+                    toItem.rb.transform.rotation = Quaternion.Euler(Vector3.zero);
+                    fromItem.transform.rotation = topItem.mergepos.rotation;
+                    fromItem.transform.position = topItem.mergepos.position;
+
+                    fromItem.transform.SetParent(toItem.mergepos);
+                });
+            }
 
         }
     }

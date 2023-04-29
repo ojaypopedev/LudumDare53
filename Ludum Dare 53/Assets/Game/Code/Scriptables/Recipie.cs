@@ -37,6 +37,7 @@ namespace HotDogCannon.FoodPrep
             ingredients.ForEach(i =>
             {
                 var newIngredientObj = i.SpawnWorldObject();
+                newIngredientObj.OnSpawn(i);
 
                 if (lastIngredient != null)
                 {

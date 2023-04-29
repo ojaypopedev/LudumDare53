@@ -139,7 +139,10 @@ namespace HotDogCannon.FoodPrep
 
         public void DestroyRigidBody()
         {
-            Destroy(rb);
+            if (!Application.isPlaying)
+                DestroyImmediate(rb);
+            else
+                Destroy(rb);
         }
 
         public BaseFoodAffect GetBehaviour()
