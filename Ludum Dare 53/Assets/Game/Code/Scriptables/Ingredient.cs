@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static HotDogCannon.FoodPrep.FoodObject;
 
 namespace HotDogCannon.FoodPrep
 {
@@ -10,7 +11,14 @@ namespace HotDogCannon.FoodPrep
     {
         public string foodName;
         public Sprite icon;
-        public BaseFoodAffect affect;
+
+        public enum FoodAffectType
+        {
+            ATTACH,
+        }
+
+        public FoodAffectType mergeAffectBehaviour;
+
         public FoodObject worldObject;
 
         public FoodObject SpawnWorldObject()

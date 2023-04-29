@@ -33,6 +33,7 @@ namespace HotDogCannon.Player
         private void Awake()
         {
             startPos = pivotPoint.transform.position;
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         // Update is called once per frame
@@ -47,36 +48,41 @@ namespace HotDogCannon.Player
         {
             RaycastHit hit;
 
-            if (Physics.Raycast(rayCastPoint.position, Vector3.down, out hit, 2))
+            var fromPos = FoodObject.currentGrabbed == null ? rayCastPoint.position : FoodObject.currentGrabbed.transform.position;
+
+            if (Physics.Raycast(fromPos, Vector3.down, out hit, 2))
             {
                 FoodObject foodObj = hit.transform.gameObject.GetComponent<FoodObject>();
 
-                if(foodObj != null)
+                if (foodObj != null)
                 {
-                    foodObj.OnHandOver();
+                    if (FoodObject.currentGrabbed == null ||
+                        (FoodObject.currentGrabbed != null && FoodObject.currentGrabbed != foodObj))
+                        foodObj.OnHandOver();
+
+                    else
+                    {
+                        onPlayerHandEmpty?.Invoke();
+                    }
                 }
                 else
                 {
                     onPlayerHandEmpty?.Invoke();
                 }
-            }
-            else
-            {
-                onPlayerHandEmpty?.Invoke();
-            }
 
-            if (Input.GetMouseButtonDown(0))
-            {
-                if(FoodObject.currentPotentialGrab != null)
+                if (Input.GetMouseButtonDown(0))
                 {
-                    FoodObject.currentPotentialGrab.Grab(rayCastPoint);
+                    if (FoodObject.currentPotentialGrab != null)
+                    {
+                        FoodObject.currentPotentialGrab.Grab(rayCastPoint);
+                    }
                 }
-            }
 
-            if (Input.GetMouseButtonUp(0))
-            {
-                if (FoodObject.currentGrabbed != null)
-                    FoodObject.currentGrabbed.UnGrab();
+                if (Input.GetMouseButtonUp(0))
+                {
+                    if (FoodObject.currentGrabbed != null)
+                        FoodObject.currentGrabbed.UnGrab();
+                }
             }
         }
 

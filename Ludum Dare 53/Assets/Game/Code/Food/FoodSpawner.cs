@@ -13,6 +13,8 @@ namespace HotDogCannon.FoodPrep
         public Transform spawnPos;
         public int spawnAmount;
 
+        public float regenTime = 0.4f;
+
         List<FoodObject> foodObjects = new List<FoodObject>();
 
 
@@ -26,6 +28,7 @@ namespace HotDogCannon.FoodPrep
             var newitem = ingredient.SpawnWorldObject();
             newitem.transform.position = spawnPos.position;
             newitem.LinkSpawner(this);
+            newitem.OnSpawn(ingredient);
             newitem.onGrabbed += OnItemGrabbed;
             foodObjects.Add(newitem);
         }
@@ -50,7 +53,7 @@ namespace HotDogCannon.FoodPrep
             while (foodObjects.Count < spawnAmount)
             {
                 SpawnItem();
-                yield return new WaitForSeconds(1);
+                yield return new WaitForSeconds(regenTime);
             }
         }
     }

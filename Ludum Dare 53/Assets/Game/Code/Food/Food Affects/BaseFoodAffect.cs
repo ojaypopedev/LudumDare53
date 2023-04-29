@@ -4,14 +4,10 @@ using UnityEngine;
 
 namespace HotDogCannon.FoodPrep
 {
-    public class BaseFoodAffect : MonoBehaviour
+    
+    public class BaseFoodAffect 
     {
-        public virtual void OnGrabbed()
-        {
-
-        }
-
-        public virtual void OnMerge()
+        public virtual void OnMerge(FoodObject fromItem, FoodObject toItem)
         {
 
         }
