@@ -53,11 +53,19 @@ namespace HotDogCannon.Player {
 
             if (Input.GetMouseButtonDown(0) && currentRounds > 0 && isActive)
             {
-                GameObject instance = Instantiate(currentLoaded).gameObject;
+                FoodObject instance = Instantiate(currentLoaded);
 
-                arcCalculator.ThrowOnArc(instance, arcCalculator.GetLocalArcData(), 10, (data) =>
+                arcCalculator.ThrowOnArc(instance.gameObject, arcCalculator.GetLocalArcData(), 10, (data) =>
                 {
+                    if(data.HitCollider)
+                    {
+                        var customer = data.HitCollider.GetComponent<Customer>();
 
+                        if (customer)
+                        {
+                            customer.GiveFood(instance);
+                        }
+                    }
                     Destroy(instance.gameObject);
 
                 });
