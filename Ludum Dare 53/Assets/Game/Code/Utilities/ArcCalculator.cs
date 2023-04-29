@@ -19,7 +19,7 @@ public class ArcCalculator : MonoBehaviour
 
     public void SetHeight(float height)
     {
-        this.SetHeight(height);
+        this.height = height;
     }
 
     public float GetForce() => force;

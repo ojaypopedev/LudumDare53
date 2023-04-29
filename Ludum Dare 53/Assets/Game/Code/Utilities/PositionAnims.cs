@@ -42,10 +42,7 @@ namespace HotDogCannon.Utils
 
             model.position = targetPos.position;
             callback?.Invoke();
-            if (Application.isEditor)
-                DestroyImmediate(gameObject);
-            else
-                Destroy(gameObject);
+            Destroy(gameObject);
         }
     }
 
