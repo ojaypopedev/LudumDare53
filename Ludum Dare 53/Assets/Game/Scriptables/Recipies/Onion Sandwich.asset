@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Onion Sandwich
   m_EditorClassIdentifier: 
   recipeName: Onion Sandwich
-  icon: {fileID: 0}
+  icon: {fileID: 2800000, guid: af6e1b41e6e1fc54aa0b0c5d4e9b1642, type: 2}
   ingredients:
   - {fileID: 11400000, guid: 905b63d024741452098aff37632b3b20, type: 2}
   - {fileID: 11400000, guid: efbdc5d107f7f5e4f9344da38eed68ea, type: 2}

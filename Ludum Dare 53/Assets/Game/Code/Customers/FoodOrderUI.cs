@@ -12,6 +12,7 @@ public class FoodOrderUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI textMesh;
     [SerializeField] Image fillImage;
     [SerializeField] Gradient fillGradient;
+    [SerializeField] RawImage recipieIcon;
     public static FoodOrderUI Create(FoodOrder foodOrder)
     {
         FoodOrderUI uiInstance = Instantiate(Prefab);
@@ -23,6 +24,7 @@ public class FoodOrderUI : MonoBehaviour
     {
         _order = foodOrder;
         textMesh.text = _order.recipie.recipeName;
+        recipieIcon.texture = _order.recipie.icon;
     }
 
     private void Update()

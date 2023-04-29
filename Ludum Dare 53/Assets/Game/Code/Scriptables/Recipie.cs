@@ -9,7 +9,7 @@ namespace HotDogCannon.FoodPrep
     public class Recipie : ScriptableObject
     {
         public string recipeName;
-        public Sprite icon;
+        public Texture2D icon;
         [Tooltip("The order of the list from first to last is the order the recipe should be made in")]
         public List<Ingredient> ingredients = new List<Ingredient>();
 
