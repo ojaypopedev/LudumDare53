@@ -3393,7 +3393,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aab937c31c52845dea67f2d981e6069c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levels: []
+  levels:
+  - levelName: TestLevel
+    stadium: {fileID: 1895039659}
+    numOrders: 10
+    recipies:
+    - {fileID: 11400000, guid: 81dc420481ce46e489318e63ce890fc6, type: 2}
+    minMaxOrderTime: {x: 5, y: 10}
+    overallTimeLimit: 60
 --- !u!1 &1427582811
 GameObject:
   m_ObjectHideFlags: 0

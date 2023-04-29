@@ -20,9 +20,13 @@ public class CustomerManager : MonoBehaviour
     public Recipie GetRandomRecipie() => RecipiesInLevel.RandomElement();
 
     private void Awake()
+    {     
+        instance = this;
+    }
+
+    public void Init()
     {
         Customers.ToList().ForEach(e => e.Init(this));
-        instance = this;
     }
 
     // Update is called once per frame
