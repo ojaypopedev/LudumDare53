@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public static System.Action onGameStarted;
     public static System.Action<CompleteState> onGameFinished;
 
+
     // Enums
     public enum CompleteState
     {
@@ -38,6 +39,21 @@ public class GameManager : MonoBehaviour
         Reset();
     }
 
+#if UNITY_EDITOR
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            StartGame();
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Reset();
+        }
+    }
+# endif
+
     // PUBLIC
     public static void Reset()
     {
@@ -48,7 +64,7 @@ public class GameManager : MonoBehaviour
         onReset?.Invoke();
     }
 
-    public static void StarGame()
+    public static void StartGame()
     {
         if (gameState == GameState.PLAYING) return;
 

@@ -7,7 +7,7 @@ public class Customer : MonoBehaviour
 {
     FoodOrder currentFoodOrder;
     FoodOrderUI ui;
-   public CustomerManager manager;
+    public CustomerManager manager;
 
     [SerializeField] Transform uiTransform;
 
@@ -45,14 +45,9 @@ public class Customer : MonoBehaviour
         }
 
     }
-    public void CompleteFoodOrder(bool success, FoodOrder order)
+    public void CompleteFoodOrder(bool success, FoodOrder order = null)
     {
         manager.OnFoodOrderCompleted(success, order);
-    }
-
-    public void FailFoodOrder(FoodOrder order)
-    {
-        manager.OnFoodOrderFailed(order);
     }
 
     // Update is called once per frame
@@ -69,7 +64,7 @@ public class Customer : MonoBehaviour
 
             if(currentFoodOrder.TimeLeft <= 0)
             {
-                FailFoodOrder(currentFoodOrder);
+                CompleteFoodOrder(false, currentFoodOrder);
                 currentFoodOrder = null;
             }
         }

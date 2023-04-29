@@ -20,6 +20,8 @@ public class LevelManager : MonoBehaviour
 
         [Tooltip("overall time in seconds")]
         public float overallTimeLimit;
+
+        public Vector2 minMaxTimeBetweenOrders;
     }
 
     public List<Level> levels = new List<Level>();
@@ -86,11 +88,7 @@ public class LevelManager : MonoBehaviour
         currentLevel.stadium.gameObject.SetActive(true);
 
         var customerManager = CustomerManager.instance;
-        customerManager.Customers = currentLevel.stadium.customers;
-        customerManager.RecipiesInLevel = currentLevel.recipies;
-        customerManager.OrderTimeMin = currentLevel.minMaxOrderTime.x;
-        customerManager.OrderTimeMax = currentLevel.minMaxOrderTime.y;
-        customerManager.Init();
+        customerManager.Init(currentLevel);
 
     }
 

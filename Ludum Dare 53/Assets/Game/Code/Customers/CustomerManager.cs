@@ -10,6 +10,12 @@ public class CustomerManager : MonoBehaviour
     public List<Recipie> RecipiesInLevel = new List<Recipie>();
     public List<Customer> Customers = new List<Customer>();
     public float OrderTimeMin = 2, OrderTimeMax = 5;
+    public int totalOrders = 10;
+    public Vector2 mimMaxTimeBetweenOrders;
+
+    public static System.Action<bool> onCompletedOrder;
+
+    int ordersCompleted;
 
     public static CustomerManager instance;
 
@@ -22,11 +28,24 @@ public class CustomerManager : MonoBehaviour
     private void Awake()
     {     
         instance = this;
+        GameManager.onGameStarted += OnGameStarted;
     }
 
-    public void Init()
+    public void Init(LevelManager.Level level)
     {
-        Customers.ToList().ForEach(e => e.Init(this));
+        Customers = level.stadium.customers;
+        RecipiesInLevel = level.recipies;
+        OrderTimeMin = level.minMaxOrderTime.x;
+        OrderTimeMax = level.minMaxOrderTime.y;
+        totalOrders = level.numOrders;
+        mimMaxTimeBetweenOrders = level.minMaxTimeBetweenOrders;
+
+        Customers.ForEach(e => e.Init(this));
+    }
+
+    public void OnGameStarted()
+    {
+        StartCoroutine(levelLoop());
     }
 
     // Update is called once per frame
@@ -40,13 +59,30 @@ public class CustomerManager : MonoBehaviour
 
     public void OnFoodOrderCompleted(bool success, FoodOrder foodOrder)
     {
-        
+        onCompletedOrder?.Invoke(success);
+
+        if (success)
+            ordersCompleted++;
+
+        if(ordersCompleted >= totalOrders)
+        {
+            GameManager.CompleteLevel(GameManager.CompleteState.WIN);
+        }
+
         Debug.Log($"Food Order Complete : {success}");
     }
 
-    public void OnFoodOrderFailed(FoodOrder order)
+    IEnumerator levelLoop()
     {
-        Debug.Log($"Food Order Failed)");// : {success}");
+        while (GameManager.gameState == GameManager.GameState.PLAYING)
+        {
+            var totalTime = Random.Range(OrderTimeMin, OrderTimeMax);
+            GetRandomAvailableCustomer().AssignFoodOrder(GetRandomRecipie(), totalTime);
+
+            var extraTime = Random.Range(mimMaxTimeBetweenOrders.x, mimMaxTimeBetweenOrders.y);
+
+            yield return new WaitForSeconds(totalTime + extraTime);
+        }
     }
 }
 

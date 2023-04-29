@@ -47,6 +47,7 @@ namespace HotDogCannon.FoodPrep
         {
             onGrabItemChanged += OnItemChanged;
             Player.PlayerHandController.onPlayerHandEmpty += OnHandExit;
+            GameManager.onReset += OnReset;
         }
 
         public void OnSpawn(Ingredient fromeIngredient)
@@ -158,8 +159,14 @@ namespace HotDogCannon.FoodPrep
             return null;
         }
 
+        public void OnReset()
+        {
+            Destroy(gameObject);
+        }
+
         private void OnDestroy()
         {
+            GameManager.onReset -= OnReset;
             onGrabItemChanged -= OnItemChanged;
             Player.PlayerHandController.onPlayerHandEmpty -= OnHandExit;
         }
