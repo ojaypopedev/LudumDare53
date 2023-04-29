@@ -88,12 +88,14 @@ public class LevelManager : MonoBehaviour
         var customerManager = CustomerManager.instance;
         customerManager.Customers = currentLevel.stadium.customers;
         customerManager.RecipiesInLevel = currentLevel.recipies;
+        customerManager.OrderTimeMin = currentLevel.minMaxOrderTime.x;
+        customerManager.OrderTimeMax = currentLevel.minMaxOrderTime.y;
+        customerManager.Init();
 
     }
 
     private void OnDestroy()
     {
-
         GameManager.onReset -= OnReset;
         GameManager.onGameFinished -= OnLevelComplete;
         GameManager.onGameStarted -= OnGameStarted;
