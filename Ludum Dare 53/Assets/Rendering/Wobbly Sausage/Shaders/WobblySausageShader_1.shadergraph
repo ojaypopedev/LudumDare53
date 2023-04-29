@@ -1114,11 +1114,11 @@
     "m_Guid": {
         "m_GuidSerialized": "00becf88-9890-416b-9496-cda7819f9acb"
     },
-    "m_Name": "mag",
+    "m_Name": "Magnitude",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "mag",
-    "m_DefaultReferenceName": "_mag",
-    "m_OverrideReferenceName": "",
+    "m_RefNameGeneratedByDisplayName": "Magnitude",
+    "m_DefaultReferenceName": "_Magnitude",
+    "m_OverrideReferenceName": "_Magnitude",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
     "m_CustomSlotLabel": "",
@@ -1895,10 +1895,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -752.6666870117188,
-            "y": -18.00000762939453,
-            "width": 99.3333740234375,
-            "height": 35.999977111816409
+            "x": -821.3333740234375,
+            "y": -78.0,
+            "width": 132.0,
+            "height": 35.9999885559082
         }
     },
     "m_Slots": [
@@ -2031,7 +2031,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "a2e1be5c4bf44a97b718e266a247b11f",
     "m_Id": 0,
-    "m_DisplayName": "mag",
+    "m_DisplayName": "Magnitude",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
