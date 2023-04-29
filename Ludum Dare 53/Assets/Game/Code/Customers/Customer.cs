@@ -13,6 +13,11 @@ public class Customer : MonoBehaviour
 
     public bool HasFoodOrder => currentFoodOrder != null;
 
+    private void Awake()
+    {
+        GameManager.onReset += OnReset;
+    }
+
     public void Init(CustomerManager manager)
     {
         this.manager = manager;
@@ -75,6 +80,11 @@ public class Customer : MonoBehaviour
                 ui.Hide();
             }
         }
+    }
+
+    public void OnReset()
+    {
+        currentFoodOrder = null;
     }
 }
 
