@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: d51cefc8f0e60f74cbeafad30bbc8e14, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -191,7 +191,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2dd39a23637c47c46bcc874718d868a7, type: 2}
+  - {fileID: 2100000, guid: 1bdcc349fca769047b64216d34e3ae91, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1162,7 +1162,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2dd39a23637c47c46bcc874718d868a7, type: 2}
+  - {fileID: 2100000, guid: 1bdcc349fca769047b64216d34e3ae91, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2477,24 +2477,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abf6d19d8ab9ec940aedaabcfbfe6cc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startVel: {x: 9.31, y: 20, z: 0}
   raycastMask:
     serializedVersion: 2
     m_Bits: 2147483647
-  positions:
-    positions:
-    - {x: -8.5479965, y: -137.82, z: 28.063345}
-    - {x: -7.1410923, y: -136.72833, z: 27.782532}
-    - {x: -5.734188, y: -135.65627, z: 27.501719}
-    - {x: -4.327284, y: -134.66269, z: 27.220903}
-    - {x: -2.9203796, y: -133.80644, z: 26.94009}
-    - {x: -1.5134754, y: -133.14641, z: 26.659277}
-    - {x: -0.1065712, y: -132.74142, z: 26.378464}
-    - {x: 1.300334, y: -132.65038, z: 26.097649}
-    - {x: 9.72693, y: -134.33765, z: 24.41573}
-    HitNormal: {x: -1, y: 0, z: 0}
-    HitCollider: {fileID: 725742308}
-  force: 10
 --- !u!4 &1986947296
 Transform:
   m_ObjectHideFlags: 0

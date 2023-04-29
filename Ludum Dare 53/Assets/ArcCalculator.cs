@@ -85,10 +85,10 @@ public class ArcCalculator : MonoBehaviour
     }
     public void ThrowOnArc(GameObject obj, ArcData data, float speed, System.Action<ArcData> OnReachedEndOfArc = null)
     {
-        Task t = MoveAlongArv(obj, data, speed, OnReachedEndOfArc);
+        Task t = MoveAlongArc(obj, data, speed, OnReachedEndOfArc);
     }
     
-    public async Task MoveAlongArv(GameObject obj, ArcData data, float speed, System.Action<ArcData> OnReachedEndOfArk = null)
+    async Task MoveAlongArc(GameObject obj, ArcData data, float speed, System.Action<ArcData> OnReachedEndOfArk = null)
     {
         float distance = 0;
         while(data.IsPastEndOfLine(distance) == false)
@@ -111,7 +111,6 @@ public struct ArcData
     public Vector3 HitNormal;
 
     public Collider HitCollider;
-
 
     public bool IsPastEndOfLine(float horizontalDistanceTravelled)
     {
@@ -145,7 +144,8 @@ public struct ArcData
 
     public static float HorizontalDistance(Vector3 positionA, Vector3 positionB)
     {
-        return Vector3.Distance(new Vector3(positionA.x, 0, positionA.z), new Vector3(positionB.x, 0 ,positionB.z));
+        return Vector3.Distance(positionA, positionB);
+    //    return //Vector3.Distance(new Vector3(positionA.x, 0, positionA.z), new Vector3(positionB.x, 0 ,positionB.z));
     }
     
 
