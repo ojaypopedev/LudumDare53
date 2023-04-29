@@ -28,5 +28,29 @@ namespace HotDogCannon.FoodPrep
             return true;
 
         }
+
+        [ContextMenu("Create recipe")]
+        public GameObject CreateRecipe()
+        {
+            FoodObject ingredientObject = null;
+            FoodObject lastIngredient = null;
+            ingredients.ForEach(i =>
+            {
+                var newIngredientObj = i.SpawnWorldObject();
+
+                if (lastIngredient != null)
+                {
+                    lastIngredient.Merge(newIngredientObj);
+                }
+                else
+                {
+                    ingredientObject = newIngredientObj;
+                }
+
+                lastIngredient = newIngredientObj;
+            });
+
+            return ingredientObject.gameObject;
+        }
     }
 }
