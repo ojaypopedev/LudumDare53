@@ -15,10 +15,7 @@ namespace HotDogCannon.FoodPrep
 
         [HideInInspector] public Ingredient ingredient;
 
-
         FoodSpawner fromSpawner;
-
-
 
         public static FoodObject currentPotentialGrab;
         public static FoodObject currentPotentialMerge;

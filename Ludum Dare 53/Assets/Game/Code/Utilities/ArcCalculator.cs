@@ -10,11 +10,18 @@ public class ArcCalculator : MonoBehaviour
     public LayerMask raycastMask;
 
      float force = 10;
+    float height = 15;
 
     public void SetForce(float force)
     {
         this.force = force;
     }
+
+    public void SetHeight(float height)
+    {
+        this.SetHeight(height);
+    }
+
     public float GetForce() => force;
    
     public ArcData GetArcData(Vector3 startPosition, Vector3 startVelocity, float timeStep = 0.02f, int maxPoints = 200)
@@ -77,7 +84,7 @@ public class ArcCalculator : MonoBehaviour
     {
         if(Time.frameCount > cachedLocalArcDataFrame || cachedLocalArcData.positions == null || cachedLocalArcData.positions.Length ==0)
         {
-            cachedLocalArcData = GetArcData(transform.position, transform.TransformDirection(new Vector3(force, 15, 0)), 0.1f, 200);
+            cachedLocalArcData = GetArcData(transform.position, transform.TransformDirection(new Vector3(0, height, force)), 0.1f, 200);
             cachedLocalArcDataFrame = Time.frameCount;
         }
 
@@ -101,6 +108,10 @@ public class ArcCalculator : MonoBehaviour
         OnReachedEndOfArk?.Invoke(data);
     }
 
+    private void OnDrawGizmos()
+    {
+        GizmoArc(GetLocalArcData());
+    }
 }
 
 [System.Serializable]
@@ -148,5 +159,5 @@ public struct ArcData
     //    return //Vector3.Distance(new Vector3(positionA.x, 0, positionA.z), new Vector3(positionB.x, 0 ,positionB.z));
     }
     
-
+    
 }

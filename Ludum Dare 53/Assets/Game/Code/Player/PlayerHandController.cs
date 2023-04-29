@@ -10,6 +10,7 @@ namespace HotDogCannon.Player
         [Header("Setup")]
         public Transform pivotPoint;
         public Transform rayCastPoint;
+        public Gun gun;
 
         [Header("Sensitivity")]
         public float moveSensitivity;
@@ -92,7 +93,13 @@ namespace HotDogCannon.Player
 
         public void Gun()
         {
-            anim.SetBool("IsShooting", upAxisDT > 0.6f);
+            bool isShooting = upAxisDT > 0.6f;
+
+            anim.SetBool("IsShooting", isShooting);
+
+            gun.isActive = isShooting;
+
+            gun.Refresh(new Vector2(Mathf.InverseLerp(-1, 1, currentLeft), Mathf.InverseLerp(-1, 1, currentForward)));
         }
 
         public void Movement()
