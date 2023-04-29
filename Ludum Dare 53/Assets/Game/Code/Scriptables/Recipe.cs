@@ -12,5 +12,10 @@ namespace HotDogCannon.FoodPrep
         [Tooltip("The order of the list from first to last is the order the recipe should be made in")]
         public List<Ingredient> ingredients = new List<Ingredient>();
 
+        public bool CheckFoodObject(FoodObject toCompare)
+        {
+            return false;
+        }
+
     }
 }
