@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class ArcLineRenderer : MonoBehaviour
 {
     LineRenderer renderer => GetComponent<LineRenderer>();
@@ -14,7 +15,7 @@ public class ArcLineRenderer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ArcData data = calculator.GetLocalArcData();
+        ArcData_Old data = calculator.GetLocalArcData();
         renderer.positionCount = data.positions.Length;
         renderer.SetPositions(data.positions);
         if(End)
