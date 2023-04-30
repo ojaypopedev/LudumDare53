@@ -11,17 +11,33 @@ public class Customer : MonoBehaviour
 
     [SerializeField] Transform uiTransform;
 
-    public Highlight Highlight => GetComponent<Highlight>();
+    public CustomCharacter character;
+
+    public Highlight Highlight => character.Highlight;
     public bool HasFoodOrder => currentFoodOrder != null;
 
     private void Awake()
     {
         GameManager.onReset += OnReset;
+
     }
 
     public void Init(CustomerManager manager)
     {
         this.manager = manager;
+
+
+
+        CustomCharacter[] characters = GetComponentsInChildren<CustomCharacter>(true);
+
+        for (int i = 0; i < characters.Length; i++)
+        {
+            characters[i].gameObject.SetActive(false);
+        }
+        character = characters[Random.Range(0, characters.Length - 1)];
+        character.gameObject.SetActive(true);
+        character.Setup(manager.customizations.GetRandom());
+        character.Animator.Play("Sitting", -1, Random.Range(0f, 1f));
     }
     public void AssignFoodOrder(Recipie recipie, float totaltime)
     {
@@ -39,7 +55,7 @@ public class Customer : MonoBehaviour
         {
             if(foodObject != null)
             {
-                
+                EffectsManager.CreateParticles(EffectsManager.OrderRecievedParticles, transform.position + transform.forward, null);
                 CompleteFoodOrder(currentFoodOrder.recipie.CompareFoodObject(foodObject), currentFoodOrder);
                 currentFoodOrder = null;
                 
