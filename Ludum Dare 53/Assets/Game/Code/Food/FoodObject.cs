@@ -150,7 +150,11 @@ namespace HotDogCannon.FoodPrep
             if (currentGrabbed != null && ignoreMerge) return;
             mergedItems.ForEach(m => m.OnHandOver());
             tempColor = col.GetComponentInChildren<Renderer>().material.color;
-            col.GetComponentsInChildren<Renderer>().ToList().ForEach(r => r.materials.ToList().ForEach(m => m.color = Color.grey));
+            col.GetComponentsInChildren<Renderer>().ToList().ForEach(r => r.materials.ToList().ForEach(m => {
+                var col = m.GetColor("_HighlightColor");
+                col.a = 1;
+                m.SetColor("_HighlightColor", col);
+            }));
 
             highlighted = true;
             onGrabItemChanged?.Invoke(this);
@@ -162,7 +166,11 @@ namespace HotDogCannon.FoodPrep
             mergedItems.ForEach(m => m.OnHandExit());
             currentPotentialGrab = null;
             currentPotentialMerge = null;
-            col.GetComponentsInChildren<Renderer>().ToList().ForEach(r => r.materials.ToList().ForEach(m => m.color = tempColor));
+            col.GetComponentsInChildren<Renderer>().ToList().ForEach(r => r.materials.ToList().ForEach(m => {
+                var col = m.GetColor("_HighlightColor");
+                col.a = 0;
+                m.SetColor("_HighlightColor", col);
+            }));
 
             highlighted = false;
         }

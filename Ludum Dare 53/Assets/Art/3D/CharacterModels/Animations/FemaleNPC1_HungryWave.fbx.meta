@@ -1,44 +1,9 @@
 fileFormatVersion: 2
-guid: 52a005652d8f44191bb87dd68393f261
+guid: 5d80b65a8d40d48639faa708e9bd868a
 ModelImporter:
   serializedVersion: 22103
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.001
-    second: {fileID: 2100000, guid: f301aa0dcf74e48fb841b5f60be3f441, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.002
-    second: {fileID: 2100000, guid: 5a963c697dc164a70b1e49524aa911e8, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.006
-    second: {fileID: 2100000, guid: bb36ca7527cca44e3bd1d1ced365fe27, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.007
-    second: {fileID: 2100000, guid: 06136878853a34a8eb190dc986d8d57a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.010
-    second: {fileID: 2100000, guid: c96495152271b4396b64174596f1c682, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.012
-    second: {fileID: 2100000, guid: f55e565b1021b4e3fb1cef4e7fcec68a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.015
-    second: {fileID: 2100000, guid: cb164c4a6f8c742a283fe6c8db37ab74, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -70,7 +35,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 50
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -124,7 +89,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 50
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

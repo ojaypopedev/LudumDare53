@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8274133419916619345, guid: 52a005652d8f44191bb87dd68393f261, type: 3}
+  - {fileID: 2100000, guid: 06136878853a34a8eb190dc986d8d57a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -179,9 +179,12 @@ MonoBehaviour:
   mergepos: {fileID: 6212542504740106590}
   rb: {fileID: 6212542505537930030}
   col: {fileID: 4189525852550045526}
+  isPersistent: 0
+  ignoreMerge: 0
   ingredient: {fileID: 0}
   grabBehaviours: 0
   objectToPickup: {fileID: 0}
+  objectToPickupIngredient: {fileID: 0}
   mergedItems: []
   highlighted: 0
   isMerged: 0

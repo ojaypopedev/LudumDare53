@@ -54,7 +54,8 @@ namespace HotDogCannon.Player
             Grabbing();
             //Movement();
             //RadialMovement();
-           // Gun();
+            GunInput();
+           
         }
 
         private void FixedUpdate()
@@ -105,6 +106,11 @@ namespace HotDogCannon.Player
             }
         }
 
+        public void GunInput()
+        {
+            gun.Refresh(new Vector2(Mathf.InverseLerp(-1, 1, currentLeft), Mathf.InverseLerp(-1, 1, currentForward)));
+        }
+
         public void Gun()
         {
             var forwardDot = Vector3.Dot(Vector3.forward, transform.forward);
@@ -127,7 +133,7 @@ namespace HotDogCannon.Player
             else
                 Camera.main.transform.localRotation = Quaternion.Lerp(camRot, Quaternion.Euler(new Vector3(Mathf.Lerp(minMaxCamAimPos.y, minMaxCamAimPos.x, currentForward), camRot.eulerAngles.y, camRot.eulerAngles.z)), 10 * Time.deltaTime);
 
-            gun.Refresh(new Vector2(Mathf.InverseLerp(-1, 1, currentLeft), Mathf.InverseLerp(-1, 1, currentForward)));
+          
         }
 
         float playerAngle;

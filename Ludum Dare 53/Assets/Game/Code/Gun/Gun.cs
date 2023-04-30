@@ -65,9 +65,6 @@ namespace HotDogCannon.Player {
                 return;
             }
 
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-
             ArcData data = new ArcData(shootPoint.position, cam, maxDistance, mask);
 
             ArcData.ArcPower = arcPower;
@@ -79,6 +76,7 @@ namespace HotDogCannon.Player {
             renderer.positionCount = data.PositionCount;
             renderer.SetPositions(data.Positions);
             crossHair.transform.position = data.endPosition;
+
             if (data.HitTarget)
             {
                 crossHair.transform.forward = data.HitNormal;
@@ -87,6 +85,7 @@ namespace HotDogCannon.Player {
             {
                 crossHair.transform.forward = cam.transform.forward;
             }
+
             if (Input.GetMouseButtonDown(0) && currentRounds > 0 && isActive)
             {
                 FoodObject instance = Instantiate(currentLoaded);
@@ -105,12 +104,11 @@ namespace HotDogCannon.Player {
                         }
                     }
                     Destroy(instance.gameObject);
-
-                    _currentRounds--;
-
-                    onFired?.Invoke();
-
                 });
+
+                _currentRounds--;
+
+                onFired?.Invoke();
             }
             else if (isActive)
             {

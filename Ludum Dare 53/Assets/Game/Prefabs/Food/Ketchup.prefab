@@ -33,7 +33,7 @@ Transform:
   - {fileID: 3058952467718335367}
   - {fileID: 1601271744577039018}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3058952466368420340
 MonoBehaviour:
@@ -50,9 +50,12 @@ MonoBehaviour:
   mergepos: {fileID: 3058952467718335367}
   rb: {fileID: 3058952466368420343}
   col: {fileID: 8577840508664081346}
+  isPersistent: 0
+  ignoreMerge: 0
   ingredient: {fileID: 0}
   grabBehaviours: 0
   objectToPickup: {fileID: 0}
+  objectToPickupIngredient: {fileID: 0}
   mergedItems: []
   highlighted: 0
   isMerged: 0
@@ -165,7 +168,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6478536213147159724, guid: 52a005652d8f44191bb87dd68393f261, type: 3}
+  - {fileID: 2100000, guid: f301aa0dcf74e48fb841b5f60be3f441, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
