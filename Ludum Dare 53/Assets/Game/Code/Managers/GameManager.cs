@@ -84,5 +84,8 @@ public class GameManager : MonoBehaviour
         gameState = GameState.COMPLETE;
 
         onGameFinished?.Invoke(completeState);
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }
