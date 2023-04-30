@@ -15,5 +15,5 @@ MonoBehaviour:
   foodName: Onions
   icon: {fileID: 0}
   mergeAffectBehaviour: 0
-  worldObject: {fileID: 629688430755205850, guid: e757b5c4571df1a439ece85e19176c3b,
+  worldObject: {fileID: 8947614584590864111, guid: 95d5aad0dfefb43569772d0281cbc29d,
     type: 3}
