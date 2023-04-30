@@ -37,6 +37,7 @@ public class Customer : MonoBehaviour
         character = characters[Random.Range(0, characters.Length - 1)];
         character.gameObject.SetActive(true);
         character.Setup(manager.customizations.GetRandom());
+        character.Animator.Play("Sitting", -1, Random.Range(0f, 1f));
     }
     public void AssignFoodOrder(Recipie recipie, float totaltime)
     {
@@ -54,7 +55,7 @@ public class Customer : MonoBehaviour
         {
             if(foodObject != null)
             {
-                
+                EffectsManager.CreateParticles(EffectsManager.OrderRecievedParticles, transform.position + transform.forward, null);
                 CompleteFoodOrder(currentFoodOrder.recipie.CompareFoodObject(foodObject), currentFoodOrder);
                 currentFoodOrder = null;
                 

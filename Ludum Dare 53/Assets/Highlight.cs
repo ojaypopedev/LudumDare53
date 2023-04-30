@@ -15,9 +15,7 @@ public class Highlight : MonoBehaviour
     private void Start()
     {
         renderers = GetComponentsInChildren<Renderer>();
-
         startScale = transform.localScale;
-
         renderers.ToList().ForEach(e => e.materials.ToList().ForEach(m => m.SetColor("_HighlightColor", (Color.black))));
 
     }
