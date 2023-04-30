@@ -18,6 +18,10 @@ namespace HotDogCannon.Player {
         public Vector2 minMaxHeight;
         [SerializeField] LineRenderer renderer;
         public GameObject crossHair;
+        public Camera cam;
+
+        public float arcPower;
+        public float arcMultiplier;
 
 
 
@@ -49,7 +53,10 @@ namespace HotDogCannon.Player {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
 
-            ArcData data = new ArcData(shootPoint.position, Camera.main, 100, mask);
+            ArcData data = new ArcData(shootPoint.position, cam, 100, mask);
+
+            ArcData.ArcPower = arcPower;
+            ArcData.ArcMultiplier = arcMultiplier;
 
             crossHair.gameObject.SetActive(isActive);
             renderer.enabled = isActive;
@@ -64,14 +71,14 @@ namespace HotDogCannon.Player {
             }
             else
             {
-                crossHair.transform.forward = Camera.main.transform.forward;
+                crossHair.transform.forward = cam.transform.forward;
             }
             if (Input.GetMouseButtonDown(0) && currentRounds > 0 && isActive)
             {
                 FoodObject instance = Instantiate(currentLoaded);
                 instance.gameObject.SetActive(true);
 
-                ArcData.ShootAlongArc(data, instance.gameObject, 40, () =>
+                ArcData.ShootAlongArc(data, instance.gameObject, 5, () =>
                 {
 
                     if (data.HitCollider)

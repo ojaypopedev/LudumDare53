@@ -25,7 +25,7 @@ public class BeamRenderer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Application.isPlaying)
+        if (Application.isPlaying)
             renderer.material.SetFloat("_TotalLength", totalLength);   
     }
 }
