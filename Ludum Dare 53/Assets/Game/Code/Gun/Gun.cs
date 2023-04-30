@@ -43,6 +43,10 @@ namespace HotDogCannon.Player {
 
         int _currentRounds;
 
+        Customer currentCustomer = null;
+
+
+
         public void loadGun(FoodObject foodObject)
         {
             currentLoaded = foodObject;
@@ -67,6 +71,8 @@ namespace HotDogCannon.Player {
 
             ArcData data = new ArcData(shootPoint.position, cam, maxDistance, mask);
 
+
+
             ArcData.ArcPower = arcPower;
             ArcData.ArcMultiplier = arcMultiplier;
 
@@ -80,9 +86,41 @@ namespace HotDogCannon.Player {
             if (data.HitTarget)
             {
                 crossHair.transform.forward = data.HitNormal;
+
+                Customer customer = data.HitCollider.GetComponent<Customer>();
+                if (customer != null)
+                {
+                    if (currentCustomer != customer)
+                    {
+                        if (currentCustomer != null)
+                        {
+                            currentCustomer.Highlight.SetHighlight(false);
+                            currentCustomer = null;
+                        }
+
+                        currentCustomer = customer;
+                        currentCustomer.Highlight.SetHighlight(true);
+                    }
+                   
+                }
+                else
+                {
+                    if (currentCustomer != null)
+                    {
+                        currentCustomer.Highlight.SetHighlight(false);
+                        currentCustomer = null;
+                    }
+                }
+
             }
             else
             {
+                if (currentCustomer != null)
+                {
+                    currentCustomer.Highlight.SetHighlight(false);
+                    currentCustomer = null;
+                }
+
                 crossHair.transform.forward = cam.transform.forward;
             }
 

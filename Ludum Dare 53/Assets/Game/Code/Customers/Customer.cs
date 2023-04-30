@@ -11,6 +11,7 @@ public class Customer : MonoBehaviour
 
     [SerializeField] Transform uiTransform;
 
+    public Highlight Highlight => GetComponent<Highlight>();
     public bool HasFoodOrder => currentFoodOrder != null;
 
     private void Awake()
