@@ -155,8 +155,6 @@ namespace HotDogCannon.Player
             radialAngle += inputDelta.x * rotSensitivity;
             var dir = Quaternion.AngleAxis(radialAngle, Vector3.up) * transform.forward;
 
-            Debug.Log(dir);
-
             var dis = Mathf.Lerp(minMaxDistance.x, minMaxDistance.y, currentForward);
 
             var pos = transform.position + (transform.forward * dis);
@@ -164,13 +162,13 @@ namespace HotDogCannon.Player
             var forwardDot = Vector3.Dot(Vector3.forward, transform.forward);
 
             upAxisDT = Mathf.Clamp01(Mathf.InverseLerp(.9f, 0, forwardDot));
-            transform.rotation = Quaternion.Euler(0, radialAngle, 0);
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, radialAngle, 0), Time.fixedDeltaTime * 10);
 
             var localyPos = Mathf.Lerp(minMaxUp.x, minMaxUp.y, upAxisDT);
 
             pos.y = localyPos;
 
-            pivotPoint.transform.position = pos;
+            pivotPoint.transform.position = Vector3.Lerp(pivotPoint.transform.position,pos, Time.fixedDeltaTime * 10);
 
         }
 
@@ -196,7 +194,6 @@ namespace HotDogCannon.Player
 
             currentRot += rotDirection * rotSensitivity * Time.deltaTime;
 
-            transform.rotation = Quaternion.Euler(0, currentRot, 0);
 
             var forwardDot = Vector3.Dot(Vector3.forward, transform.forward);
 
