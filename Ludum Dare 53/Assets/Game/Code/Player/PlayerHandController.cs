@@ -103,7 +103,7 @@ namespace HotDogCannon.Player
         {
             var forwardDot = Vector3.Dot(Vector3.forward, transform.forward);
 
-            bool isShooting = forwardDot < -0.7f;
+            bool isShooting = forwardDot < -0.9f;
            // Debug.Log(forwardDot);
             anim.SetBool("IsShooting", isShooting);
             var wasActive = gun.isActive;

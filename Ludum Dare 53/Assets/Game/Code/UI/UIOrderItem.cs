@@ -24,20 +24,14 @@ public class UIOrderItem : MonoBehaviour
         icon.texture = c.currentFoodOrder.recipie.icon;
     }
 
-
-    private void OnEnable()
+    private void Update()
     {
-        if(customer == null || customer.currentFoodOrder == null
-            || customer.currentFoodOrder.TimeLeft <= 0)
+        if (customer == null || customer.currentFoodOrder == null)
         {
             linkedList.items.Remove(this);
             Destroy(gameObject);
+            return;
         }
-    }
-
-    private void Update()
-    {
-        if (customer == null || customer.currentFoodOrder == null) return;
         var timeDT = customer.currentFoodOrder.TimeLeftPercentage;
         fill.fillAmount = timeDT;
         fill.color = timerColor.Evaluate(timeDT);
