@@ -33,6 +33,7 @@ namespace HotDogCannon.Player
         // Actions
         public static System.Action onPlayerHandEmpty;
         public static System.Action onPlayerInteract;
+        public static System.Action<bool> onPlayerEquippedGun;
 
         private void Awake()
         {
@@ -96,8 +97,13 @@ namespace HotDogCannon.Player
             bool isShooting = upAxisDT > 0.6f;
 
             anim.SetBool("IsShooting", isShooting);
-
+            var wasActive = gun.isActive;
             gun.isActive = isShooting;
+
+            if(wasActive != gun.isActive)
+            {
+                onPlayerEquippedGun?.Invoke(gun.isActive);
+            }
 
             gun.Refresh(new Vector2(Mathf.InverseLerp(-1, 1, currentLeft), Mathf.InverseLerp(-1, 1, currentForward)));
         }
