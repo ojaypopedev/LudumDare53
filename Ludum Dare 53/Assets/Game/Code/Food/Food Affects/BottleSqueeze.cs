@@ -39,7 +39,7 @@ namespace HotDogCannon.FoodPrep
             var longesSide = sizes.OrderBy(v => v.Value).First();
 
             var pos = toItem.transform.position;
-            pos.y = topItem.transform.position.y + 0.2f;
+            pos.y = topItem.transform.position.y + .4f;
             var axis = toItem.transform.forward;
 
             var startPos = pos + axis * -longesSide.Value;
@@ -51,8 +51,9 @@ namespace HotDogCannon.FoodPrep
                 fromItem.transform.LookAt(fromItem.transform.position + Vector3.down);
 
                 var result = fromItem.objectToPickupIngredient.SpawnWorldObject();
+                fromItem.transform.position = topItem.mergepos.position;
                 result.OnSpawn(fromItem.objectToPickupIngredient);
-                toItem.Merge(result);
+                topItem.Merge(result);
 
                 if (this == null) return;
                 PosAnims.AnimatPos(fromItem.transform, startPos, endPos, .5f, () =>
