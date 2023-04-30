@@ -41,7 +41,7 @@ namespace HotDogCannon.FoodPrep {
                 {
                     //Particles Here;
 
-                    toItem.rb.transform.rotation = Quaternion.Euler(Vector3.zero);
+                    if(toItem.rb) toItem.rb.transform.rotation = Quaternion.Euler(Vector3.zero);
                     fromItem.transform.rotation = topItem.mergepos.rotation;
                     fromItem.transform.position = topItem.mergepos.position;
 
