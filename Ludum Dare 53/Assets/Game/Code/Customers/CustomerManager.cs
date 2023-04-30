@@ -14,6 +14,7 @@ public class CustomerManager : MonoBehaviour
     public Vector2 mimMaxTimeBetweenOrders;
 
     public static System.Action<bool> onCompletedOrder;
+    public static System.Action<Customer> onGivenOrder;
 
     int ordersCompleted;
 
@@ -45,7 +46,7 @@ public class CustomerManager : MonoBehaviour
 
     public void OnGameStarted()
     {
-        StartCoroutine(levelLoop());
+        StartCoroutine(NextCustomer());
     }
 
     // Update is called once per frame
@@ -68,20 +69,25 @@ public class CustomerManager : MonoBehaviour
         {
             GameManager.CompleteLevel(GameManager.CompleteState.WIN);
         }
+        else
+        {
+            StartCoroutine(NextCustomer());
+        }
 
         Debug.Log($"Food Order Complete : {success}");
     }
 
-    IEnumerator levelLoop()
+    IEnumerator NextCustomer()
     {
-        while (GameManager.gameState == GameManager.GameState.PLAYING)
+        var extraTime = Random.Range(mimMaxTimeBetweenOrders.x, mimMaxTimeBetweenOrders.y);
+        yield return new WaitForSeconds(extraTime);
+        if (GameManager.gameState == GameManager.GameState.PLAYING)
         {
             var totalTime = Random.Range(OrderTimeMin, OrderTimeMax);
-            GetRandomAvailableCustomer().AssignFoodOrder(GetRandomRecipie(), totalTime);
+            var Customer = GetRandomAvailableCustomer();
+            Customer.AssignFoodOrder(GetRandomRecipie(), totalTime);
 
-            var extraTime = Random.Range(mimMaxTimeBetweenOrders.x, mimMaxTimeBetweenOrders.y);
-
-            yield return new WaitForSeconds(totalTime + extraTime);
+            onGivenOrder?.Invoke(Customer);
         }
     }
 }

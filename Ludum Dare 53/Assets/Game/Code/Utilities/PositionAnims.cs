@@ -9,6 +9,7 @@ namespace HotDogCannon.Utils
         public Transform model;
         public Vector3 startPos;
         public Transform targetPos;
+        public float shakeAmount;
         public float time;
         public System.Action callback;
 
@@ -44,6 +45,33 @@ namespace HotDogCannon.Utils
             callback?.Invoke();
             Destroy(gameObject);
         }
+
+        public void StartShake()
+        {
+            StartCoroutine(DoShake());
+        }
+
+        float getShakeAmount => Random.Range(-shakeAmount, shakeAmount);
+
+        IEnumerator DoShake()
+        {
+            float elapsedTime = 0;
+
+            while (elapsedTime < time)
+            {
+                if (model != null)
+                    model.position = startPos + new Vector3(getShakeAmount, getShakeAmount, getShakeAmount);
+
+                elapsedTime += Time.deltaTime;
+
+                yield return new WaitForEndOfFrame();
+            }
+
+            if(model != null)
+                model.position = startPos;
+            callback?.Invoke();
+            Destroy(gameObject);
+        }
     }
 
     public static class PosAnims
@@ -60,6 +88,18 @@ namespace HotDogCannon.Utils
             posAnimScript.time = time;
             posAnimScript.callback = callback;
             posAnimScript.StartAnim();
+        }
+
+        public static void AnimateShake(Transform target, Vector3 startPos, float shakeAmount, float time, System.Action callback = null)
+        {
+            var animObj = new GameObject("shakeAnim");
+            var shakeAnimScript = animObj.AddComponent<PositionAnims>();
+            shakeAnimScript.model = target;
+            shakeAnimScript.startPos = target.position;
+            shakeAnimScript.shakeAmount = shakeAmount;
+            shakeAnimScript.time = time;
+            shakeAnimScript.callback = callback;
+            shakeAnimScript.StartShake();
         }
 
     }

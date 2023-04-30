@@ -54,6 +54,21 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    public static string getTimeLeftString
+    {
+        get
+        {
+            var mins = Mathf.Floor(currentTime / 60f);
+            var seconds = currentTime - (mins * 60);
+
+            return (mins + ":" + (seconds == 0 ? "00" : seconds));
+        }
+    }
+
+    public static System.Action onGameTimerChanged;
+
+    static float currentTime;
+
     private void Awake()
     {
         GameManager.onReset += OnReset;
@@ -63,12 +78,27 @@ public class LevelManager : MonoBehaviour
 
     void OnGameStarted()
     {
-        
+        StartCoroutine(DoGameTimer());
+    }
+
+    IEnumerator DoGameTimer()
+    {
+        while(currentTime > 0 && GameManager.gameState == GameManager.GameState.PLAYING)
+        {
+            yield return new WaitForSeconds(1);
+            currentTime--;
+            onGameTimerChanged?.Invoke();
+        }
+
+        GameManager.CompleteLevel(GameManager.CompleteState.FAIL);
     }
 
     void OnReset()
     {
+        StopAllCoroutines();
         LoadLevel(_currentLevelIndex);
+        currentTime = currentLevel.overallTimeLimit;
+        onGameTimerChanged?.Invoke();
     }
 
     void OnLevelComplete(GameManager.CompleteState completeState)

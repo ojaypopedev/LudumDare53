@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Customer : MonoBehaviour
 {
-    FoodOrder currentFoodOrder;
+    public FoodOrder currentFoodOrder { get; private set; }
     FoodOrderUI ui;
     public CustomerManager manager;
 
@@ -70,6 +70,7 @@ public class Customer : MonoBehaviour
             if(currentFoodOrder.TimeLeft <= 0)
             {
                 CompleteFoodOrder(false, currentFoodOrder);
+                currentFoodOrder.OnTimeRanOut?.Invoke();
                 currentFoodOrder = null;
             }
         }
