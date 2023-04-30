@@ -2,18 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using HotDogCannon.FoodPrep;
+using UnityEngine.UI;
 
 namespace HotDogCannon.Player {
     public class Gun : MonoBehaviour
     {
 
         [Header("Setup")]
-        public ArcCalculator arcCalculator;
         public Transform aimPivot;
+        public LayerMask mask;
+        public Transform shootPoint;
         public int roundsPerRecipe = 5;
         public bool isActive;
         public float maxForce;
         public Vector2 minMaxHeight;
+        [SerializeField] LineRenderer renderer;
+        public GameObject crossHair;
+
 
 
         // Actions
@@ -34,9 +39,6 @@ namespace HotDogCannon.Player {
 
         public void loadGun(FoodObject foodObject)
         {
-            //if (currentLoaded != null)
-              //  Destroy(currentLoaded.gameObject);
-
             currentLoaded = foodObject;
             _currentRounds = 5;
             foodObject.SetPhysics(true, true);
@@ -46,19 +48,33 @@ namespace HotDogCannon.Player {
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-            arcCalculator.SetForce(Mathf.Lerp(0, maxForce, coords.y));
-            arcCalculator.SetHeight(Mathf.Lerp(minMaxHeight.x, minMaxHeight.y, coords.y));
 
-            aimPivot.transform.localRotation = Quaternion.Euler(Mathf.Lerp(-2, -20, coords.y), Mathf.Lerp(-20, 20, coords.x), 0);
+            ArcData data = new ArcData(shootPoint.position, Camera.main, 100, mask);
 
+            crossHair.gameObject.SetActive(isActive);
+            renderer.enabled = isActive;
+
+            aimPivot.forward = data.StartDirection;
+            renderer.positionCount = data.PositionCount;
+            renderer.SetPositions(data.Positions);
+            crossHair.transform.position = data.endPosition;
+            if (data.HitTarget)
+            {
+                crossHair.transform.forward = data.HitNormal;
+            }
+            else
+            {
+                crossHair.transform.forward = Camera.main.transform.forward;
+            }
             if (Input.GetMouseButtonDown(0) && currentRounds > 0 && isActive)
             {
                 FoodObject instance = Instantiate(currentLoaded);
                 instance.gameObject.SetActive(true);
 
-                arcCalculator.ThrowOnArc(instance.gameObject, arcCalculator.GetLocalArcData(), 10, (data) =>
+                ArcData.ShootAlongArc(data, instance.gameObject, 40, () =>
                 {
-                    if(data.HitCollider)
+
+                    if (data.HitCollider)
                     {
                         var customer = data.HitCollider.GetComponent<Customer>();
 
@@ -69,13 +85,13 @@ namespace HotDogCannon.Player {
                     }
                     Destroy(instance.gameObject);
 
+                    _currentRounds--;
+
+                    onFired?.Invoke();
+
                 });
-
-                _currentRounds--;
-
-                onFired?.Invoke();
             }
-            else if(isActive)
+            else if (isActive)
             {
                 onNoAmmo?.Invoke();
             }

@@ -21,6 +21,12 @@ namespace HotDogCannon.Player
         public Vector2 minMaxLeft;
         public Vector2 minMaxUp;
 
+        public Vector2 minMaxDistance;
+
+        [Header("CameraSettings")]
+        public Vector3 prepCamRot;
+        public Vector2 minMaxCamAimPos;
+
         float currentLeft;
         float currentForward;
         float currentRot;
@@ -46,7 +52,8 @@ namespace HotDogCannon.Player
         void Update()
         {
             Grabbing();
-            Movement();
+            //Movement();
+            RadialMovement();
             Gun();
         }
 
@@ -96,8 +103,8 @@ namespace HotDogCannon.Player
         {
             var forwardDot = Vector3.Dot(Vector3.forward, transform.forward);
 
-            bool isShooting = forwardDot < -0.7f;
-            Debug.Log(forwardDot);
+            bool isShooting = forwardDot < -0.9f;
+           // Debug.Log(forwardDot);
             anim.SetBool("IsShooting", isShooting);
             var wasActive = gun.isActive;
             gun.isActive = isShooting;
@@ -107,7 +114,52 @@ namespace HotDogCannon.Player
                 onPlayerEquippedGun?.Invoke(gun.isActive);
             }
 
+            var camRot = Camera.main.transform.localRotation;
+
+            if (!gun.isActive)
+                Camera.main.transform.localRotation = Quaternion.Lerp(camRot, Quaternion.Euler(prepCamRot), 3 * Time.deltaTime);
+            else
+                Camera.main.transform.localRotation = Quaternion.Lerp(camRot, Quaternion.Euler(new Vector3(Mathf.Lerp(minMaxCamAimPos.y, minMaxCamAimPos.x, currentForward), camRot.eulerAngles.y, camRot.eulerAngles.z)), 10 * Time.deltaTime);
+
             gun.Refresh(new Vector2(Mathf.InverseLerp(-1, 1, currentLeft), Mathf.InverseLerp(-1, 1, currentForward)));
+        }
+
+        float playerAngle;
+        float radialAngle;
+
+        public void RadialMovement()
+        {
+            Vector2 inputDelta = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+
+            inputDelta = inputDelta * moveSensitivity;
+
+            currentForward += inputDelta.y;
+
+            currentLeft = Mathf.Clamp(currentLeft, -1, 1);
+            currentForward = Mathf.Clamp(currentForward, 0, 1);
+            var localxPos = Mathf.Lerp(minMaxLeft.x, minMaxLeft.y, Mathf.InverseLerp(-1, 1, currentLeft));
+            var localzPos = Mathf.Lerp(minMaxForward.x, minMaxForward.y, Mathf.InverseLerp(-1, 1, currentForward));
+
+            radialAngle += inputDelta.x * rotSensitivity;
+            var dir = Quaternion.AngleAxis(radialAngle, Vector3.up) * transform.forward;
+
+            Debug.Log(dir);
+
+            var dis = Mathf.Lerp(minMaxDistance.x, minMaxDistance.y, currentForward);
+
+            var pos = transform.position + (transform.forward * dis);
+
+            var forwardDot = Vector3.Dot(Vector3.forward, transform.forward);
+
+            upAxisDT = Mathf.Clamp01(Mathf.InverseLerp(.9f, 0, forwardDot));
+            transform.rotation = Quaternion.Euler(0, radialAngle, 0);
+
+            var localyPos = Mathf.Lerp(minMaxUp.x, minMaxUp.y, upAxisDT);
+
+            pos.y = localyPos;
+
+            pivotPoint.transform.position = pos;
+
         }
 
         public void Movement()
@@ -137,8 +189,6 @@ namespace HotDogCannon.Player
             var forwardDot = Vector3.Dot(Vector3.forward, transform.forward);
 
             upAxisDT = Mathf.Clamp01(Mathf.InverseLerp(.9f, 0, forwardDot));
-
-            var axis = Vector3.Lerp(Vector3.forward, Vector3.up, upAxisDT);
 
             var localyPos = Mathf.Lerp(minMaxUp.x, minMaxUp.y, upAxisDT);
 
