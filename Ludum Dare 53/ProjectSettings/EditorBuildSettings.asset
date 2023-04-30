@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Rendering/Arc Renderer/Scene/Arc_Dev_2 1.unity
+    guid: 2f261f52227639945856e6111261a877
+  - enabled: 1
     path: Assets/Rendering/Wobbly Sausage/Scene/WobblySausage_Dev.unity
     guid: 2e4dfc3d3aee9db4c90f37d72e82a95a
   - enabled: 1
