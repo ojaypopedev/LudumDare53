@@ -45,7 +45,16 @@ namespace HotDogCannon.Player {
 
         Customer currentCustomer = null;
 
+        public void Awake()
+        {
+            GameManager.onReset += OnReset;
+        }
 
+        public void OnReset()
+        {
+            isActive = false;
+            Refresh(Vector2.zero);
+        }
 
         public void loadGun(FoodObject foodObject)
         {
@@ -71,12 +80,8 @@ namespace HotDogCannon.Player {
 
             ArcData data = new ArcData(shootPoint.position, cam, maxDistance, mask);
 
-
-
             ArcData.ArcPower = arcPower;
             ArcData.ArcMultiplier = arcMultiplier;
-
-            
 
             aimPivot.forward = data.StartDirection;
             renderer.positionCount = data.PositionCount;
@@ -128,10 +133,10 @@ namespace HotDogCannon.Player {
             {
                 FoodObject instance = Instantiate(currentLoaded);
                 instance.gameObject.SetActive(true);
+                instance.transform.localScale *= 2.5f;
 
                 ArcData.ShootAlongArc(data, instance.gameObject, speed, () =>
                 {
-
                     if (data.HitCollider)
                     {
                         var customer = data.HitCollider.GetComponent<Customer>();

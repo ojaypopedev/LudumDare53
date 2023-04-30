@@ -61,6 +61,9 @@ public class GameManager : MonoBehaviour
 
         gameState = GameState.MENU;
 
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         onReset?.Invoke();
     }
 
@@ -69,7 +72,8 @@ public class GameManager : MonoBehaviour
         if (gameState == GameState.PLAYING) return;
 
         gameState = GameState.PLAYING;
-
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         onGameStarted?.Invoke();
     }
 

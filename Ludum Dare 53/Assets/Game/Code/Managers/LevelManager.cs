@@ -69,11 +69,14 @@ public class LevelManager : MonoBehaviour
 
     static float currentTime;
 
+    public static LevelManager instance;
+
     private void Awake()
     {
         GameManager.onReset += OnReset;
         GameManager.onGameFinished += OnLevelComplete;
         GameManager.onGameStarted += OnGameStarted;
+        instance = this;
     }
 
     void OnGameStarted()

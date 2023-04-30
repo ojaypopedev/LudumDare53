@@ -7,12 +7,19 @@ public class BaseScreen : MonoBehaviour
     [Header("Screen Setup")]
     public GameObject panel;
 
-    public void Show()
+    public bool startHidden;
+
+    public virtual void Awake()
+    {
+        panel.SetActive(startHidden);
+    }
+
+    public virtual void Show()
     {
         panel.gameObject.SetActive(true);
     }
 
-    public void Hide()
+    public virtual void Hide()
     {
         panel.gameObject.SetActive(false);
     }
