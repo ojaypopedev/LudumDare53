@@ -53,6 +53,12 @@ namespace HotDogCannon.Player
         {
             Grabbing();
             //Movement();
+            //RadialMovement();
+           // Gun();
+        }
+
+        private void FixedUpdate()
+        {
             RadialMovement();
             Gun();
         }

@@ -56,7 +56,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Alpha: 0.5
-    - _MoveSpeed: 0.1
+    - _MoveSpeed: 0.01
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Tiling: 3

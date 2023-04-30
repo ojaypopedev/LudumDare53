@@ -13,7 +13,7 @@ namespace HotDogCannon.FoodPrep
         public Rigidbody rb;
         public Collider col;
         public bool isPersistent;
-
+        public bool ignoreMerge;
 
         public Ingredient ingredient;
 
@@ -147,6 +147,7 @@ namespace HotDogCannon.FoodPrep
         public void OnHandOver()
         {
             if (highlighted || (currentGrabbed != null && currentGrabbed.ingredient == ingredient)) return;
+            if (currentGrabbed != null && ignoreMerge) return;
             mergedItems.ForEach(m => m.OnHandOver());
             tempColor = col.GetComponentInChildren<Renderer>().material.color;
             col.GetComponentsInChildren<Renderer>().ToList().ForEach(r => r.materials.ToList().ForEach(m => m.color = Color.grey));
@@ -174,7 +175,10 @@ namespace HotDogCannon.FoodPrep
                 OnHandExit();
 
             if (currentGrabbed)
-                currentPotentialMerge = fromItem;
+            {
+                if(!ignoreMerge && !fromItem.ignoreMerge)
+                    currentPotentialMerge = fromItem;
+            }
             else
                 currentPotentialGrab = fromItem;
         }
