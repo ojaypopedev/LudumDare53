@@ -20,9 +20,11 @@ namespace HotDogCannon.Player {
         public GameObject crossHair;
         public Camera cam;
 
+        public float speed = 20;
+        public float maxDistance = 30;
+
         public float arcPower;
         public float arcMultiplier;
-
 
 
         // Actions
@@ -53,7 +55,7 @@ namespace HotDogCannon.Player {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
 
-            ArcData data = new ArcData(shootPoint.position, cam, 100, mask);
+            ArcData data = new ArcData(shootPoint.position, cam, maxDistance, mask);
 
             ArcData.ArcPower = arcPower;
             ArcData.ArcMultiplier = arcMultiplier;
@@ -78,7 +80,7 @@ namespace HotDogCannon.Player {
                 FoodObject instance = Instantiate(currentLoaded);
                 instance.gameObject.SetActive(true);
 
-                ArcData.ShootAlongArc(data, instance.gameObject, 5, () =>
+                ArcData.ShootAlongArc(data, instance.gameObject, speed, () =>
                 {
 
                     if (data.HitCollider)
