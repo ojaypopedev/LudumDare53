@@ -32,9 +32,12 @@ public class ArcCalculator2 : MonoBehaviour
         ArcData data = new ArcData(arcStartPoint.position, cam, 100, mask);
        
         arcStartPoint.forward = data.StartDirection;
+       
         renderer.positionCount = data.PositionCount;
         renderer.SetPositions(data.Positions);
+
         CrossHair.transform.position = data.endPosition;
+
         if(data.HitTarget)
         {
             CrossHair.transform.forward = data.HitNormal;
