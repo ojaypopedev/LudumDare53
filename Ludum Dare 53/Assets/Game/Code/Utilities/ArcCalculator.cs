@@ -24,10 +24,10 @@ public class ArcCalculator : MonoBehaviour
 
     public float GetForce() => force;
    
-    public ArcData GetArcData(Vector3 startPosition, Vector3 startVelocity, float timeStep = 0.02f, int maxPoints = 200)
+    public ArcData_Old GetArcData(Vector3 startPosition, Vector3 startVelocity, float timeStep = 0.02f, int maxPoints = 200)
     {
         List<Vector3> arcPoints = new List<Vector3>();
-        ArcData newArcData = new ArcData();
+        ArcData_Old newArcData = new ArcData_Old();
         Vector3 position = startPosition;
         Vector3 velocity = startVelocity;
         Vector3 hitNormal = Vector3.zero;
@@ -62,7 +62,7 @@ public class ArcCalculator : MonoBehaviour
         newArcData.positions = arcPoints.ToArray();
         return newArcData;
     }
-    public void GizmoArc(ArcData data, Color? color = null)
+    public void GizmoArc(ArcData_Old data, Color? color = null)
     {
         if (color.HasValue)
         {
@@ -78,9 +78,9 @@ public class ArcCalculator : MonoBehaviour
     }
 
     int cachedLocalArcDataFrame = 0;
-    ArcData cachedLocalArcData;
+    ArcData_Old cachedLocalArcData;
 
-    public ArcData GetLocalArcData()
+    public ArcData_Old GetLocalArcData()
     {
         if(Time.frameCount > cachedLocalArcDataFrame || cachedLocalArcData.positions == null || cachedLocalArcData.positions.Length ==0)
         {
@@ -90,12 +90,12 @@ public class ArcCalculator : MonoBehaviour
 
         return cachedLocalArcData;
     }
-    public void ThrowOnArc(GameObject obj, ArcData data, float speed, System.Action<ArcData> OnReachedEndOfArc = null)
+    public void ThrowOnArc(GameObject obj, ArcData_Old data, float speed, System.Action<ArcData_Old> OnReachedEndOfArc = null)
     {
         Task t = MoveAlongArc(obj, data, speed, OnReachedEndOfArc);
     }
     
-    async Task MoveAlongArc(GameObject obj, ArcData data, float speed, System.Action<ArcData> OnReachedEndOfArk = null)
+    async Task MoveAlongArc(GameObject obj, ArcData_Old data, float speed, System.Action<ArcData_Old> OnReachedEndOfArk = null)
     {
         float distance = 0;
         while(data.IsPastEndOfLine(distance) == false)
@@ -115,7 +115,7 @@ public class ArcCalculator : MonoBehaviour
 }
 
 [System.Serializable]
-public struct ArcData
+public struct ArcData_Old
 {
     public Vector3[] positions;
 
