@@ -9,10 +9,14 @@ public class Highlight : MonoBehaviour
     public bool highlight = false;
     public Color HighlightColor = Color.blue;
     public float highlightScale;
-   
+
+    Vector3 startScale;
+
     private void Start()
     {
         renderers = GetComponentsInChildren<Renderer>();
+
+        startScale = transform.localScale;
 
         renderers.ToList().ForEach(e => e.materials.ToList().ForEach(m => m.SetColor("_HighlightColor", (Color.black))));
 
@@ -21,7 +25,7 @@ public class Highlight : MonoBehaviour
     public void SetHighlight(bool active)
     {
         highlight = active;
-        transform.localScale = Vector3.one * ((highlight) ? highlightScale : 1f);
+        transform.localScale = startScale * ((highlight) ? highlightScale : 1);
         renderers.ToList().ForEach(e => e.materials.ToList().ForEach(m => m.SetColor("_HighlightColor", (highlight ? HighlightColor : Color.black))));
     }
 

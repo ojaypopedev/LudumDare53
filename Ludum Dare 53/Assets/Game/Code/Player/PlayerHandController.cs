@@ -11,6 +11,7 @@ namespace HotDogCannon.Player
         public Transform pivotPoint;
         public Transform rayCastPoint;
         public Gun gun;
+        public Animator handAnim;
 
         [Header("Sensitivity")]
         public float moveSensitivity;
@@ -26,6 +27,8 @@ namespace HotDogCannon.Player
         [Header("CameraSettings")]
         public Vector3 prepCamRot;
         public Vector2 minMaxCamAimPos;
+
+
 
         float currentLeft;
         float currentForward;
@@ -64,9 +67,13 @@ namespace HotDogCannon.Player
             Gun();
         }
 
+        Highlight HotDogloaderHighlight;
+
         public void Grabbing()
         {
             RaycastHit hit;
+
+            handAnim.SetBool("isGrabbing", FoodObject.currentGrabbed != null);
 
             var fromPos = FoodObject.currentGrabbed == null ? rayCastPoint.position : FoodObject.currentGrabbed.transform.position;
 
@@ -90,6 +97,17 @@ namespace HotDogCannon.Player
                     onPlayerHandEmpty?.Invoke();
                 }
 
+                if(hit.transform.gameObject.layer == LayerMask.NameToLayer("HotDogLoader"))
+                {
+                    HotDogloaderHighlight = hit.transform.gameObject.GetComponent<Highlight>();
+                    HotDogloaderHighlight.SetHighlight(true);
+                }
+                else 
+                {
+                    if (HotDogloaderHighlight && HotDogloaderHighlight.highlight == true)
+                        HotDogloaderHighlight.SetHighlight(false);
+                }
+
                 if (Input.GetMouseButtonDown(0))
                 {
                     if (FoodObject.currentPotentialGrab != null)
@@ -100,8 +118,21 @@ namespace HotDogCannon.Player
 
                 if (Input.GetMouseButtonUp(0))
                 {
-                    if (FoodObject.currentGrabbed != null)
+
+                    if (HotDogloaderHighlight && HotDogloaderHighlight.highlight && FoodObject.currentGrabbed)
+                    {
+                        FoodObject.currentGrabbed.SetPhysics(true, false);
+                        Utils.PosAnims.AnimatPos(FoodObject.currentGrabbed.transform, FoodObject.currentGrabbed.transform.position,
+                            HotDogloaderHighlight.transform.position, 0.2f);
+
                         FoodObject.currentGrabbed.UnGrab();
+                    }
+                    else
+                    {
+
+                        if (FoodObject.currentGrabbed != null)
+                            FoodObject.currentGrabbed.UnGrab();
+                    }
                 }
             }
         }
@@ -115,8 +146,7 @@ namespace HotDogCannon.Player
         {
             var forwardDot = Vector3.Dot(Vector3.forward, transform.forward);
 
-            bool isShooting = forwardDot < -0.9f;
-           // Debug.Log(forwardDot);
+            bool isShooting = forwardDot < -0.85f;
             anim.SetBool("IsShooting", isShooting);
             var wasActive = gun.isActive;
             gun.isActive = isShooting;
@@ -129,14 +159,13 @@ namespace HotDogCannon.Player
             var camRot = Camera.main.transform.localRotation;
 
             if (!gun.isActive)
-                Camera.main.transform.localRotation = Quaternion.Lerp(camRot, Quaternion.Euler(prepCamRot), 3 * Time.deltaTime);
+                Camera.main.transform.localRotation = Quaternion.Lerp(camRot, Quaternion.Euler(prepCamRot), 3 * Time.fixedDeltaTime);
             else
-                Camera.main.transform.localRotation = Quaternion.Lerp(camRot, Quaternion.Euler(new Vector3(Mathf.Lerp(minMaxCamAimPos.y, minMaxCamAimPos.x, currentForward), camRot.eulerAngles.y, camRot.eulerAngles.z)), 10 * Time.deltaTime);
+                Camera.main.transform.localRotation = Quaternion.Lerp(camRot, Quaternion.Euler(new Vector3(Mathf.Lerp(minMaxCamAimPos.y, minMaxCamAimPos.x, currentForward), camRot.eulerAngles.y, camRot.eulerAngles.z)), 10 * Time.fixedDeltaTime);
 
           
         }
 
-        float playerAngle;
         float radialAngle;
 
         public void RadialMovement()
@@ -169,7 +198,6 @@ namespace HotDogCannon.Player
             pos.y = localyPos;
 
             pivotPoint.transform.position = Vector3.Lerp(pivotPoint.transform.position,pos, Time.fixedDeltaTime * 10);
-
         }
 
         public void Movement()
