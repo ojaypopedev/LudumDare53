@@ -53,7 +53,17 @@ namespace HotDogCannon.Player {
         public void Refresh(Vector2 coords)
         {
 
-            if (!isActive) return;
+            crossHair.gameObject.SetActive(isActive);
+            renderer.enabled = isActive;
+
+            if (!isActive)
+            {
+                var dir = transform.forward;
+                dir = Vector3.Lerp(dir, Vector3.down, 2*Time.deltaTime);
+                transform.LookAt(dir);
+
+                return;
+            }
 
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -63,8 +73,7 @@ namespace HotDogCannon.Player {
             ArcData.ArcPower = arcPower;
             ArcData.ArcMultiplier = arcMultiplier;
 
-            crossHair.gameObject.SetActive(isActive);
-            renderer.enabled = isActive;
+            
 
             aimPivot.forward = data.StartDirection;
             renderer.positionCount = data.PositionCount;
