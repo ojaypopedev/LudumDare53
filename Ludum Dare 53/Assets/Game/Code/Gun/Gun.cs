@@ -52,6 +52,9 @@ namespace HotDogCannon.Player {
 
         public void Refresh(Vector2 coords)
         {
+
+            if (!isActive) return;
+
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
 
