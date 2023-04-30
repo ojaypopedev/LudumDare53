@@ -108,7 +108,7 @@ public class LevelManager : MonoBehaviour
 
     void OnLevelComplete(GameManager.CompleteState completeState)
     {
-        if (completeState == GameManager.CompleteState.WIN)
+        if (completeState == GameManager.CompleteState.WIN && _currentLevelIndex < levels.Count - 1)
             _currentLevelIndex++;
     }
 
@@ -120,7 +120,7 @@ public class LevelManager : MonoBehaviour
             l.stadium.gameObject.SetActive(false);
         });
 
-        currentLevel.stadium.gameObject.SetActive(true);
+        levels[_currentLevelIndex].stadium.gameObject.SetActive(true);
 
         var customerManager = CustomerManager.instance;
       

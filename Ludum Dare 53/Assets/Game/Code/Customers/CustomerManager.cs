@@ -44,6 +44,7 @@ public class CustomerManager : MonoBehaviour
         OrderTimeMax = level.minMaxOrderTime.y;
         totalOrders = level.numOrders;
         mimMaxTimeBetweenOrders = level.minMaxTimeBetweenOrders;
+        ordersCompleted = 0;
 
         Customers.ForEach(e => e.Init(this));
     }
@@ -60,6 +61,11 @@ public class CustomerManager : MonoBehaviour
         {
             GetRandomAvailableCustomer().AssignFoodOrder(GetRandomRecipie(), Random.Range(OrderTimeMin, OrderTimeMax));
         }
+    }
+
+    public void OnReset()
+    {
+
     }
 
     public void OnFoodOrderCompleted(bool success, FoodOrder foodOrder)

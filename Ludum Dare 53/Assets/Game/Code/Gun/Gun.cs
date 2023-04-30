@@ -26,6 +26,7 @@ namespace HotDogCannon.Player {
         public float arcPower;
         public float arcMultiplier;
 
+        public FoodObject currentAmmo => currentLoaded;
 
         // Actions
         public System.Action onNoAmmo;
