@@ -169,7 +169,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: d40eed09ae14f4f43927ce0d6e71a3a3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -606,7 +606,7 @@ Transform:
   - {fileID: 1884389062}
   - {fileID: 1794747729}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &443189107585651523
 MeshFilter:
@@ -791,7 +791,7 @@ Camera:
   m_GameObject: {fileID: 443189108156329708}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.26330543, g: 0.7844619, b: 0.9150943, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -922,7 +922,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1395497733584646425}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.133, y: 0, z: 0.524}
+  m_LocalPosition: {x: 0.395, y: 0.543, z: 0.774}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -988,7 +988,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4262045937818908318}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.4, z: 0.385}
+  m_LocalPosition: {x: 0, y: 0.4, z: 0.57799995}
   m_LocalScale: {x: 0.09247666, y: 0.22865924, z: 0.35275263}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1101,9 +1101,9 @@ MonoBehaviour:
   minMaxHeight: {x: 0, y: 5}
   renderer: {fileID: 1884389061}
   crossHair: {fileID: 1794747727}
-  cam: {fileID: 0}
-  arcPower: 0
-  arcMultiplier: 0
+  cam: {fileID: 443189108156329232}
+  arcPower: 2
+  arcMultiplier: 0.3
 --- !u!1001 &4493164465628880470
 PrefabInstance:
   m_ObjectHideFlags: 0
