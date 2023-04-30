@@ -22,6 +22,8 @@ public class LevelManager : MonoBehaviour
         public float overallTimeLimit;
 
         public Vector2 minMaxTimeBetweenOrders;
+
+        public CharacterCustomizations characterCustomizations;
     }
 
     public List<Level> levels = new List<Level>();
@@ -118,6 +120,7 @@ public class LevelManager : MonoBehaviour
         currentLevel.stadium.gameObject.SetActive(true);
 
         var customerManager = CustomerManager.instance;
+      
         customerManager.Init(currentLevel);
 
     }

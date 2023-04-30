@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9a92269c6f9e7c40ac074352b142413, type: 3}
+  m_Name: New Character Customizations
+  m_EditorClassIdentifier: 
+  SkinTones: {fileID: 11400000, guid: 5516b966101f31b4183eb01c708ae4e9, type: 2}
+  ShirtColourPrimary: {fileID: 11400000, guid: 3a10b183e1dc4ea41aeef8b181669ac9, type: 2}
+  ShirtColorSecondary: {fileID: 11400000, guid: 2fb2c394083cf26499f1eaefe0bb98c0,
+    type: 2}
+  TrouserColour: {fileID: 11400000, guid: 1621ddfc12358c44e8c18867c8c5f0b6, type: 2}
+  HairColor: {fileID: 11400000, guid: 20a4ac2801d655f44ac133317060de49, type: 2}

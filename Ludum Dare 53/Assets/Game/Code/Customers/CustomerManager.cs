@@ -16,6 +16,8 @@ public class CustomerManager : MonoBehaviour
     public static System.Action<bool> onCompletedOrder;
     public static System.Action<Customer> onGivenOrder;
 
+    public CharacterCustomizations customizations;
+
     int ordersCompleted;
 
     public static CustomerManager instance;
@@ -34,6 +36,7 @@ public class CustomerManager : MonoBehaviour
 
     public void Init(LevelManager.Level level)
     {
+        customizations = level.characterCustomizations;
         Customers = level.stadium.customers;
         RecipiesInLevel = level.recipies;
         OrderTimeMin = level.minMaxOrderTime.x;
