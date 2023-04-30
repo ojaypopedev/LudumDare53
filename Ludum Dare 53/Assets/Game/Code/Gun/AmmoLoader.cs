@@ -20,6 +20,8 @@ namespace HotDogCannon.Player {
             {
                 linkedGun.loadGun(foodObj);
             }
+
+            foodObj.gameObject.SetActive(false);
         }
     }
 }

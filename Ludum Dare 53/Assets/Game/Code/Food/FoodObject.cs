@@ -12,14 +12,28 @@ namespace HotDogCannon.FoodPrep
         public Transform mergepos;
         public Rigidbody rb;
         public Collider col;
+        public bool isPersistent;
 
-        [HideInInspector] public Ingredient ingredient;
+
+        public Ingredient ingredient;
 
         FoodSpawner fromSpawner;
 
         public static FoodObject currentPotentialGrab;
         public static FoodObject currentPotentialMerge;
         public static FoodObject currentGrabbed;
+
+        public enum GrabBehaviours
+        {
+            PCIKUP_SELF,
+            PICKUP_INSTANTIED
+        }
+
+        public GrabBehaviours grabBehaviours;
+
+        [Header("Pickup instanstiated options")]
+        public FoodObject objectToPickup;
+        public Ingredient objectToPickupIngredient;
 
         public List<FoodObject> mergedItems = new List<FoodObject>();
 
@@ -69,14 +83,46 @@ namespace HotDogCannon.FoodPrep
 
         public void Grab(Transform grabTarget)
         {
+            switch (grabBehaviours)
+            {
+                case GrabBehaviours.PCIKUP_SELF:
+                    GrabThis(grabTarget);
+                    break;
+                case GrabBehaviours.PICKUP_INSTANTIED:
+                    GrabInstantiated(grabTarget);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        void GrabThis(Transform grabTarget)
+        {
             SetPhysics(true, false);
             dropped = false;
             PosAnims.AnimatPos(transform, transform.position, grabTarget, 0.2f, () => {
                 if (this == null) return;
-                if(!dropped) transform.SetParent(grabTarget, true);
+                if (!dropped) transform.SetParent(grabTarget, true);
             });
             currentGrabbed = this;
             onGrabbed?.Invoke(this);
+        }
+
+        void GrabInstantiated(Transform grabTarget)
+        {
+            if (objectToPickup == null) return;
+
+            var foodobj = Instantiate(objectToPickup);
+            foodobj.OnSpawn(objectToPickupIngredient);
+            foodobj.SetPhysics(true, false);
+            foodobj.dropped = false;
+            PosAnims.AnimatPos(foodobj.transform, transform.position, grabTarget, 0.2f, () =>
+            {
+                if (this == null) return;
+                if (!dropped) foodobj.transform.SetParent(grabTarget, true);
+            });
+            currentGrabbed = foodobj;
+            onGrabbed?.Invoke(foodobj);
         }
 
         public void UnGrab()
@@ -102,8 +148,9 @@ namespace HotDogCannon.FoodPrep
         {
             if (highlighted || (currentGrabbed != null && currentGrabbed.ingredient == ingredient)) return;
             mergedItems.ForEach(m => m.OnHandOver());
-            tempColor = GetComponentInChildren<Renderer>().material.color;
-            col.GetComponentsInChildren<Renderer>().ToList().ForEach(r => r.material.color = Color.grey);
+            tempColor = col.GetComponentInChildren<Renderer>().material.color;
+            col.GetComponentsInChildren<Renderer>().ToList().ForEach(r => r.materials.ToList().ForEach(m => m.color = Color.grey));
+
             highlighted = true;
             onGrabItemChanged?.Invoke(this);
         }
@@ -114,7 +161,7 @@ namespace HotDogCannon.FoodPrep
             mergedItems.ForEach(m => m.OnHandExit());
             currentPotentialGrab = null;
             currentPotentialMerge = null;
-            col.GetComponentsInChildren<Renderer>().ToList().ForEach(r => r.material.color = tempColor);
+            col.GetComponentsInChildren<Renderer>().ToList().ForEach(r => r.materials.ToList().ForEach(m => m.color = tempColor));
 
             highlighted = false;
         }
@@ -152,7 +199,8 @@ namespace HotDogCannon.FoodPrep
             {
                 case Ingredient.FoodAffectType.ATTACH:
                     return new AttachFood();
-
+                case Ingredient.FoodAffectType.BOTTLE:
+                    return new BottleSqueeze();
                         
             }
 
@@ -161,7 +209,8 @@ namespace HotDogCannon.FoodPrep
 
         public void OnReset()
         {
-            Destroy(gameObject);
+            if(!isPersistent)
+                Destroy(gameObject);
         }
 
         private void OnDestroy()

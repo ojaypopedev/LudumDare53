@@ -18,12 +18,18 @@ namespace HotDogCannon.FoodPrep
         List<FoodObject> foodObjects = new List<FoodObject>();
 
 
+        bool firstItem = false;
         private void Awake()
         {
             GameManager.onReset += OnReset;
         }
 
-        public void SpawnItem()
+        public void SpawnAntoher()
+        {
+            StartCoroutine(SpawnOne());
+        }
+
+        void SpawnItem()
         {
             var newitem = ingredient.SpawnWorldObject();
             newitem.transform.position = spawnPos.position;
@@ -45,16 +51,24 @@ namespace HotDogCannon.FoodPrep
         {
             foodObjects.Remove(foodObject);
             foodObject.onGrabbed -= OnItemGrabbed;
-            SpawnItem();
+            SpawnAntoher();
         }
 
         IEnumerator StartSpawn()
         {
             while (foodObjects.Count < spawnAmount)
             {
+                yield return new WaitForSeconds(!firstItem ? 0 : regenTime);
                 SpawnItem();
-                yield return new WaitForSeconds(regenTime);
+                firstItem = true;
+                
             }
+        }
+
+        IEnumerator SpawnOne()
+        {
+            yield return new WaitForSeconds(!firstItem ? 0 : regenTime);
+            SpawnItem();
         }
     }
 }

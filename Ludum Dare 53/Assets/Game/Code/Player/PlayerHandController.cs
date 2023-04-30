@@ -94,8 +94,10 @@ namespace HotDogCannon.Player
 
         public void Gun()
         {
-            bool isShooting = upAxisDT > 0.6f;
+            var forwardDot = Vector3.Dot(Vector3.forward, transform.forward);
 
+            bool isShooting = forwardDot < -0.7f;
+            Debug.Log(forwardDot);
             anim.SetBool("IsShooting", isShooting);
             var wasActive = gun.isActive;
             gun.isActive = isShooting;
@@ -122,8 +124,7 @@ namespace HotDogCannon.Player
 
             var localxPos = Mathf.Lerp(minMaxLeft.x, minMaxLeft.y, Mathf.InverseLerp(-1, 1, currentLeft));
             var localzPos = Mathf.Lerp(minMaxForward.x, minMaxForward.y, Mathf.InverseLerp(-1, 1, currentForward));
-            var localyPos = Mathf.Lerp(minMaxUp.x, minMaxUp.y, Mathf.InverseLerp(-1, 1, currentForward));
-
+         
 
             var rotDirection = 0;
             if (currentLeft <= -1) rotDirection = -1;
@@ -135,15 +136,13 @@ namespace HotDogCannon.Player
 
             var forwardDot = Vector3.Dot(Vector3.forward, transform.forward);
 
-            upAxisDT = Mathf.Clamp01(Mathf.InverseLerp(0, -1, forwardDot));
+            upAxisDT = Mathf.Clamp01(Mathf.InverseLerp(.9f, 0, forwardDot));
 
             var axis = Vector3.Lerp(Vector3.forward, Vector3.up, upAxisDT);
 
-            var moveAmount = Mathf.Lerp(localzPos, localyPos, upAxisDT);
+            var localyPos = Mathf.Lerp(minMaxUp.x, minMaxUp.y, upAxisDT);
 
-            var forwardMove = axis * moveAmount;
-
-            pivotPoint.transform.localPosition = startPos + (new Vector3(localxPos, 0, 0) + forwardMove);
+            pivotPoint.transform.localPosition = startPos + (new Vector3(localxPos, localyPos, localzPos));
         }
     }
 }

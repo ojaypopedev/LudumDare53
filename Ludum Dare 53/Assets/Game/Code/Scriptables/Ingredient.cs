@@ -15,6 +15,7 @@ namespace HotDogCannon.FoodPrep
         public enum FoodAffectType
         {
             ATTACH,
+            BOTTLE,
         }
 
         public FoodAffectType mergeAffectBehaviour;

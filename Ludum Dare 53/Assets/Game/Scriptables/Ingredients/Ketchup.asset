@@ -15,5 +15,5 @@ MonoBehaviour:
   foodName: Ketchup
   icon: {fileID: 0}
   mergeAffectBehaviour: 0
-  worldObject: {fileID: 6212542505537930029, guid: d95d76ad95fe94c0a9663ba0787e6331,
+  worldObject: {fileID: 3058952466368420340, guid: c96b0d033e3de4a0c8ba2b15b6ed51ad,
     type: 3}

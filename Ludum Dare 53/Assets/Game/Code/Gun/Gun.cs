@@ -54,6 +54,7 @@ namespace HotDogCannon.Player {
             if (Input.GetMouseButtonDown(0) && currentRounds > 0 && isActive)
             {
                 FoodObject instance = Instantiate(currentLoaded);
+                instance.gameObject.SetActive(true);
 
                 arcCalculator.ThrowOnArc(instance.gameObject, arcCalculator.GetLocalArcData(), 10, (data) =>
                 {

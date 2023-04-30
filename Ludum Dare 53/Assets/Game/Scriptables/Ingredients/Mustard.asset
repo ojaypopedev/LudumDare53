@@ -15,5 +15,5 @@ MonoBehaviour:
   foodName: Mustard
   icon: {fileID: 0}
   mergeAffectBehaviour: 0
-  worldObject: {fileID: 6212542505537930029, guid: d95d76ad95fe94c0a9663ba0787e6331,
+  worldObject: {fileID: 5482260121521345700, guid: ab41cc199494f4ba689175affddd7b5a,
     type: 3}
