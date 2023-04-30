@@ -21,7 +21,17 @@ public class StatTracker : MonoBehaviour
             return total / orderTimes.Count;
         }
     }
-    public static float accuracy = (float)hotDogsFired / (float)completedOrders;
+    public static float accuracy
+    {
+        get
+        {
+           var acc =  (float)completedOrders/ (float)hotDogsFired;
+           if (float.IsNaN(acc))
+               acc = 0;
+
+            return acc;
+        }
+    }
 
     private void Awake()
     {

@@ -11,7 +11,7 @@ public class BaseScreen : MonoBehaviour
 
     public virtual void Awake()
     {
-        panel.SetActive(startHidden);
+        panel.SetActive(!startHidden);
     }
 
     public virtual void Show()
