@@ -8753,7 +8753,7 @@ MonoBehaviour:
     numOrders: 10
     recipies:
     - {fileID: 11400000, guid: 81dc420481ce46e489318e63ce890fc6, type: 2}
-    minMaxOrderTime: {x: 5, y: 10}
+    minMaxOrderTime: {x: 20, y: 25}
     overallTimeLimit: 60
     minMaxTimeBetweenOrders: {x: 0, y: 0}
     characterCustomizations: {fileID: 11400000, guid: ebc1a7ccccfc55b46a6a0d38a8522d7b,
