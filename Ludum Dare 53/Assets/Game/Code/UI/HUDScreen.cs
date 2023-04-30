@@ -6,16 +6,16 @@ using UnityEngine.UI;
 public class HUDScreen : BaseScreen
 {
 
-
-    // Start is called before the first frame update
-    void Start()
+    public override void Awake()
     {
-        
+        GameManager.onGameStarted += Show;
+        GameManager.onGameFinished += OnGameFinished;
+        base.Awake();
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnGameFinished(GameManager.CompleteState completeState)
     {
-        
+        Hide();
     }
+
 }

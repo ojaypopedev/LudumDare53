@@ -113,6 +113,7 @@ public class FoodOrder
     public float StartTime;
     public float TotalTime;
     public float TimeLeft => TotalTime - (Time.time - StartTime);
+    public float TimeElapsed => (Time.time - StartTime);
     public float TimeLeftPercentage => TimeLeft / TotalTime;
 
     public System.Action OnTimeRanOut;

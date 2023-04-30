@@ -14,6 +14,7 @@ public class CustomerManager : MonoBehaviour
     public Vector2 mimMaxTimeBetweenOrders;
 
     public static System.Action<bool> onCompletedOrder;
+    public static System.Action<bool, FoodOrder> onCompletedFoodOrder;
     public static System.Action<Customer> onGivenOrder;
 
     public CharacterCustomizations customizations;
@@ -64,6 +65,7 @@ public class CustomerManager : MonoBehaviour
     public void OnFoodOrderCompleted(bool success, FoodOrder foodOrder)
     {
         onCompletedOrder?.Invoke(success);
+        onCompletedFoodOrder?.Invoke(success, foodOrder);
 
         if (success)
             ordersCompleted++;

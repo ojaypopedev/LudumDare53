@@ -7,6 +7,8 @@ namespace HotDogCannon.Player
 {
     public class PlayerHandController : MonoBehaviour
     {
+        public static PlayerHandController instance;
+
         [Header("Setup")]
         public Transform pivotPoint;
         public Transform rayCastPoint;
@@ -28,7 +30,10 @@ namespace HotDogCannon.Player
         public Vector3 prepCamRot;
         public Vector2 minMaxCamAimPos;
 
-
+#if UNITY_EDITOR
+        [Header("Dev Settings")]
+        public bool testOverride;
+#endif
 
         float currentLeft;
         float currentForward;
@@ -47,22 +52,29 @@ namespace HotDogCannon.Player
         private void Awake()
         {
             startPos = pivotPoint.transform.position;
-            Cursor.lockState = CursorLockMode.Locked;
             anim = GetComponent<Animator>();
+            instance = this;
         }
 
         // Update is called once per frame
         void Update()
         {
+#if UNITY_EDITOR
+            if (testOverride)
+            {
+
+            }
+            else
+#endif
+            if (GameManager.gameState != GameManager.GameState.PLAYING) return;
             Grabbing();
-            //Movement();
-            //RadialMovement();
             GunInput();
            
         }
 
         private void FixedUpdate()
         {
+            if (GameManager.gameState != GameManager.GameState.PLAYING) return;
             RadialMovement();
             Gun();
         }
