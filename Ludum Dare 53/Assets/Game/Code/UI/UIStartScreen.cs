@@ -32,7 +32,7 @@ public class UIStartScreen : BaseScreen
         //Replace the strings here for the actual information.
         tutorialButton.Refresh(onboardingManager.isOnboardingComplete ? "Complete" : "Incomplete", LoadTutorial);
         storyButton.Refresh( "Level " + levelNum + "/" + (LevelManager.instance.storyLevels.Count).ToString(), LoadStoryLevel, !onboardingManager.isOnboardingComplete, "Complete Tutorial");
-        endlessButton.Refresh("TODO (HIhgschore)", LoadEndlessMode, !onboardingManager.isOnboardingComplete, "Complete Tutorial");
+        endlessButton.Refresh("Best: " + LevelManager.endlessHighScoreString, LoadEndlessMode, !onboardingManager.isOnboardingComplete, "Complete Tutorial");
 
         if(Application.platform == RuntimePlatform.WebGLPlayer)
         {

@@ -26,6 +26,7 @@ public class onboardingManager : MonoBehaviour
         instance = this;
         GameManager.onGameStarted += OnGameStarted;
         BaseOnboardingEvent.onEventCompleted += OnOnboardingComplete;
+        GameManager.onReset += OnReset;
         if(completedOnboarding == false)
         {
             onboardingEvents.ForEach(o =>
@@ -34,6 +35,15 @@ public class onboardingManager : MonoBehaviour
                 o.isStarted = false;
             });
         }
+    }
+
+    void OnReset()
+    {
+        onboardingEvents.ForEach(o =>
+        {
+            o.isCompleted = false;
+            o.isStarted = false;
+        });
     }
 
     
