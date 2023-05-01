@@ -1,0 +1,141 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8232625215430512593
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8232625215430512592}
+  - component: {fileID: 8232625215430512595}
+  m_Layer: 0
+  m_Name: LevelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8232625215430512592
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8232625215430512593}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8232625215430512595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8232625215430512593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aab937c31c52845dea67f2d981e6069c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levels:
+  - levelName: Tutorial
+    stadium: {fileID: 0}
+    hasLives: 1
+    isTutorial: 1
+    recipies:
+    - {fileID: 11400000, guid: 81dc420481ce46e489318e63ce890fc6, type: 2}
+    minMaxOrderTime: {x: 5, y: 10}
+    overallTimeLimit: Infinity
+    minMaxTimeBetweenOrders: {x: 3, y: 6}
+    characterCustomizations: {fileID: 11400000, guid: ebc1a7ccccfc55b46a6a0d38a8522d7b,
+      type: 2}
+    onLevelStart:
+      m_PersistentCalls:
+        m_Calls: []
+  - levelName: Dog Delivery
+    stadium: {fileID: 0}
+    hasLives: 1
+    isTutorial: 0
+    recipies:
+    - {fileID: 11400000, guid: 81dc420481ce46e489318e63ce890fc6, type: 2}
+    minMaxOrderTime: {x: 5, y: 10}
+    overallTimeLimit: 120
+    minMaxTimeBetweenOrders: {x: 0, y: 0}
+    characterCustomizations: {fileID: 11400000, guid: ebc1a7ccccfc55b46a6a0d38a8522d7b,
+      type: 2}
+    onLevelStart:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: BaseOnboardingEvent, Assembly-CSharp
+          m_MethodName: StartOnboarding
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - levelName: Getting Saucy
+    stadium: {fileID: 0}
+    hasLives: 1
+    isTutorial: 0
+    recipies:
+    - {fileID: 11400000, guid: 81dc420481ce46e489318e63ce890fc6, type: 2}
+    - {fileID: 11400000, guid: 30ce8473790da45f4bd53bdfc0e05e94, type: 2}
+    - {fileID: 11400000, guid: 6fe273aa424874142968c0d2a399f693, type: 2}
+    minMaxOrderTime: {x: 5, y: 10}
+    overallTimeLimit: 180
+    minMaxTimeBetweenOrders: {x: 2, y: 4}
+    characterCustomizations: {fileID: 11400000, guid: ebc1a7ccccfc55b46a6a0d38a8522d7b,
+      type: 2}
+    onLevelStart:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: BaseOnboardingEvent, Assembly-CSharp
+          m_MethodName: StartOnboarding
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  foodSpawners:
+  - ingredientNamel: Mustard
+    linkedIngredient: {fileID: 11400000, guid: 0ceef2990b2275446827abf83381482f, type: 2}
+    obj: {fileID: 0}
+    spawner: {fileID: 0}
+  - ingredientNamel: Sosij
+    linkedIngredient: {fileID: 11400000, guid: ba3d893bc54f64384abea6b9aa9feae6, type: 2}
+    obj: {fileID: 0}
+    spawner: {fileID: 0}
+  - ingredientNamel: BUn
+    linkedIngredient: {fileID: 11400000, guid: 905b63d024741452098aff37632b3b20, type: 2}
+    obj: {fileID: 0}
+    spawner: {fileID: 0}
+  - ingredientNamel: Onions
+    linkedIngredient: {fileID: 11400000, guid: efbdc5d107f7f5e4f9344da38eed68ea, type: 2}
+    obj: {fileID: 0}
+    spawner: {fileID: 0}
+  - ingredientNamel: Pickles
+    linkedIngredient: {fileID: 11400000, guid: 2d44413209b234771934cf4c6bf1c592, type: 2}
+    obj: {fileID: 0}
+    spawner: {fileID: 0}
+  - ingredientNamel: Ketchup
+    linkedIngredient: {fileID: 11400000, guid: 8d1df064f733afd45bd65d9729aa87d9, type: 2}
+    obj: {fileID: 0}
+    spawner: {fileID: 0}
+  currentLives: 0

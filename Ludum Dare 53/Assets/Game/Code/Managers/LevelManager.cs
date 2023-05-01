@@ -15,6 +15,8 @@ public class LevelManager : MonoBehaviour
 
         public bool hasLives;
 
+        public bool isTutorial;
+
         public List<Recipie> recipies = new List<Recipie>();
 
         public Vector2 minMaxOrderTime;
@@ -168,11 +170,14 @@ public class LevelManager : MonoBehaviour
             case GameManager.GameMode.STORY:
                 if (!success)
                 {
+                    if (currentLevel.isTutorial) return;
                     currentLives--;
                     if (currentLives <= 0)
                     {
                         GameManager.CompleteLevel(GameManager.CompleteState.FAIL);
-                    } 
+                    }
+
+                    UIHearts.SetHearts(currentLives);
                 }
                 break;
             case GameManager.GameMode.ENDLESS:
@@ -214,7 +219,17 @@ public class LevelManager : MonoBehaviour
 
         currentLives = 5;
 
-        storyLevels[_currentLevelIndex].stadium.gameObject.SetActive(true); 
+        if (!currentLevel.isTutorial)
+        {
+            UIHearts.EnableHearts(true);
+            UIHearts.SetHearts(currentLives);
+        }
+        else
+        {
+            UIHearts.DisableHearts();
+        }
+
+        storyLevels[_currentLevelIndex].stadium.gameObject.SetActive(true);
 
         var customerManager = CustomerManager.instance;
 
@@ -229,6 +244,8 @@ public class LevelManager : MonoBehaviour
         {
             l.stadium.gameObject.SetActive(false);
         });
+
+        UIHearts.EnableHearts(false);
 
         endlessLevel.stadium.gameObject.SetActive(true);
 
