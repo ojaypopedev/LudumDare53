@@ -27,7 +27,14 @@ public class GameManager : MonoBehaviour
         COMPLETE,
     }
 
+    public enum GameMode
+    {
+        STORY,
+        ENDLESS
+    }
+
     public static GameState gameState;
+    public static GameMode gameMode;
 
     // UNITY
     private void Awake()
@@ -103,6 +110,11 @@ public class GameManager : MonoBehaviour
         {
             gameState = lastState;
         }
+    }
+
+    public static void SetGameMode(GameMode mode)
+    {
+        gameMode = mode;
     }
 
     public void ForceCompleteLevel()

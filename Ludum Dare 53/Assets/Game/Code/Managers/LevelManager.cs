@@ -13,7 +13,7 @@ public class LevelManager : MonoBehaviour
 
         public Stadium stadium;
 
-        public int numOrders;
+        public bool hasLives;
 
         public List<Recipie> recipies = new List<Recipie>();
 
@@ -50,22 +50,37 @@ public class LevelManager : MonoBehaviour
 
     public List<Level> levels = new List<Level>();
 
+    public List<Level> storyLevels => levels.FindAll(l => l.hasLives);
+
+    public Level endlessLevel => levels.Find(l => !l.hasLives);
+
     public List<FoodGrabbers> foodSpawners = new List<FoodGrabbers>();
 
     public Level currentLevel
     {
         get
         {
-            if(_currentLevelIndex >= levels.Count)
+            if (GameManager.gameMode == GameManager.GameMode.STORY)
             {
-                _currentLevelIndex = 0;
+
+                if (_currentLevelIndex >= storyLevels.Count)
+                {
+                    _currentLevelIndex = 0;
+                }
+
+                return storyLevels[_currentLevelIndex];
             }
 
-            return levels[_currentLevelIndex];
+            else
+            {
+                return endlessLevel;
+            }
         }
     }
 
     public int currentLevelIndex => _currentLevelIndex;
+
+    public int currentLives = 0;
 
     int _currentLevelIndex
     {
@@ -102,6 +117,7 @@ public class LevelManager : MonoBehaviour
         GameManager.onReset += OnReset;
         GameManager.onGameFinished += OnLevelComplete;
         GameManager.onGameStarted += OnGameStarted;
+        CustomerManager.onCompletedFoodOrder += OnOrderComplete;
         instance = this;
     }
 
@@ -124,39 +140,103 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        GameManager.CompleteLevel(GameManager.CompleteState.FAIL);
+        if (GameManager.gameMode == GameManager.GameMode.STORY)
+            GameManager.CompleteLevel(GameManager.CompleteState.WIN);
+        else
+            GameManager.CompleteLevel(GameManager.CompleteState.FAIL);
     }
 
     void OnReset()
     {
         StopAllCoroutines();
-        LoadLevel(_currentLevelIndex);
+        LoadLevel();
         currentTime = currentLevel.overallTimeLimit;
         onGameTimerChanged?.Invoke();
     }
 
     void OnLevelComplete(GameManager.CompleteState completeState)
     {
-        if (completeState == GameManager.CompleteState.WIN && _currentLevelIndex < levels.Count - 1)
+        if (completeState == GameManager.CompleteState.WIN && _currentLevelIndex < storyLevels.Count - 1)
             _currentLevelIndex++;
+
     }
 
-    void LoadLevel(int levelIndex)
+    void OnOrderComplete(bool success, FoodOrder foodOrder)
+    {
+        switch (GameManager.gameMode)
+        {
+            case GameManager.GameMode.STORY:
+                if (!success)
+                {
+                    currentLives--;
+                    if (currentLives <= 0)
+                    {
+                        GameManager.CompleteLevel(GameManager.CompleteState.FAIL);
+                    } 
+                }
+                break;
+            case GameManager.GameMode.ENDLESS:
+                if (!success)
+                {
+                    currentTime -= 1f;
+                }
+                else
+                {
+                    currentTime += 5f;
+                }
+                break;
+        }
+    }
+
+    void LoadLevel()
     {
 
+        switch (GameManager.gameMode)
+        {
+            case GameManager.GameMode.STORY:
+                LoadStoryLevel();
+                break;
+            case GameManager.GameMode.ENDLESS:
+                LoadEndlessLevel();
+                break;
+            default:
+                break;
+        }
+
+    }
+
+    void LoadStoryLevel()
+    {
         levels.ForEach(l =>
         {
             l.stadium.gameObject.SetActive(false);
         });
 
-        levels[_currentLevelIndex].stadium.gameObject.SetActive(true);
+        currentLives = 5;
+
+        storyLevels[_currentLevelIndex].stadium.gameObject.SetActive(true);
 
         var customerManager = CustomerManager.instance;
-      
+
         customerManager.Init(currentLevel);
 
         SetSpawners();
+    }
 
+    void LoadEndlessLevel()
+    {
+        levels.ForEach(l =>
+        {
+            l.stadium.gameObject.SetActive(false);
+        });
+
+        endlessLevel.stadium.gameObject.SetActive(true);
+
+        var customerManager = CustomerManager.instance;
+
+        customerManager.Init(currentLevel);
+
+        SetSpawners();
     }
 
     void SetSpawners()

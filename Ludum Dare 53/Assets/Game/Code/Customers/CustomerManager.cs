@@ -44,7 +44,6 @@ public class CustomerManager : MonoBehaviour
         RecipiesInLevel = level.recipies;
         OrderTimeMin = level.minMaxOrderTime.x;
         OrderTimeMax = level.minMaxOrderTime.y;
-        totalOrders = level.numOrders;
         mimMaxTimeBetweenOrders = level.minMaxTimeBetweenOrders;
         ordersCompleted = 0;
 
