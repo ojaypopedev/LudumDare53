@@ -12,6 +12,11 @@ public class onboardingManager : MonoBehaviour
         set { PlayerPrefs.SetInt("onBoarding.completed", value ? 1 : 0); }
     }
 
+    public static bool isOnboardingComplete
+    {
+        get { return PlayerPrefs.GetInt("onBoarding.completed", 0) == 1; }
+    }
+
     BaseOnboardingEvent lastOnboarding;
 
     private void Awake()
