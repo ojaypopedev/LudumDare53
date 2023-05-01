@@ -70,6 +70,7 @@ public class CustomerManager : MonoBehaviour
         OrderTimeMax = level.minMaxOrderTime.y;
         mimMaxTimeBetweenOrders = level.minMaxTimeBetweenOrders;
         ordersCompleted = 0;
+        firstOrder = false;
 
         Customers.ForEach(e => e.Init(this));
     }
@@ -116,10 +117,19 @@ public class CustomerManager : MonoBehaviour
     }
 
     float lastRecipeChange = 0;
+    bool firstOrder;
 
     IEnumerator NextCustomer()
     {
+        var gun = HotDogCannon.Player.PlayerHandController.instance.gun;
+        var prepTime = !firstOrder ||
+            (currentRecipe != null && gun.currentAmmo != null && currentRecipe.CompareFoodObject(gun.currentAmmo) && gun.currentRounds > 0)
+            ? Random.Range(0, 1) : Random.Range(15, 20);
+
+        firstOrder = true;
+
         var extraTime = Random.Range(mimMaxTimeBetweenOrders.x, mimMaxTimeBetweenOrders.y);
+
         yield return new WaitForSeconds(extraTime);
         if (GameManager.gameState == GameManager.GameState.PLAYING)
         {
@@ -131,7 +141,7 @@ public class CustomerManager : MonoBehaviour
                     currentRecipe = GetNextRecipe();
                 }
 
-                var totalTime = Random.Range(OrderTimeMin, OrderTimeMax);
+                var totalTime = Random.Range(OrderTimeMin, OrderTimeMax) + prepTime;
                 var Customer = GetRandomAvailableCustomer();
                 Customer.AssignFoodOrder(currentRecipe, totalTime);
 
