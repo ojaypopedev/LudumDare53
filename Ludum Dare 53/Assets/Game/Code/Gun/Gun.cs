@@ -47,6 +47,9 @@ namespace HotDogCannon.Player {
 
         Customer currentCustomer = null;
 
+        public Animator GunAnimation;
+        public ParticleSystem ShootParticles;
+
         public void Awake()
         {
             GameManager.onReset += OnReset;
@@ -139,6 +142,10 @@ namespace HotDogCannon.Player {
 
             if (Input.GetMouseButtonDown(0) && currentRounds > 0 && isActive)
             {
+                GunAnimation.Play("Shoot");
+                ShootParticles.Play();
+                CameraShake.Shake(CameraShake.ShakeSize.Small);
+
                 FoodObject instance = Instantiate(currentLoaded);
                 instance.gameObject.SetActive(true);
                 instance.transform.localScale *= 2.5f;

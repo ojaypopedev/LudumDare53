@@ -79,6 +79,7 @@ namespace HotDogCannon.FoodPrep
         public void Merge(FoodObject fromItem)
         {
 
+            EffectsManager.CreateParticles(EffectsManager.MergeFoodParticles, transform.position);
             fromItem.GetBehaviour().OnMerge(fromItem, this);
             currentPotentialMerge = null;
             onMergedFoodGlobal?.Invoke(this);
