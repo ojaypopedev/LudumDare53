@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class onboardingManager : MonoBehaviour
 {
+    public static onboardingManager instance;
+
     public List<BaseOnboardingEvent> onboardingEvents = new List<BaseOnboardingEvent>();
 
     public bool completedOnboarding
@@ -21,22 +23,26 @@ public class onboardingManager : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
         GameManager.onGameStarted += OnGameStarted;
         BaseOnboardingEvent.onEventCompleted += OnOnboardingComplete;
         if(completedOnboarding == false)
         {
-            PlayerPrefs.DeleteAll();
+            onboardingEvents.ForEach(o => o.isCompleted = false);
         }
     }
 
+    
     public void OnGameStarted()
     {
+        if(GameManager.gameMode == GameManager.GameMode.TUTORIAL)
+            onboardingEvents.ForEach(o => o.isCompleted = false);
         StartOnboarding();
     }
 
     public void StartOnboarding()
     {
-        if (!completedOnboarding)
+        if (GameManager.gameMode == GameManager.GameMode.TUTORIAL)
         {
             onboardingEvents[0].StartOnboarding();
             lastOnboarding = onboardingEvents[0];
@@ -46,7 +52,7 @@ public class onboardingManager : MonoBehaviour
     void OnOnboardingComplete(BaseOnboardingEvent e)
     {
         Debug.Log("hceking next");
-        if (lastOnboarding.autoNextStep)
+        if (lastOnboarding != null && lastOnboarding.autoNextStep)
         {
             Debug.Log("should do next");
             var index = onboardingEvents.IndexOf(lastOnboarding);

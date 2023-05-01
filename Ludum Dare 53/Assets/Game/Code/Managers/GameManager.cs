@@ -29,12 +29,29 @@ public class GameManager : MonoBehaviour
 
     public enum GameMode
     {
+        TUTORIAL,
         STORY,
         ENDLESS
     }
 
     public static GameState gameState;
-    public static GameMode gameMode;
+    public static GameMode gameMode
+    {
+        get
+        {
+            return _gameMode;
+        }
+
+        set
+        {
+            _gameMode = value;
+            onGameModeChanged?.Invoke();
+        }
+    }
+
+    static GameMode _gameMode;
+
+    public static System.Action onGameModeChanged;
 
     // UNITY
     private void Awake()

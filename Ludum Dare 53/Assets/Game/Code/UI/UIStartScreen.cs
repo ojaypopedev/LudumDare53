@@ -28,11 +28,11 @@ public class UIStartScreen : BaseScreen
     {
         Show();
         //levelText.text = "Level " + (LevelManager.instance.currentLevelIndex + 1).ToString() + " : " + LevelManager.instance.currentLevel.levelName;
-
+        var levelNum = (LevelManager.instance.currentLevelIndex + 1).ToString();
         //Replace the strings here for the actual information.
         tutorialButton.Refresh(onboardingManager.isOnboardingComplete ? "Complete" : "Incomplete", LoadTutorial);
-        storyButton.Refresh("Level 1/3", LoadStoryLevel, !onboardingManager.isOnboardingComplete, "Complete Tutorial");
-        endlessButton.Refresh("Best 2:35", LoadEndlessMode, !onboardingManager.isOnboardingComplete, "Complete Tutorial");
+        storyButton.Refresh( "Level " + levelNum + "/" + (LevelManager.instance.storyLevels.Count).ToString(), LoadStoryLevel, !onboardingManager.isOnboardingComplete, "Complete Tutorial");
+        endlessButton.Refresh("TODO (HIhgschore)", LoadEndlessMode, !onboardingManager.isOnboardingComplete, "Complete Tutorial");
 
         if(Application.platform == RuntimePlatform.WebGLPlayer)
         {
@@ -49,17 +49,20 @@ public class UIStartScreen : BaseScreen
 
     public void LoadTutorial()
     {
-
+        GameManager.gameMode = GameManager.GameMode.TUTORIAL;
+        GameManager.StartGame();
     }
 
     public void LoadStoryLevel()
     {
-
+        GameManager.gameMode = GameManager.GameMode.STORY;
+        GameManager.StartGame();
     }
 
     public void LoadEndlessMode()
     {
-
+        GameManager.gameMode = GameManager.GameMode.ENDLESS;
+        GameManager.StartGame();
     }
     //public void OnClickStart()
     //{
