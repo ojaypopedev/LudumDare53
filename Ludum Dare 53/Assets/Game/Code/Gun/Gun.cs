@@ -31,6 +31,7 @@ namespace HotDogCannon.Player {
         // Actions
         public System.Action onNoAmmo;
         public System.Action onFired;
+        public System.Action<FoodObject> onLoadedAmmo;
 
 
         public bool isLoaded { get; private set; }
@@ -62,6 +63,7 @@ namespace HotDogCannon.Player {
             currentLoaded = foodObject;
             _currentRounds = 5;
             foodObject.SetPhysics(true, true);
+            onLoadedAmmo?.Invoke(foodObject);
         }
 
         public void Refresh(Vector2 coords)
