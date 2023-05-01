@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3058952467718335367}
-  - {fileID: 1601271744577039018}
+  - {fileID: 6682350166397868416}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mergepos: {fileID: 3058952467718335367}
   rb: {fileID: 3058952466368420343}
-  col: {fileID: 8577840508664081346}
+  col: {fileID: 3266166279901422392}
   isPersistent: 0
   ignoreMerge: 0
   ingredient: {fileID: 0}
@@ -106,7 +106,7 @@ Transform:
   m_Father: {fileID: 3058952466368420341}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &8577840508664081349
+--- !u!1 &4477962976559138683
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -114,47 +114,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1601271744577039018}
-  - component: {fileID: 4017613548564027121}
-  - component: {fileID: 1312501897229707140}
-  - component: {fileID: 8577840508664081346}
+  - component: {fileID: 6682350166397868416}
+  - component: {fileID: 7321437370208560327}
+  - component: {fileID: 9096820769006280704}
+  - component: {fileID: 3266166279901422392}
   m_Layer: 0
-  m_Name: Ketchup Stripe
+  m_Name: ketchup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1601271744577039018
+--- !u!4 &6682350166397868416
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8577840508664081349}
-  m_LocalRotation: {x: -0.5012393, y: 0.49875766, z: 0.50123924, w: 0.49875757}
-  m_LocalPosition: {x: -0.022, y: 0, z: 0.025}
-  m_LocalScale: {x: -1.3901643, y: -0.06510311, z: -0.092156716}
+  m_GameObject: {fileID: 4477962976559138683}
+  m_LocalRotation: {x: 0.4999998, y: -0.5000005, z: 0.50000024, w: 0.49999964}
+  m_LocalPosition: {x: 0.02, y: 0.047, z: -0.095}
+  m_LocalScale: {x: 81.32229, y: 72.05913, z: 72.05913}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3058952466368420341}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: -89.715, y: -90.002, z: 180.002}
---- !u!33 &4017613548564027121
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 90}
+--- !u!33 &7321437370208560327
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8577840508664081349}
-  m_Mesh: {fileID: -6659973605895132674, guid: 52a005652d8f44191bb87dd68393f261, type: 3}
---- !u!23 &1312501897229707140
+  m_GameObject: {fileID: 4477962976559138683}
+  m_Mesh: {fileID: 1825875415147931077, guid: ece5db8d8fe483741963bbe2cdb0d83e, type: 3}
+--- !u!23 &9096820769006280704
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8577840508664081349}
+  m_GameObject: {fileID: 4477962976559138683}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -168,7 +168,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f301aa0dcf74e48fb841b5f60be3f441, type: 2}
+  - {fileID: 2100000, guid: 764ed64490fe643bea0107aa9ccdb706, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -190,16 +190,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8577840508664081346
+--- !u!65 &3266166279901422392
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8577840508664081349}
+  m_GameObject: {fileID: 4477962976559138683}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.9570842, y: 3.2007434, z: 0.833336}
-  m_Center: {x: 0.0016870801, y: 0.1726253, z: -0.4293334}
+  m_Size: {x: 0.016731612, y: 0.002698848, z: 0.001140003}
+  m_Center: {x: 0.002037247, y: 0.0005223355, z: -9.539487e-11}
