@@ -23,7 +23,7 @@ public class UISettingsScreen : BaseScreen
 
     public static float sensitivityMulitiplier
     {
-        get { return PlayerPrefs.GetFloat("Settings.Sensitivity", 1.5f); }
+        get { return PlayerPrefs.GetFloat("Settings.Sensitivity", 1f); }
         set { PlayerPrefs.SetFloat("Settings.Sensitivity", value); }
     }
 
