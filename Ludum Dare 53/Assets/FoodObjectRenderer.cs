@@ -21,7 +21,6 @@ public class FoodObjectRenderer : MonoBehaviour
         {
             Destroy(current.gameObject);
         }
-        
 
         current = Instantiate(obj);
 
@@ -30,38 +29,21 @@ public class FoodObjectRenderer : MonoBehaviour
 
         SetLayerRecursively(current.transform, LayerMask.NameToLayer(Layer));
 
-        Bounds exampleBounds = new Bounds(exampleTransform.position, Vector2.zero);
-        Bounds NewFoodObjectBounds = new Bounds(exampleTransform.position, Vector2.zero);
+        current.ingredients.ForEach(e => Debug.Log("Ingredient:" + e.foodName.ToLower().Contains("bottle")));
 
-        Debug.Log("Example: " + GetBoundsZSize(exampleTransform.gameObject, ref exampleBounds).size);
-        Debug.Log("New Food Object: " + GetBoundsZSize(current.gameObject, ref NewFoodObjectBounds).size);
+        //if (current.ingredients.Find(e => e.foodName.ToLower().Contains("bottle")) != null)
+        //{
+        //    current.transform.localScale *= 2.5f;
+        //}// == "Ketchup Bottle" || e.foodName == ""))
         current.transform.parent = transform;
 
         current.transform.position = exampleTransform.position;
         current.transform.rotation = exampleTransform.transform.rotation;
-        current.transform.localScale = exampleTransform.localScale;
+        //current.transform.localScale = exampleTransform.localScale;
 
     }
 
-    public Bounds GetBoundsZSize(GameObject go, ref Bounds bounds)
-    {
-        
-
-        foreach (Renderer child in GetComponentsInChildren<Renderer>(true))
-        {
-            if(child == go.GetComponent<Renderer>())
-            {
-                Debug.Log("Child: "+ child.name);
-                bounds.Encapsulate(child.bounds);
-
-                GetBoundsZSize(child.gameObject, ref bounds);
-            }
-          
-        }
-
-        return bounds;
-    }
-
+  
     void SetLayerRecursively(Transform obj, int layerIndex)
     {
         obj.gameObject.layer = layerIndex;
