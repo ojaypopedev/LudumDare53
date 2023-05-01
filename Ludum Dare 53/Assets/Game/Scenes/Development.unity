@@ -1464,7 +1464,7 @@ PrefabInstance:
     - target: {fileID: 1369886628839963379, guid: e0b52f0f5fc123645bb95ada74d7f4c3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 130
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1369886628839963379, guid: e0b52f0f5fc123645bb95ada74d7f4c3,
         type: 3}
@@ -1489,7 +1489,7 @@ PrefabInstance:
     - target: {fileID: 1369886629353582365, guid: e0b52f0f5fc123645bb95ada74d7f4c3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 130
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1369886629353582365, guid: e0b52f0f5fc123645bb95ada74d7f4c3,
         type: 3}
@@ -1514,7 +1514,7 @@ PrefabInstance:
     - target: {fileID: 1369886629665839007, guid: e0b52f0f5fc123645bb95ada74d7f4c3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 130
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1369886629665839007, guid: e0b52f0f5fc123645bb95ada74d7f4c3,
         type: 3}
@@ -1539,7 +1539,7 @@ PrefabInstance:
     - target: {fileID: 1369886630452598758, guid: e0b52f0f5fc123645bb95ada74d7f4c3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 130
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1369886630452598758, guid: e0b52f0f5fc123645bb95ada74d7f4c3,
         type: 3}
@@ -1564,7 +1564,7 @@ PrefabInstance:
     - target: {fileID: 1369886630729437314, guid: e0b52f0f5fc123645bb95ada74d7f4c3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 130
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1369886630729437314, guid: e0b52f0f5fc123645bb95ada74d7f4c3,
         type: 3}
@@ -15684,8 +15684,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8232625215430512595, guid: 4c49427099bad47fb9b23fd6faa5a5e8,
         type: 3}
+      propertyPath: failurePunishTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8232625215430512595, guid: 4c49427099bad47fb9b23fd6faa5a5e8,
+        type: 3}
       propertyPath: levels.Array.size
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8232625215430512595, guid: 4c49427099bad47fb9b23fd6faa5a5e8,
+        type: 3}
+      propertyPath: successRewardTime
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8232625215430512595, guid: 4c49427099bad47fb9b23fd6faa5a5e8,
         type: 3}
