@@ -57,7 +57,7 @@ public class UISettingsScreen : BaseScreen
 
     public static void SetSenstivity(float Value01)
     {
-        var result = Mathf.Lerp(1f, 2.5f, Value01);
+        var result = Mathf.Lerp(.5f, 2.5f, Value01);
         sensitivityMulitiplier = result;
     }
 

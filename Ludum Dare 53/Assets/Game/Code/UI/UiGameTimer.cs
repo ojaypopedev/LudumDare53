@@ -11,12 +11,14 @@ public class UiGameTimer : MonoBehaviour
 
     public GameObject endlessTime;
     public TextMeshProUGUI endlessTimeText;
+    public TextMeshProUGUI pauseText;
 
     private void Awake()
     {
         LevelManager.onGameTimerChanged += Refresh;
         GameManager.onReset += OnReset;
         CustomerManager.onCompletedFoodOrder += ShowTimeChangeUI;
+        pauseText.text = Application.platform == RuntimePlatform.WebGLPlayer ? "Press P to pause" : "Press ESC to pause";
     }
 
     public void ShowTimeChangeUI(bool sucess, FoodOrder _)

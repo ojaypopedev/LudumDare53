@@ -2079,6 +2079,7 @@ MonoBehaviour:
   timeChangeUIPrefab: {fileID: 273845583}
   endlessTime: {fileID: 269383103}
   endlessTimeText: {fileID: 1150560081}
+  pauseText: {fileID: 1025570898}
 --- !u!114 &192516816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6644,7 +6645,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ammo Renderer
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8183914541930841925, guid: ed2843a4c8d7a7844a5912835611d316, type: 3}
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: ed2843a4c8d7a7844a5912835611d316, type: 3}
 --- !u!114 &701993374 stripped
@@ -7815,6 +7817,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1917598003}
+        m_TargetAssemblyTypeName: CustomerManager, Assembly-CSharp
+        m_MethodName: ResumeGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   autoNextStep: 0
   completesTutorial: 0
   isStarted: 0
@@ -8211,6 +8225,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1075913534}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1917598003}
+        m_TargetAssemblyTypeName: CustomerManager, Assembly-CSharp
+        m_MethodName: ResumeGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9052,7 +9078,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventName: LoadLevel
   onBoardingText: You're ready to hit the big leagues now, when ready click 'next'
-    to beigin your career!
+    to begin your career!
   arrowHelperTarget: {fileID: 1427582812}
   onStarted:
     m_PersistentCalls:
@@ -11646,6 +11672,18 @@ MonoBehaviour:
       - m_Target: {fileID: 406968398}
         m_TargetAssemblyTypeName: BaseScreen, Assembly-CSharp
         m_MethodName: Hide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1917598003}
+        m_TargetAssemblyTypeName: CustomerManager, Assembly-CSharp
+        m_MethodName: ResumeGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17341,6 +17379,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1917598003}
+        m_TargetAssemblyTypeName: CustomerManager, Assembly-CSharp
+        m_MethodName: ResumeGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   autoNextStep: 0
   completesTutorial: 0
   isStarted: 0
@@ -21810,6 +21860,7 @@ MonoBehaviour:
   freezeOrders: 0
   customizations: {fileID: 11400000, guid: ebc1a7ccccfc55b46a6a0d38a8522d7b, type: 2}
   MinDistanceToOtherCustomer: 6
+  isRunning: 0
 --- !u!1 &1945463630
 GameObject:
   m_ObjectHideFlags: 0
@@ -22737,6 +22788,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1075913534}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1917598003}
+        m_TargetAssemblyTypeName: CustomerManager, Assembly-CSharp
+        m_MethodName: ResumeGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -23951,6 +24014,11 @@ PrefabInstance:
     - target: {fileID: 443189107749177110, guid: 04c06d28e01dd4b4094ce2dfad62e8b3,
         type: 3}
       propertyPath: maxDistance
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 443189108156329232, guid: 04c06d28e01dd4b4094ce2dfad62e8b3,
+        type: 3}
+      propertyPath: far clip plane
       value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 7127640285904460901, guid: 04c06d28e01dd4b4094ce2dfad62e8b3,
@@ -26481,14 +26549,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &4641670329000991444
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4641670329000991446}
-  m_Enabled: 1
 --- !u!114 &4641670329000991445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26532,7 +26592,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4641670329000991442}
   - component: {fileID: 4641670329000991443}
-  - component: {fileID: 4641670329000991444}
   - component: {fileID: 4641670329000991445}
   m_Layer: 0
   m_Name: Camera (1)

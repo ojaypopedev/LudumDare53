@@ -96,6 +96,13 @@ public class CustomerManager : MonoBehaviour
         Customers.ForEach(e => e.Init(this));
     }
 
+    public void ResumeGame()
+    {
+        StopCoroutine(NextCustomer());
+        isRunning = false;
+        StartCoroutine(NextCustomer());
+    }
+
     public void OnGameStarted()
     {
         currentRecipe = GetNextRecipe();
@@ -138,9 +145,11 @@ public class CustomerManager : MonoBehaviour
     }
 
     float lastRecipeChange = 0;
+    public bool isRunning;
 
     IEnumerator NextCustomer()
     {
+        isRunning = true;
         var gun = HotDogCannon.Player.PlayerHandController.instance.gun;
         var prepTime = (currentRecipe != null && gun.currentAmmo != null && currentRecipe.CompareFoodObject(gun.currentAmmo) && gun.currentRounds > 0)
             ? Random.Range(0, 1) : Random.Range(15, 20);
@@ -165,6 +174,8 @@ public class CustomerManager : MonoBehaviour
                 onGivenOrder?.Invoke(Customer);
             }
         }
+
+        isRunning = false;
     }
 }
 
