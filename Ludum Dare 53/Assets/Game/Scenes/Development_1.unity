@@ -2304,7 +2304,7 @@ RectTransform:
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 48.25, y: 56.25}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4000,7 +4000,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &910430216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7172,7 +7172,7 @@ MonoBehaviour:
   levels:
   - levelName: TestLevel
     stadium: {fileID: 1895039659}
-    numOrders: 10
+    hasLives: 0
     recipies:
     - {fileID: 11400000, guid: 81dc420481ce46e489318e63ce890fc6, type: 2}
     minMaxOrderTime: {x: 20, y: 25}
@@ -7184,6 +7184,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   foodSpawners: []
+  currentLives: 0
 --- !u!1 &1427582811
 GameObject:
   m_ObjectHideFlags: 0
@@ -7487,7 +7488,7 @@ RectTransform:
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
