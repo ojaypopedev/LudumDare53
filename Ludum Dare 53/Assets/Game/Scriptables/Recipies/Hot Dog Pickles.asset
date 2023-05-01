@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Hot Dog Pickles
   m_EditorClassIdentifier: 
   recipeName: Hot Dog Pickles
-  icon: {fileID: 2800000, guid: 6c237ee862149490e8c9138ec934e8e8, type: 2}
+  icon: {fileID: 2800000, guid: 3dc32c5ed01dd49f384afcfcb7c85ee9, type: 2}
   ingredients:
   - {fileID: 11400000, guid: 905b63d024741452098aff37632b3b20, type: 2}
   - {fileID: 11400000, guid: ba3d893bc54f64384abea6b9aa9feae6, type: 2}

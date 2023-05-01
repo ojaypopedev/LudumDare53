@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HotDog Pickles Mustard
   m_EditorClassIdentifier: 
   recipeName: Hot Dog Pickles Mustard
-  icon: {fileID: 2800000, guid: 16b5a8350b7d04ff0a829e337804b6f5, type: 2}
+  icon: {fileID: 2800000, guid: b84c7d9388f324e6db42b8efdffa20a1, type: 2}
   ingredients:
   - {fileID: 11400000, guid: 905b63d024741452098aff37632b3b20, type: 2}
   - {fileID: 11400000, guid: ba3d893bc54f64384abea6b9aa9feae6, type: 2}

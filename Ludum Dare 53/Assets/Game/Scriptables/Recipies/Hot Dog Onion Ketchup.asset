@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Hot Dog Onion Ketchup
   m_EditorClassIdentifier: 
   recipeName: Hot Dog Onion ketchup
-  icon: {fileID: 2800000, guid: fdb28cc30c20f4dc3bb8abb3cb3fea52, type: 2}
+  icon: {fileID: 2800000, guid: 4077dc4d3719447fda5cca81b1ba7dbb, type: 2}
   ingredients:
   - {fileID: 11400000, guid: 905b63d024741452098aff37632b3b20, type: 2}
   - {fileID: 11400000, guid: ba3d893bc54f64384abea6b9aa9feae6, type: 2}

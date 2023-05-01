@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Hot Dog Mustard
   m_EditorClassIdentifier: 
   recipeName: Hot Dog Mustard
-  icon: {fileID: 2800000, guid: 3411f95b5bca146c78c6733100d9f00a, type: 2}
+  icon: {fileID: 2800000, guid: 859bf42c768be44eeb42a99b1d908140, type: 2}
   ingredients:
   - {fileID: 11400000, guid: 905b63d024741452098aff37632b3b20, type: 2}
   - {fileID: 11400000, guid: ba3d893bc54f64384abea6b9aa9feae6, type: 2}
