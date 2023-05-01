@@ -46,6 +46,8 @@ public class UISettingsScreen : BaseScreen
           
         });
 
+        sensitivitySlider.value = Mathf.InverseLerp(1f, 2.5f, sensitivityMulitiplier);
+
         sensitivitySlider.onValueChanged.RemoveAllListeners();
         sensitivitySlider.onValueChanged.AddListener(SetSenstivity);
         base.Show();
