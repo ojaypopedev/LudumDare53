@@ -60,6 +60,9 @@ public class LevelManager : MonoBehaviour
 
     public List<FoodGrabbers> foodSpawners = new List<FoodGrabbers>();
 
+    public float successRewardTime = 10;
+    public float failurePunishTime = 1;
+
     public Level currentLevel
     {
         get
@@ -191,11 +194,11 @@ public class LevelManager : MonoBehaviour
             case GameManager.GameMode.ENDLESS:
                 if (!success)
                 {
-                    currentTime -= 1f;
+                    currentTime -= failurePunishTime;
                 }
                 else
                 {
-                    currentTime += 5f;
+                    currentTime += successRewardTime;
                 }
                 break;
         }
