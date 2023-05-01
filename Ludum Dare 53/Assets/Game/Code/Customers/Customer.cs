@@ -128,11 +128,35 @@ public class FoodOrder
     public Customer customer;
     public float StartTime;
     public float TotalTime;
-    public float TimeLeft => TotalTime - (Time.time - StartTime);
-    public float TimeElapsed => (Time.time - StartTime);
+
+
+    float _cachedTime;
+    float OrderTime
+    {
+        get
+        {
+            if(orderFrozen == false)
+            {
+                _cachedTime = Time.time;
+            }
+
+            return _cachedTime;
+        }
+    }
+    bool orderFrozen = false;
+
+    public void FreezeOrderTimer()
+    {
+        orderFrozen = true;
+    }
+
+    public float TimeLeft => TotalTime - (OrderTime - StartTime);
+  
+    public float TimeElapsed => (OrderTime - StartTime);
     public float TimeLeftPercentage => TimeLeft / TotalTime;
 
     public System.Action OnTimeRanOut;
+
 
     public FoodOrder(Recipie recipie, Customer owner,  float totaltime)
     {

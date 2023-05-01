@@ -150,7 +150,24 @@ namespace HotDogCannon.Player {
                 instance.gameObject.SetActive(true);
                 instance.transform.localScale *= 2.5f;
 
-                ArcData.ShootAlongArc(data, instance.gameObject, speed, () =>
+                float shootSpeed = speed;
+                if(data.HitTarget == false)
+                {
+                    shootSpeed *= 3;
+                }
+
+                if(data.HitCollider)
+                {
+
+                    var customer = data.HitCollider.GetComponent<Customer>();
+
+                    if (customer)
+                    {
+                        customer.currentFoodOrder.FreezeOrderTimer();// (instance);
+                    }
+                }
+
+                ArcData.ShootAlongArc(data, instance.gameObject, shootSpeed, () =>
                 {
                     if (data.HitCollider)
                     {
