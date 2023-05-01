@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public static System.Action onReset;
     public static System.Action onGameStarted;
     public static System.Action<CompleteState> onGameFinished;
-
+    
 
     // Enums
     public enum CompleteState
@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     {
         INIT,
         MENU,
+        PAUSED,
         PLAYING,
         COMPLETE,
     }
@@ -75,6 +76,50 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         onGameStarted?.Invoke();
+    }
+
+    public void PauseGame()
+    {
+        PauseGame(true);
+    }
+
+    public void UnPauseGame()
+    {
+        PauseGame(false);
+    }
+
+    static GameState lastState;
+    public static void PauseGame(bool paused, bool showMenu = false)
+    {
+        lastState = gameState;
+
+        if (gameState == GameState.PAUSED && paused) return;
+
+        if (paused)
+        {
+            gameState = GameState.PAUSED;
+        }
+        else
+        {
+            gameState = lastState;
+        }
+    }
+
+    public void ForceCompleteLevel()
+    {
+        CompleteLevel(CompleteState.WIN);
+    }
+
+    public void forceMouseVisible()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    public void forceMouseHidden()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     public static void CompleteLevel(CompleteState completeState)

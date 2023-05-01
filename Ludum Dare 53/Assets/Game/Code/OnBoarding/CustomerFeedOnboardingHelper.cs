@@ -9,6 +9,10 @@ public class CustomerFeedOnboardingHelper : MonoBehaviour
 
     BaseOnboardingEvent onboardingEvent;
 
+    public int requiredFeeds = 1;
+
+    int numFeeds = 0;
+
     public void Awake()
     {
         onboardingEvent = GetComponent<BaseOnboardingEvent>();
@@ -24,7 +28,9 @@ public class CustomerFeedOnboardingHelper : MonoBehaviour
     {
         if (success)
         {
-            onboardingEvent.CompleteOnboarding();
+            numFeeds++;
+            if(numFeeds >= requiredFeeds)
+                onboardingEvent.CompleteOnboarding();
         }
     }
 

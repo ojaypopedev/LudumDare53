@@ -21,7 +21,7 @@ public class UIStartScreen : BaseScreen
     public void OnReset()
     {
         Show();
-        levelText.text = "Level " + (LevelManager.instance.currentLevelIndex + 1).ToString();
+        levelText.text = "Level " + (LevelManager.instance.currentLevelIndex + 1).ToString() + " : " + LevelManager.instance.currentLevel.levelName;
     }
 
     public void OnClickStart()

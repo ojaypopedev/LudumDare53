@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using HotDogCannon.FoodPrep;
 
 public class LevelManager : MonoBehaviour
@@ -24,9 +25,32 @@ public class LevelManager : MonoBehaviour
         public Vector2 minMaxTimeBetweenOrders;
 
         public CharacterCustomizations characterCustomizations;
+
+        public UnityEvent onLevelStart;
+    }
+
+    [System.Serializable]
+    public class FoodGrabbers
+    {
+        public string ingredientNamel;
+        public Ingredient linkedIngredient;
+        public FoodObject obj;
+        public FoodSpawner spawner;
+
+        public void SetOn(bool on)
+        {
+            if (obj) obj.gameObject.SetActive(on);
+            if (spawner)
+            {
+                spawner.gameObject.SetActive(on);
+                if(on) spawner.BeginSpawn();
+            }
+        }
     }
 
     public List<Level> levels = new List<Level>();
+
+    public List<FoodGrabbers> foodSpawners = new List<FoodGrabbers>();
 
     public Level currentLevel
     {
@@ -83,16 +107,21 @@ public class LevelManager : MonoBehaviour
 
     void OnGameStarted()
     {
+        currentLevel.onLevelStart?.Invoke();
         StartCoroutine(DoGameTimer());
+        SetSpawners();
     }
 
     IEnumerator DoGameTimer()
     {
-        while(currentTime > 0 && GameManager.gameState == GameManager.GameState.PLAYING)
+        while(currentTime > 0)
         {
             yield return new WaitForSeconds(1);
-            currentTime--;
-            onGameTimerChanged?.Invoke();
+            if (GameManager.gameState == GameManager.GameState.PLAYING)
+            {
+                currentTime--;
+                onGameTimerChanged?.Invoke();
+            }
         }
 
         GameManager.CompleteLevel(GameManager.CompleteState.FAIL);
@@ -126,6 +155,29 @@ public class LevelManager : MonoBehaviour
       
         customerManager.Init(currentLevel);
 
+        SetSpawners();
+
+    }
+
+    void SetSpawners()
+    {
+        foodSpawners.ForEach(f => f.SetOn(false));
+
+        List<Ingredient> requiredIngredients = new List<Ingredient>();
+
+        currentLevel.recipies.ForEach(r =>
+        {
+            r.ingredients.ForEach(i =>
+            {
+                if (requiredIngredients.Contains(i) == false)
+                    requiredIngredients.Add(i);
+            });
+        });
+
+        requiredIngredients.ForEach(r =>
+        {
+            foodSpawners.Find(f => f.linkedIngredient.foodName == r.foodName).SetOn(true);
+        });
     }
 
     private void OnDestroy()
