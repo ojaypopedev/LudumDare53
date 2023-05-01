@@ -59,6 +59,7 @@ namespace HotDogCannon.Player {
         {
             isActive = false;
             Refresh(Vector2.zero);
+            _currentRounds = 0;
         }
 
         public void loadGun(FoodObject foodObject)

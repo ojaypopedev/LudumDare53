@@ -14,8 +14,17 @@ public class UIOnboardingMessage : BaseScreen
 
     public override void Awake()
     {
+        GameManager.onReset += OnReset;
         instance = this;
         base.Awake();
+    }
+
+    public void OnReset()
+    {
+        StopAllCoroutines();
+        messageBacklog.Clear();
+        isShown = false;
+        Hide();
     }
 
     public void ShowMessage(string message)

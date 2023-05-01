@@ -142,6 +142,12 @@ public class LevelManager : MonoBehaviour
         SetSpawners();
     }
 
+    public void ResumeGame()
+    {
+        StartCoroutine(DoGameTimer());
+        SetSpawners();
+    }
+
     IEnumerator DoGameTimer()
     {
         while(currentTime > 0)
@@ -229,6 +235,7 @@ public class LevelManager : MonoBehaviour
 
     void LoadTutorial()
     {
+
 
         levels.ForEach(l =>
         {

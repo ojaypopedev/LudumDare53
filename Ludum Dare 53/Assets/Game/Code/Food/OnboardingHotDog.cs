@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using HotDogCannon.FoodPrep;
 
 public class OnboardingHotDog : MonoBehaviour
 {
@@ -11,6 +12,18 @@ public class OnboardingHotDog : MonoBehaviour
     {
         startpos = transform.position;
         startRot = transform.rotation;
+        GameManager.onGameStarted += OnGameReset;
+    }
+
+    public void OnGameReset()
+    {
+        if(GameManager.gameMode == GameManager.GameMode.TUTORIAL)
+        {
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
+            GetComponent<FoodObject>().SetPhysics(false, true);
+            transform.position = startpos;
+            transform.rotation = startRot;
+        }
     }
 
     public HotDogCannon.FoodPrep.FoodObject foodObj;

@@ -28,7 +28,11 @@ public class onboardingManager : MonoBehaviour
         BaseOnboardingEvent.onEventCompleted += OnOnboardingComplete;
         if(completedOnboarding == false)
         {
-            onboardingEvents.ForEach(o => o.isCompleted = false);
+            onboardingEvents.ForEach(o =>
+            {
+                o.isCompleted = false;
+                o.isStarted = false;
+            });
         }
     }
 
@@ -36,7 +40,11 @@ public class onboardingManager : MonoBehaviour
     public void OnGameStarted()
     {
         if(GameManager.gameMode == GameManager.GameMode.TUTORIAL)
-            onboardingEvents.ForEach(o => o.isCompleted = false);
+            onboardingEvents.ForEach(o =>
+            {
+                o.isCompleted = false;
+                o.isStarted = false;
+            });
         StartOnboarding();
     }
 

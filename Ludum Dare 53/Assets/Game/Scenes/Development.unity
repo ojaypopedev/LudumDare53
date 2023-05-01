@@ -1459,15 +1459,15 @@ PrefabInstance:
     - target: {fileID: 1369886628839963379, guid: e0b52f0f5fc123645bb95ada74d7f4c3,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 1369886628839963379, guid: e0b52f0f5fc123645bb95ada74d7f4c3,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1369886628839963379, guid: e0b52f0f5fc123645bb95ada74d7f4c3,
         type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1369886628839963379, guid: e0b52f0f5fc123645bb95ada74d7f4c3,
+        type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
@@ -1484,7 +1484,7 @@ PrefabInstance:
     - target: {fileID: 1369886629353582365, guid: e0b52f0f5fc123645bb95ada74d7f4c3,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 150
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1369886629353582365, guid: e0b52f0f5fc123645bb95ada74d7f4c3,
         type: 3}
@@ -1509,7 +1509,7 @@ PrefabInstance:
     - target: {fileID: 1369886629665839007, guid: e0b52f0f5fc123645bb95ada74d7f4c3,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 150
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1369886629665839007, guid: e0b52f0f5fc123645bb95ada74d7f4c3,
         type: 3}
@@ -1534,7 +1534,7 @@ PrefabInstance:
     - target: {fileID: 1369886630452598758, guid: e0b52f0f5fc123645bb95ada74d7f4c3,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 150
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1369886630452598758, guid: e0b52f0f5fc123645bb95ada74d7f4c3,
         type: 3}
@@ -1559,7 +1559,7 @@ PrefabInstance:
     - target: {fileID: 1369886630729437314, guid: e0b52f0f5fc123645bb95ada74d7f4c3,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 150
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1369886630729437314, guid: e0b52f0f5fc123645bb95ada74d7f4c3,
         type: 3}
@@ -2285,6 +2285,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: ba3d893bc54f64384abea6b9aa9feae6,
         type: 2}
+    - target: {fileID: 6212542505537930029, guid: d95d76ad95fe94c0a9663ba0787e6331,
+        type: 3}
+      propertyPath: isPersistent
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6212542505537930030, guid: d95d76ad95fe94c0a9663ba0787e6331,
         type: 3}
       propertyPath: m_IsKinematic
@@ -6769,6 +6774,18 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1075913534}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: OnCloseSettings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1075913534}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: Reset
         m_Mode: 1
         m_Arguments:
@@ -10522,6 +10539,11 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 3623417281898016388, guid: bfc080c15ab4242b5b78460beffe16d2,
         type: 3}
+      propertyPath: isPersistent
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3623417281898016388, guid: bfc080c15ab4242b5b78460beffe16d2,
+        type: 3}
       propertyPath: mergedItems.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -11179,6 +11201,97 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 898c570f8e2fb4fd695598bb278beb4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onClickedPause:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1075913534}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: forceMouseVisible
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1075913534}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: PauseGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 406968398}
+        m_TargetAssemblyTypeName: UISettingsScreen, Assembly-CSharp
+        m_MethodName: Show
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onClickedUnpause:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1075913534}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: forceMouseHidden
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1075913534}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: UnPauseGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1484860723}
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: ResumeGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 406968398}
+        m_TargetAssemblyTypeName: BaseScreen, Assembly-CSharp
+        m_MethodName: Hide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  uiOnboardingNextButton: {fileID: 812434015}
 --- !u!1001 &1084398810
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15416,6 +15529,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1484860721}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1484860723 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8232625215430512595, guid: 4c49427099bad47fb9b23fd6faa5a5e8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1484860721}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aab937c31c52845dea67f2d981e6069c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1499231276
 GameObject:
   m_ObjectHideFlags: 0
@@ -15680,9 +15805,9 @@ RectTransform:
   - {fileID: 1232300602}
   - {fileID: 596239479}
   - {fileID: 1899004678}
+  - {fileID: 621826989}
   - {fileID: 406968397}
   - {fileID: 1576425274}
-  - {fileID: 621826989}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -19868,6 +19993,18 @@ MonoBehaviour:
       - m_Target: {fileID: 406968398}
         m_TargetAssemblyTypeName: BaseScreen, Assembly-CSharp
         m_MethodName: Hide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1075913534}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: OnCloseSettings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

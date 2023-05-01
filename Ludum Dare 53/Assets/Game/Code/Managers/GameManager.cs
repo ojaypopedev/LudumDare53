@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,7 +11,13 @@ public class GameManager : MonoBehaviour
     public static System.Action onReset;
     public static System.Action onGameStarted;
     public static System.Action<CompleteState> onGameFinished;
-    
+
+    public UnityEvent onClickedPause;
+    public UnityEvent onClickedUnpause;
+
+    public GameObject uiOnboardingNextButton;
+
+    bool isPaused;
 
     // Enums
     public enum CompleteState
@@ -79,7 +86,32 @@ public class GameManager : MonoBehaviour
         }
 #endif
 
+        if (uiOnboardingNextButton.activeInHierarchy)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
 
+        if (Input.GetKeyDown(KeyCode.Escape) && (gameState == GameState.PLAYING || gameState == GameState.PAUSED))
+        {
+            isPaused = !isPaused;
+
+            if (isPaused)
+            {
+                onClickedPause?.Invoke();
+            }
+            else
+            {
+                onClickedUnpause?.Invoke();
+            }
+        }
+
+    }
+
+    public void OnCloseSettings()
+    {
+        isPaused = false;
+        onClickedUnpause?.Invoke();
     }
 
 
@@ -119,7 +151,8 @@ public class GameManager : MonoBehaviour
     static GameState lastState;
     public static void PauseGame(bool paused, bool showMenu = false)
     {
-        lastState = gameState;
+        if(gameState != GameState.PAUSED)
+            lastState = gameState;
 
         if (gameState == GameState.PAUSED && paused) return;
 
