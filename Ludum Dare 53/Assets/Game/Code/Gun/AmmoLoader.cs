@@ -21,7 +21,13 @@ namespace HotDogCannon.Player {
                 linkedGun.loadGun(foodObj);
             }
 
+         
+
+            onFoodDropped?.Invoke(foodObj);
+
             foodObj.gameObject.SetActive(false);
         }
     }
+
+    
 }

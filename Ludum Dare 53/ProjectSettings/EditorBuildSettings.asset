@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Game/Scenes/Development_1.unity
-    guid: 8feed762b8382403893a81922be2d2fc
+    path: Assets/Game/Scenes/TestMacShit.unity
+    guid: eabb4bb3f1e767c4d90f547be0637971
   m_configObjects: {}

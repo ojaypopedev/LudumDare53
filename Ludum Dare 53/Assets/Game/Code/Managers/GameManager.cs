@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
         Reset();
     }
 
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.S))
@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
             Reset();
         }
     }
-# endif
+//# endif
 
     // PUBLIC
     public static void Reset()
