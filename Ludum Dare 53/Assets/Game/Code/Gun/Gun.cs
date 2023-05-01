@@ -66,6 +66,11 @@ namespace HotDogCannon.Player {
             onLoadedAmmo?.Invoke(foodObject);
         }
 
+        public void FroceSetAmmoCount(int amount)
+        {
+            _currentRounds = amount;
+        }
+
         public void Refresh(Vector2 coords)
         {
 

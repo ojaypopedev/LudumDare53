@@ -12,9 +12,16 @@ public class onboardingManager : MonoBehaviour
         set { PlayerPrefs.SetInt("onBoarding.completed", value ? 1 : 0); }
     }
 
+    BaseOnboardingEvent lastOnboarding;
+
     private void Awake()
     {
         GameManager.onGameStarted += OnGameStarted;
+        BaseOnboardingEvent.onEventCompleted += OnOnboardingComplete;
+        if(completedOnboarding == false)
+        {
+            PlayerPrefs.DeleteAll();
+        }
     }
 
     public void OnGameStarted()
@@ -25,6 +32,26 @@ public class onboardingManager : MonoBehaviour
     public void StartOnboarding()
     {
         if (!completedOnboarding)
+        {
             onboardingEvents[0].StartOnboarding();
+            lastOnboarding = onboardingEvents[0];
+        }
+    }
+
+    void OnOnboardingComplete(BaseOnboardingEvent e)
+    {
+        Debug.Log("hceking next");
+        if (lastOnboarding.autoNextStep)
+        {
+            Debug.Log("should do next");
+            var index = onboardingEvents.IndexOf(lastOnboarding);
+            if (index + 1 <= onboardingEvents.Count - 1)
+            {
+                lastOnboarding = onboardingEvents[index + 1];
+                lastOnboarding.StartOnboarding();
+                Debug.Log("done next");
+
+            }
+        }
     }
 }

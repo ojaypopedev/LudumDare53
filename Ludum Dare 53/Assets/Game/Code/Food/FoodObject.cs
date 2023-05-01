@@ -51,7 +51,9 @@ namespace HotDogCannon.FoodPrep
 
         // Actions
         public System.Action<FoodObject> onGrabbed;
+        public static System.Action<FoodObject> onGrabbedGlobal;
         static System.Action<FoodObject> onGrabItemChanged;
+        public static System.Action<FoodObject> onMergedFoodGlobal;
 
         [HideInInspector] public bool highlighted;
         [HideInInspector] public bool isMerged;
@@ -79,6 +81,8 @@ namespace HotDogCannon.FoodPrep
 
             fromItem.GetBehaviour().OnMerge(fromItem, this);
             currentPotentialMerge = null;
+            onMergedFoodGlobal?.Invoke(this);
+
         }
 
         public void Grab(Transform grabTarget)
@@ -106,6 +110,7 @@ namespace HotDogCannon.FoodPrep
             });
             currentGrabbed = this;
             onGrabbed?.Invoke(this);
+            onGrabbedGlobal?.Invoke(this);
         }
 
         void GrabInstantiated(Transform grabTarget)
@@ -123,6 +128,7 @@ namespace HotDogCannon.FoodPrep
             });
             currentGrabbed = foodobj;
             onGrabbed?.Invoke(foodobj);
+            onGrabbedGlobal?.Invoke(this);
         }
 
         public void UnGrab()

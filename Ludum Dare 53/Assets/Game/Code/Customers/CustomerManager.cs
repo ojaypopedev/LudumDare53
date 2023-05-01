@@ -13,6 +13,8 @@ public class CustomerManager : MonoBehaviour
     public int totalOrders = 10;
     public Vector2 mimMaxTimeBetweenOrders;
 
+
+    public bool freezeOrders;
     public static System.Action<bool> onCompletedOrder;
     public static System.Action<bool, FoodOrder> onCompletedFoodOrder;
     public static System.Action<Customer> onGivenOrder;
@@ -68,6 +70,11 @@ public class CustomerManager : MonoBehaviour
 
     }
 
+    public void SetFreezeOrders(bool on)
+    {
+        freezeOrders = on;
+    }
+
     public void OnFoodOrderCompleted(bool success, FoodOrder foodOrder)
     {
         onCompletedOrder?.Invoke(success);
@@ -94,11 +101,14 @@ public class CustomerManager : MonoBehaviour
         yield return new WaitForSeconds(extraTime);
         if (GameManager.gameState == GameManager.GameState.PLAYING)
         {
-            var totalTime = Random.Range(OrderTimeMin, OrderTimeMax);
-            var Customer = GetRandomAvailableCustomer();
-            Customer.AssignFoodOrder(GetRandomRecipie(), totalTime);
+            if (!freezeOrders)
+            {
+                var totalTime = Random.Range(OrderTimeMin, OrderTimeMax);
+                var Customer = GetRandomAvailableCustomer();
+                Customer.AssignFoodOrder(GetRandomRecipie(), totalTime);
 
-            onGivenOrder?.Invoke(Customer);
+                onGivenOrder?.Invoke(Customer);
+            }
         }
     }
 }

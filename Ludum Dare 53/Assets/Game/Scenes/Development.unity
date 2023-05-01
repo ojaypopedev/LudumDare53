@@ -124,6 +124,76 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &38751126
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 38751127}
+  - component: {fileID: 38751129}
+  - component: {fileID: 38751128}
+  m_Layer: 0
+  m_Name: Get Sausage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &38751127
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38751126}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1728492562}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &38751128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38751126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60ccb64a609da4c62bb39d2fb67b55f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ingredient: {fileID: 11400000, guid: ba3d893bc54f64384abea6b9aa9feae6, type: 2}
+  expectRecipe: {fileID: 11400000, guid: 81dc420481ce46e489318e63ce890fc6, type: 2}
+--- !u!114 &38751129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38751126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf88c96b03259411c8bd160388517691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: Get Hot Dog
+  onBoardingText: Amazing, let's now grab a sausage and drop it onto the bun to make
+    a hot dog!
+  arrowHelperTarget: {fileID: 1427582812}
+  onStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  onCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+  autoNextStep: 1
 --- !u!1 &80472378
 GameObject:
   m_ObjectHideFlags: 0
@@ -1933,6 +2003,76 @@ RectTransform:
   m_AnchoredPosition: {x: 371.59998, y: -402.10004}
   m_SizeDelta: {x: 743.19995, y: 79.76}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &452214617
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 452214618}
+  - component: {fileID: 452214620}
+  - component: {fileID: 452214619}
+  m_Layer: 0
+  m_Name: Get Bun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &452214618
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452214617}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1728492562}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &452214619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452214617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60ccb64a609da4c62bb39d2fb67b55f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ingredient: {fileID: 11400000, guid: 905b63d024741452098aff37632b3b20, type: 2}
+  expectRecipe: {fileID: 0}
+--- !u!114 &452214620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452214617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf88c96b03259411c8bd160388517691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: Get Bun!
+  onBoardingText: Great! Now let's make a hot dog!  turn back to the prep station
+    and drag a bun to the chopping board!
+  arrowHelperTarget: {fileID: 1056810743}
+  onStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  onCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+  autoNextStep: 1
 --- !u!1 &462466493
 GameObject:
   m_ObjectHideFlags: 0
@@ -5344,20 +5484,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1045967661}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1045967664
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1045967663}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc015356629a048b3942de3e51f15e33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  linkedEvennt: {fileID: 1891046713}
-  foodObj: {fileID: 1045967665}
 --- !u!114 &1045967665 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3623417281898016388, guid: bfc080c15ab4242b5b78460beffe16d2,
@@ -5370,6 +5496,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2c74b695af6349c28432c4c77677215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1045967666 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3623417281898016389, guid: bfc080c15ab4242b5b78460beffe16d2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1045967661}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1045967668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045967663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc015356629a048b3942de3e51f15e33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodObj: {fileID: 1045967665}
 --- !u!1 &1056810742
 GameObject:
   m_ObjectHideFlags: 0
@@ -6392,6 +6537,98 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1231229588}
   m_CullTransparentMesh: 1
+--- !u!1 &1256954088
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1256954089}
+  - component: {fileID: 1256954091}
+  - component: {fileID: 1256954092}
+  m_Layer: 0
+  m_Name: StartTheGame
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1256954089
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256954088}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1728492562}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1256954091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256954088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf88c96b03259411c8bd160388517691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: StartGame
+  onBoardingText: 'Awesome! Pop that into the launcher and feed more of the crowd! '
+  arrowHelperTarget: {fileID: 1427582812}
+  onStarted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1917598003}
+        m_TargetAssemblyTypeName: CustomerManager, Assembly-CSharp
+        m_MethodName: SetFreezeOrders
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1917598003}
+        m_TargetAssemblyTypeName: CustomerManager, Assembly-CSharp
+        m_MethodName: OnGameStarted
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+  autoNextStep: 1
+--- !u!114 &1256954092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256954088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37954dd768b804bea9f9faf69d162405, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  infiniteAmmo: 0
 --- !u!224 &1257161358 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4373622323402276011, guid: 196f05283cbbd4bf4a36ccb02d2c6b74,
@@ -6724,7 +6961,19 @@ MonoBehaviour:
   linkedGun: {fileID: 443189107749177110}
   onFoodDropped:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1891046713}
+        m_TargetAssemblyTypeName: BaseOnboardingEvent, Assembly-CSharp
+        m_MethodName: CompleteOnboarding
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!54 &1328208878
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6824,6 +7073,103 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1356997509}
   m_Mesh: {fileID: -808917063212120355, guid: f270d5a026935a14f8b7744d5d6c9340, type: 3}
+--- !u!1001 &1378734154
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 1632104982}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 07d936a1bafc045e692ccce7ee8216bc,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 07d936a1bafc045e692ccce7ee8216bc,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 07d936a1bafc045e692ccce7ee8216bc,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 07d936a1bafc045e692ccce7ee8216bc,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 07d936a1bafc045e692ccce7ee8216bc,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 07d936a1bafc045e692ccce7ee8216bc,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 07d936a1bafc045e692ccce7ee8216bc,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 07d936a1bafc045e692ccce7ee8216bc,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 07d936a1bafc045e692ccce7ee8216bc,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 07d936a1bafc045e692ccce7ee8216bc,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 07d936a1bafc045e692ccce7ee8216bc,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 07d936a1bafc045e692ccce7ee8216bc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 07d936a1bafc045e692ccce7ee8216bc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 07d936a1bafc045e692ccce7ee8216bc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 07d936a1bafc045e692ccce7ee8216bc,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3138379c4ab6140949f254a9230b0abe, type: 2}
+    - target: {fileID: 919132149155446097, guid: 07d936a1bafc045e692ccce7ee8216bc,
+        type: 3}
+      propertyPath: m_Name
+      value: ChevronArrow
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: 07d936a1bafc045e692ccce7ee8216bc, type: 3}
+--- !u!4 &1378734155 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 07d936a1bafc045e692ccce7ee8216bc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1378734154}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1391981140
 GameObject:
   m_ObjectHideFlags: 0
@@ -7686,6 +8032,129 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1453542821}
   m_CullTransparentMesh: 1
+--- !u!1 &1473021638 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 07d936a1bafc045e692ccce7ee8216bc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1378734154}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1499231276
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1499231277}
+  - component: {fileID: 1499231278}
+  - component: {fileID: 1499231279}
+  m_Layer: 0
+  m_Name: SHOOT HOT DOG
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1499231277
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499231276}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1728492562}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1499231278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499231276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf88c96b03259411c8bd160388517691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: SHOOTHOTDOG
+  onBoardingText: Now we've got some ammo, let's feed the crowd aim at them to equip
+    your Dog Launcher 3000! Click to shoot!
+  arrowHelperTarget: {fileID: 0}
+  onStarted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1917598003}
+        m_TargetAssemblyTypeName: CustomerManager, Assembly-CSharp
+        m_MethodName: SetFreezeOrders
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1917598003}
+        m_TargetAssemblyTypeName: CustomerManager, Assembly-CSharp
+        m_MethodName: OnGameStarted
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onCompleted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1917598003}
+        m_TargetAssemblyTypeName: CustomerManager, Assembly-CSharp
+        m_MethodName: SetFreezeOrders
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 443189107749177110}
+        m_TargetAssemblyTypeName: HotDogCannon.Player.Gun, Assembly-CSharp
+        m_MethodName: FroceSetAmmoCount
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  autoNextStep: 1
+--- !u!114 &1499231279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499231276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37954dd768b804bea9f9faf69d162405, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  infiniteAmmo: 0
 --- !u!1 &1512826671
 GameObject:
   m_ObjectHideFlags: 0
@@ -8448,6 +8917,74 @@ MonoBehaviour:
   hotDogsFired: {fileID: 2031607074}
   accuracy: {fileID: 2138704949}
   continueButton: {fileID: 1859442558}
+--- !u!1 &1632104981
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1632104982}
+  - component: {fileID: 1632104983}
+  - component: {fileID: 1632104984}
+  m_Layer: 0
+  m_Name: ArrowHelper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1632104982
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632104981}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.67246157, y: 0.2859813, z: 1.6474336}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1378734155}
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1632104983
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632104981}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 97c042941cc4d4d29b71b02f959b6a6e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1632104984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632104981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bc8068b757e9409483f833a262b0f93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  model: {fileID: 1473021638}
 --- !u!1 &1633075328
 GameObject:
   m_ObjectHideFlags: 0
@@ -8786,6 +9323,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1891046712}
+  - {fileID: 1499231277}
+  - {fileID: 452214618}
+  - {fileID: 38751127}
+  - {fileID: 1256954089}
   m_Father: {fileID: 80472379}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8803,6 +9344,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onboardingEvents:
   - {fileID: 1891046713}
+  - {fileID: 1499231278}
+  - {fileID: 452214620}
+  - {fileID: 38751129}
+  - {fileID: 1256954091}
 --- !u!1 &1728702266
 GameObject:
   m_ObjectHideFlags: 0
@@ -9756,7 +10301,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 56.7}
+  m_AnchoredPosition: {x: 0, y: 56.69995}
   m_SizeDelta: {x: -600, y: 246.8}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1810856061
@@ -10219,7 +10764,7 @@ GameObject:
   - component: {fileID: 1891046712}
   - component: {fileID: 1891046713}
   m_Layer: 0
-  m_Name: LOAD HOT DOG
+  m_Name: PICKUPHOTDOG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10254,15 +10799,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventName: LoadHotDog
   onBoardingText: 'Hover over the hot dog, click and hold to drag and drop the hot
-    dog into the loader!
+    dog into the loader to your left!
 
 '
+  arrowHelperTarget: {fileID: 1045967666}
   onStarted:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1045967663}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1917598003}
+        m_TargetAssemblyTypeName: CustomerManager, Assembly-CSharp
+        m_MethodName: SetFreezeOrders
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10287,7 +10845,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  autoNextStep: 0
+  autoNextStep: 1
 --- !u!1 &1895039657
 GameObject:
   m_ObjectHideFlags: 0
@@ -10628,6 +11186,7 @@ MonoBehaviour:
   OrderTimeMax: 10
   totalOrders: 10
   mimMaxTimeBetweenOrders: {x: 0, y: 0}
+  freezeOrders: 0
   customizations: {fileID: 11400000, guid: ebc1a7ccccfc55b46a6a0d38a8522d7b, type: 2}
 --- !u!1 &1945463630
 GameObject:

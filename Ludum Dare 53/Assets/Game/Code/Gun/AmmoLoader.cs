@@ -19,11 +19,8 @@ namespace HotDogCannon.Player {
             if(foodObj != null)
             {
                 linkedGun.loadGun(foodObj);
+                onFoodDropped?.Invoke(foodObj);
             }
-
-         
-
-            onFoodDropped?.Invoke(foodObj);
 
             foodObj.gameObject.SetActive(false);
         }

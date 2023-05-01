@@ -4,21 +4,23 @@ using UnityEngine;
 
 public class OnboardingHotDog : MonoBehaviour
 {
-    public BaseOnboardingEvent linkedEvennt;
-    public HotDogCannon.FoodPrep.FoodObject foodObj;
+    Vector3 startpos;
+    Quaternion startRot;
+
     private void Awake()
     {
-        HotDogCannon.Player.PlayerHandController.instance.gun.onLoadedAmmo += OnLoadedAmmo;
+        startpos = transform.position;
+        startRot = transform.rotation;
     }
 
-    public void OnLoadedAmmo(HotDogCannon.FoodPrep.FoodObject obj)
+    public HotDogCannon.FoodPrep.FoodObject foodObj;
+    private void Update()
     {
-        if(obj == foodObj) { linkedEvennt.CompleteOnboarding(); }
-
-    }
-
-    private void OnDestroy()
-    {
-        HotDogCannon.Player.PlayerHandController.instance.gun.onLoadedAmmo -= OnLoadedAmmo;
+        if(transform.position.y <= 0)
+        {
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
+            transform.position = startpos;
+            transform.rotation = startRot;
+        }
     }
 }
