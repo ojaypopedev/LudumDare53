@@ -43,6 +43,7 @@ public class onboardingManager : MonoBehaviour
         {
             o.isCompleted = false;
             o.isStarted = false;
+            lastOnboarding = null;
         });
     }
 

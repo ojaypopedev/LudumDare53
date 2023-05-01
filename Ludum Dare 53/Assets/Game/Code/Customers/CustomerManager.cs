@@ -55,6 +55,7 @@ public class CustomerManager : MonoBehaviour
     {     
         instance = this;
         GameManager.onGameStarted += OnGameStarted;
+        GameManager.onReset += OnReset;
     }
 
     Recipie currentRecipe;
@@ -107,13 +108,13 @@ public class CustomerManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            GetRandomAvailableCustomer().AssignFoodOrder(GetRandomRecipie(), Random.Range(OrderTimeMin, OrderTimeMax));
+          //  GetRandomAvailableCustomer().AssignFoodOrder(GetRandomRecipie(), Random.Range(OrderTimeMin, OrderTimeMax));
         }
     }
 
     public void OnReset()
     {
-
+        freezeOrders = false;
     }
 
     public void SetFreezeOrders(bool on)
