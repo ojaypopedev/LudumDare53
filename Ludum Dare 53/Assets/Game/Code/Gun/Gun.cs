@@ -163,7 +163,10 @@ namespace HotDogCannon.Player {
 
                     if (customer)
                     {
-                        customer.currentFoodOrder.FreezeOrderTimer();// (instance);
+                        if (customer.currentFoodOrder != null)
+                        {
+                             customer.currentFoodOrder.FreezeOrderTimer();// (instance);
+                        }
                     }
                 }
 

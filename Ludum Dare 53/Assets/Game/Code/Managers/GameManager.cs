@@ -64,9 +64,10 @@ public class GameManager : MonoBehaviour
         Reset();
     }
 
-//#if UNITY_EDITOR
+
     private void Update()
     {
+#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.S))
         {
             StartGame();
@@ -76,8 +77,11 @@ public class GameManager : MonoBehaviour
         {
             Reset();
         }
+#endif
+
+
     }
-//# endif
+
 
     // PUBLIC
     public static void Reset()
