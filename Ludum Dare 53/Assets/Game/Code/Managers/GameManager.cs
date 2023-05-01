@@ -92,7 +92,8 @@ public class GameManager : MonoBehaviour
             Cursor.visible = true;
         }
 
-        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) && (gameState == GameState.PLAYING || gameState == GameState.PAUSED))
+        if (((Input.GetKeyDown(KeyCode.Escape) && Application.platform != RuntimePlatform.WebGLPlayer) || Input.GetKeyDown(KeyCode.P))
+            && (gameState == GameState.PLAYING || gameState == GameState.PAUSED))
         {
             isPaused = !isPaused;
 
