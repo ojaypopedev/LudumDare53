@@ -34,7 +34,7 @@ public class UIEndScreen : BaseScreen
         ordersFailed.text = StatTracker.failedOrders.ToString();
         waitTime.text = StatTracker.averageTime.ToString() + "s";
         hotDogsFired.text = StatTracker.hotDogsFired.ToString();
-        accuracy.text = StatTracker.accuracy.ToString() + "%";
+        accuracy.text = (Mathf.RoundToInt(StatTracker.accuracy * 100)).ToString() + "%";
 
         base.Show();
     }
