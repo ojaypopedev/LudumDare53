@@ -45,6 +45,7 @@ namespace HotDogCannon.FoodPrep
             var startPos = pos + axis * -longesSide.Value;
             var endPos = pos + axis * longesSide.Value;
 
+            
 
             PosAnims.AnimatPos(fromItem.transform, fromItem.transform.position, startPos, 0.2f, () =>
             {
@@ -54,6 +55,7 @@ namespace HotDogCannon.FoodPrep
                 fromItem.transform.position = topItem.mergepos.position;
                 result.OnSpawn(fromItem.objectToPickupIngredient);
                 topItem.Merge(result);
+                toItem.mergedItems.Add(result);
 
                 if (this == null) return;
                 PosAnims.AnimatPos(fromItem.transform, startPos, endPos, .5f, () =>

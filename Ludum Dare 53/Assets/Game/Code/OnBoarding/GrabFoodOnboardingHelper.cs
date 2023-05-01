@@ -32,7 +32,9 @@ public class GrabFoodOnboardingHelper : MonoBehaviour
 
     public void CheckGrab(FoodObject obj)
     {
-        if(onboardingEvent.isStarted && !onboardingEvent.isCompleted && obj.ingredient.foodName == ingredient.foodName)
+        if (obj == null || ingredient == null) return;
+
+        if(onboardingEvent.isStarted && !onboardingEvent.isCompleted && obj.ingredient != null && obj.ingredient.foodName == ingredient.foodName)
         {
             if(expectRecipe == null)
                 canComplete = true;

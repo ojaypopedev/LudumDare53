@@ -52,9 +52,11 @@ public class LevelManager : MonoBehaviour
 
     public List<Level> levels = new List<Level>();
 
-    public List<Level> storyLevels => levels.FindAll(l => l.hasLives);
+    public List<Level> storyLevels => levels.FindAll(l => l.hasLives && !l.isTutorial);
 
     public Level endlessLevel => levels.Find(l => !l.hasLives);
+
+    public Level tutorialLevel => levels.Find(l => l.isTutorial);
 
     public List<FoodGrabbers> foodSpawners = new List<FoodGrabbers>();
 
@@ -72,10 +74,16 @@ public class LevelManager : MonoBehaviour
 
                 return storyLevels[_currentLevelIndex];
             }
-
-            else
+            else if(GameManager.gameMode == GameManager.GameMode.ENDLESS)
             {
                 return endlessLevel;
+            }else if (GameManager.gameMode == GameManager.GameMode.TUTORIAL)
+            {
+                return tutorialLevel;
+            }
+            else
+            {
+                return null;
             }
         }
     }
@@ -120,6 +128,7 @@ public class LevelManager : MonoBehaviour
         GameManager.onGameFinished += OnLevelComplete;
         GameManager.onGameStarted += OnGameStarted;
         CustomerManager.onCompletedFoodOrder += OnOrderComplete;
+        GameManager.onGameModeChanged += LoadLevel;
         instance = this;
     }
 
@@ -152,13 +161,12 @@ public class LevelManager : MonoBehaviour
     {
         StopAllCoroutines();
         LoadLevel();
-        currentTime = currentLevel.overallTimeLimit;
-        onGameTimerChanged?.Invoke();
+
     }
 
     void OnLevelComplete(GameManager.CompleteState completeState)
     {
-        if (completeState == GameManager.CompleteState.WIN && _currentLevelIndex < storyLevels.Count - 1)
+        if (completeState == GameManager.CompleteState.WIN && _currentLevelIndex < storyLevels.Count - 1 && GameManager.gameMode == GameManager.GameMode.STORY)
             _currentLevelIndex++;
 
     }
@@ -187,7 +195,7 @@ public class LevelManager : MonoBehaviour
                 }
                 else
                 {
-                    currentTime += 5f;
+                    currentTime += 10f;
                 }
                 break;
         }
@@ -196,8 +204,13 @@ public class LevelManager : MonoBehaviour
     void LoadLevel()
     {
 
+        Debug.Log("loading level: " + GameManager.gameMode);
+
         switch (GameManager.gameMode)
         {
+            case GameManager.GameMode.TUTORIAL:
+                LoadTutorial();
+                break;
             case GameManager.GameMode.STORY:
                 LoadStoryLevel();
                 break;
@@ -207,7 +220,27 @@ public class LevelManager : MonoBehaviour
             default:
                 break;
         }
+        currentTime = currentLevel.overallTimeLimit;
+        onGameTimerChanged?.Invoke();
+    }
 
+    void LoadTutorial()
+    {
+
+        levels.ForEach(l =>
+        {
+            l.stadium.gameObject.SetActive(false);
+        });
+
+        UIHearts.EnableHearts(false);
+
+        tutorialLevel.stadium.gameObject.SetActive(true);
+
+        var customerManager = CustomerManager.instance;
+
+        customerManager.Init(currentLevel);
+
+        SetSpawners();
     }
 
     void LoadStoryLevel()
@@ -219,15 +252,9 @@ public class LevelManager : MonoBehaviour
 
         currentLives = 5;
 
-        if (!currentLevel.isTutorial)
-        {
-            UIHearts.EnableHearts(true);
-            UIHearts.SetHearts(currentLives);
-        }
-        else
-        {
-            UIHearts.DisableHearts();
-        }
+        UIHearts.EnableHearts(true);
+        UIHearts.SetHearts(currentLives);
+
 
         storyLevels[_currentLevelIndex].stadium.gameObject.SetActive(true);
 

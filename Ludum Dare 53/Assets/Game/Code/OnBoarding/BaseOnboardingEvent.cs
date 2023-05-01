@@ -44,6 +44,7 @@ public class BaseOnboardingEvent : MonoBehaviour
     public virtual void CompleteOnboarding()
     {
         if (isCompleted || !isStarted) return;
+        if (completesTutorial) onboardingManager.instance.completedOnboarding = true;
         UIOnboardingMessage.instance.OnClickContinue();
         onEventCompleted?.Invoke(this);
         onCompleted?.Invoke();

@@ -10,13 +10,16 @@ public class UILevelLoadButton : MonoBehaviour
     public Button LoadButton;
 
     public Color LockedColour;
+    public Color unlockedColour;
 
     public void Refresh(string LevelInfo, System.Action OnClicked, bool locked = false, string lockedInfo = "")
     {
         LoadButton.onClick.RemoveAllListeners();
         if(locked == false)
         {
+            LoadButton.interactable = true;
             LoadButton.onClick.AddListener(()=>OnClicked?.Invoke());
+            LoadButton.image.color = unlockedColour;
 
         }
         else
@@ -26,6 +29,7 @@ public class UILevelLoadButton : MonoBehaviour
         }
         lockedInfoText.text = lockedInfo;
         LevelInfoText.text = LevelInfo;
+        LevelInfoText.gameObject.SetActive(!locked);
         LockedObject.SetActive(locked);
     }
 
