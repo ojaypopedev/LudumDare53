@@ -132,6 +132,7 @@ MonoBehaviour:
   rb: {fileID: 8512131683402283739}
   col: {fileID: 5755998337866569559}
   isPersistent: 1
+  ignoreMerge: 0
   ingredient: {fileID: 11400000, guid: 0ceef2990b2275446827abf83381482f, type: 2}
   grabBehaviours: 0
   objectToPickup: {fileID: 0}
@@ -164,7 +165,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8299350914766581276}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: 0.387}
+  m_LocalPosition: {x: 0, y: 0.0988, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
