@@ -9,6 +9,9 @@ public class UiGameTimer : MonoBehaviour
 
     public GameObject timeChangeUIPrefab;
 
+    public GameObject endlessTime;
+    public TextMeshProUGUI endlessTimeText;
+
     private void Awake()
     {
         LevelManager.onGameTimerChanged += Refresh;
@@ -48,5 +51,7 @@ public class UiGameTimer : MonoBehaviour
     void Refresh()
     {
         timerText.text = LevelManager.getTimeLeftString;
+        endlessTime.gameObject.SetActive(GameManager.gameMode == GameManager.GameMode.ENDLESS);
+        endlessTimeText.text = "Current Time: " + LevelManager.currentTimeLastedString;
     }
 }

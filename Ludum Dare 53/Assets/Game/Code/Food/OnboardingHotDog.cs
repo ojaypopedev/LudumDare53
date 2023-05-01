@@ -19,6 +19,11 @@ public class OnboardingHotDog : MonoBehaviour
     {
         if(GameManager.gameMode == GameManager.GameMode.TUTORIAL)
         {
+            var rb = GetComponent<Rigidbody>();
+            if (rb == null)
+                rb = gameObject.AddComponent<Rigidbody>();
+
+            GetComponent<FoodObject>().rb = rb;
             GetComponent<Rigidbody>().velocity = Vector3.zero;
             GetComponent<FoodObject>().SetPhysics(false, true);
             transform.position = startpos;

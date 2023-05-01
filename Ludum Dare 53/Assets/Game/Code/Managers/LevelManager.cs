@@ -122,6 +122,34 @@ public class LevelManager : MonoBehaviour
     public static System.Action onGameTimerChanged;
 
     static float currentTime;
+    static float currentTimeLasted;
+    public static float endlessHighscore
+    {
+        get { return PlayerPrefs.GetFloat("Endless.highScore", 0); }
+        set { PlayerPrefs.SetFloat("Endless.highScore", value); }
+    }
+
+    public static string endlessHighScoreString
+    {
+        get
+        {
+            var mins = Mathf.Floor(endlessHighscore / 60f);
+            var seconds = endlessHighscore - (mins * 60);
+
+            return (mins + ":" + (seconds == 0 ? "00" : seconds));
+        }
+    }
+
+    public static string currentTimeLastedString
+    {
+        get
+        {
+            var mins = Mathf.Floor(currentTimeLasted / 60f);
+            var seconds = currentTimeLasted - (mins * 60);
+
+            return (mins + ":" + (seconds == 0 ? "00" : seconds));
+        }
+    }
 
     public static LevelManager instance;
 
@@ -157,6 +185,11 @@ public class LevelManager : MonoBehaviour
             {
                 currentTime--;
                 onGameTimerChanged?.Invoke();
+                if(GameManager.gameMode == GameManager.GameMode.ENDLESS){
+                    currentTimeLasted++;
+                    if (currentTimeLasted > endlessHighscore)
+                        endlessHighscore = currentTimeLasted;
+                }
             }
         }
 
@@ -230,6 +263,7 @@ public class LevelManager : MonoBehaviour
                 break;
         }
         currentTime = currentLevel.overallTimeLimit;
+        currentTimeLasted = 0;
         onGameTimerChanged?.Invoke();
     }
 

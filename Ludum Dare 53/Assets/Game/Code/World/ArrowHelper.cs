@@ -13,6 +13,12 @@ public class ArrowHelper : MonoBehaviour
         model.gameObject.SetActive(false);
         BaseOnboardingEvent.onEventStarted += OnStartedOnboarding;
         BaseOnboardingEvent.onEventCompleted += OnCompleteOnboarding;
+        GameManager.onReset += OnReset;
+    }
+
+    void OnReset()
+    {
+        RemoveCurrentTarget();
     }
 
     private void Update()
