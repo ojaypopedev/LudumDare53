@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d842cd929e2b9a54e97a74d42ba05ef4, type: 3}
-  m_Name: Hot Dog
+  m_Name: Hot Dog Mustard
   m_EditorClassIdentifier: 
-  recipeName: Hot Dog
-  icon: {fileID: 2800000, guid: ea77b49c2c0384d0f8d849a97b210cde, type: 2}
+  recipeName: Hot Dog Mustard
+  icon: {fileID: 2800000, guid: 3411f95b5bca146c78c6733100d9f00a, type: 2}
   ingredients:
   - {fileID: 11400000, guid: 905b63d024741452098aff37632b3b20, type: 2}
   - {fileID: 11400000, guid: ba3d893bc54f64384abea6b9aa9feae6, type: 2}
+  - {fileID: 11400000, guid: 0ceef2990b2275446827abf83381482f, type: 2}

@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d842cd929e2b9a54e97a74d42ba05ef4, type: 3}
-  m_Name: Hot Dog
+  m_Name: Hot Dog Ketchup
   m_EditorClassIdentifier: 
-  recipeName: Hot Dog
-  icon: {fileID: 2800000, guid: ea77b49c2c0384d0f8d849a97b210cde, type: 2}
+  recipeName: Hot Dog Ketchup
+  icon: {fileID: 2800000, guid: becbc0ed9b4534f98807fb13c573d2f5, type: 2}
   ingredients:
   - {fileID: 11400000, guid: 905b63d024741452098aff37632b3b20, type: 2}
   - {fileID: 11400000, guid: ba3d893bc54f64384abea6b9aa9feae6, type: 2}
+  - {fileID: 11400000, guid: 8d1df064f733afd45bd65d9729aa87d9, type: 2}

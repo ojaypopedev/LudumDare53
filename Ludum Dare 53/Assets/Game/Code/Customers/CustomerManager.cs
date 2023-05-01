@@ -10,7 +10,6 @@ public class CustomerManager : MonoBehaviour
     public List<Recipie> RecipiesInLevel = new List<Recipie>();
     public List<Customer> Customers = new List<Customer>();
     public float OrderTimeMin = 2, OrderTimeMax = 5;
-    public int totalOrders = 10;
     public Vector2 mimMaxTimeBetweenOrders;
 
 
@@ -37,6 +36,31 @@ public class CustomerManager : MonoBehaviour
         GameManager.onGameStarted += OnGameStarted;
     }
 
+    Recipie currentRecipe;
+    Recipie lastRecipie;
+
+    Recipie GetNextRecipe()
+    {
+        if(RecipiesInLevel.Count > 1)
+        {
+            var loopProtecter = 0;
+
+            var nextRecipe = GetRandomRecipie();
+
+            while (nextRecipe == lastRecipie && loopProtecter < 200)
+            {
+                nextRecipe = GetRandomRecipie();
+                loopProtecter++;
+            }
+
+            return nextRecipe;
+        }
+        else
+        {
+            return GetRandomRecipie();
+        }
+    }
+
     public void Init(LevelManager.Level level)
     {
         customizations = level.characterCustomizations;
@@ -52,6 +76,8 @@ public class CustomerManager : MonoBehaviour
 
     public void OnGameStarted()
     {
+        currentRecipe = GetNextRecipe();
+        lastRecipeChange = Time.time;
         StartCoroutine(NextCustomer());
     }
 
@@ -82,17 +108,14 @@ public class CustomerManager : MonoBehaviour
         if (success)
             ordersCompleted++;
 
-        if(ordersCompleted >= totalOrders)
-        {
-            GameManager.CompleteLevel(GameManager.CompleteState.WIN);
-        }
-        else
-        {
-            StartCoroutine(NextCustomer());
-        }
+
+        StartCoroutine(NextCustomer());
+
 
         Debug.Log($"Food Order Complete : {success}");
     }
+
+    float lastRecipeChange = 0;
 
     IEnumerator NextCustomer()
     {
@@ -102,9 +125,15 @@ public class CustomerManager : MonoBehaviour
         {
             if (!freezeOrders)
             {
+
+                if(Time.time - lastRecipeChange > 30)
+                {
+                    currentRecipe = GetNextRecipe();
+                }
+
                 var totalTime = Random.Range(OrderTimeMin, OrderTimeMax);
                 var Customer = GetRandomAvailableCustomer();
-                Customer.AssignFoodOrder(GetRandomRecipie(), totalTime);
+                Customer.AssignFoodOrder(currentRecipe, totalTime);
 
                 onGivenOrder?.Invoke(Customer);
             }
