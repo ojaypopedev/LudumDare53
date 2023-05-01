@@ -14,6 +14,7 @@ public class UIEndScreen : BaseScreen
     public TextMeshProUGUI accuracy;
     public Button continueButton;
 
+
     public override void Awake()
     {
         GameManager.onGameFinished += Show;
