@@ -19,6 +19,17 @@ namespace HotDogCannon.Player
         public float moveSensitivity;
         public float rotSensitivity;
 
+        float _multipliedMoveSensitivity
+        {
+            get { return moveSensitivity * UISettingsScreen.sensitivityMulitiplier; }
+        }
+
+        float _multipliedRotSensitivity
+        {
+            get { return rotSensitivity * UISettingsScreen.sensitivityMulitiplier; }
+        }
+
+
         [Header("movement constraints (localPos)")]
         public Vector2 minMaxForward;
         public Vector2 minMaxLeft;
@@ -196,7 +207,7 @@ namespace HotDogCannon.Player
         {
             Vector2 inputDelta = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
 
-            inputDelta = inputDelta * moveSensitivity;
+            inputDelta = inputDelta * _multipliedMoveSensitivity;
 
             currentForward += inputDelta.y;
 
@@ -205,7 +216,7 @@ namespace HotDogCannon.Player
             var localxPos = Mathf.Lerp(minMaxLeft.x, minMaxLeft.y, Mathf.InverseLerp(-1, 1, currentLeft));
             var localzPos = Mathf.Lerp(minMaxForward.x, minMaxForward.y, Mathf.InverseLerp(-1, 1, currentForward));
 
-            radialAngle += inputDelta.x * rotSensitivity;
+            radialAngle += inputDelta.x * _multipliedRotSensitivity;
             var dir = Quaternion.AngleAxis(radialAngle, Vector3.up) * transform.forward;
 
             var dis = Mathf.Lerp(minMaxDistance.x, minMaxDistance.y, currentForward);
@@ -228,7 +239,7 @@ namespace HotDogCannon.Player
         {
             Vector2 inputDelta = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
 
-            inputDelta = inputDelta * moveSensitivity;
+            inputDelta = inputDelta * _multipliedMoveSensitivity;
 
             currentLeft += inputDelta.x;
             currentForward += inputDelta.y;
@@ -244,7 +255,7 @@ namespace HotDogCannon.Player
             if (currentLeft <= -1) rotDirection = -1;
             if (currentLeft >= 1) rotDirection = 1;
 
-            currentRot += rotDirection * rotSensitivity * Time.deltaTime;
+            currentRot += rotDirection * _multipliedRotSensitivity * Time.deltaTime;
 
 
             var forwardDot = Vector3.Dot(Vector3.forward, transform.forward);

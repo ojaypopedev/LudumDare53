@@ -21,6 +21,12 @@ public class UISettingsScreen : BaseScreen
         }
     }
 
+    public static float sensitivityMulitiplier
+    {
+        get { return PlayerPrefs.GetFloat("Settings.Sensitivity", 1f); }
+        set { PlayerPrefs.SetFloat("Settings.Sensitivity", value); }
+    }
+
     public Button closeButton;
     public Slider sensitivitySlider;
 
@@ -48,7 +54,8 @@ public class UISettingsScreen : BaseScreen
 
     public static void SetSenstivity(float Value01)
     {
-        Debug.Log("Sensitity Set" + Value01.ToString());
+        var result = Mathf.Lerp(1f, 2.5f, Value01);
+        sensitivityMulitiplier = result;
     }
 
 }
