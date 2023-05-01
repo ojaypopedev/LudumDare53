@@ -195,7 +195,7 @@ public class LevelManager : MonoBehaviour
                 }
                 else
                 {
-                    currentTime += 10f;
+                    currentTime += 5f;
                 }
                 break;
         }
