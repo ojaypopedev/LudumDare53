@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
         }
 #endif
 
-        if (uiOnboardingNextButton.activeInHierarchy)
+        if (uiOnboardingNextButton.activeInHierarchy || gameState != GameState.PLAYING)
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
