@@ -59,9 +59,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: DarumadropOne-Regular Outlined
   m_EditorClassIdentifier: 
-  hashCode: 1549276884
+  hashCode: 2105635728
   material: {fileID: 8877496682402600400}
-  materialHashCode: -633286284
+  materialHashCode: -2070816464
   m_Version: 1.1.0
   m_SourceFontFileGUID: 2eaaaca61d703451ea11045aabe9ff95
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 2eaaaca61d703451ea11045aabe9ff95,
@@ -1915,9 +1915,9 @@ Material:
     - _OutlineWidth: 1
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
-    - _ScaleRatioA: 0.9
-    - _ScaleRatioB: 0.73125
-    - _ScaleRatioC: 0.73125
+    - _ScaleRatioA: 0.41142857
+    - _ScaleRatioB: 0
+    - _ScaleRatioC: 0
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
