@@ -214,7 +214,7 @@ public class LevelManager : MonoBehaviour
 
         currentLives = 5;
 
-        storyLevels[_currentLevelIndex].stadium.gameObject.SetActive(true);
+        storyLevels[_currentLevelIndex].stadium.gameObject.SetActive(true); 
 
         var customerManager = CustomerManager.instance;
 
