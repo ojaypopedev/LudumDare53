@@ -196,7 +196,7 @@ namespace HotDogCannon.Player
             if (!gun.isActive)
                 Camera.main.transform.localRotation = Quaternion.Lerp(camRot, Quaternion.Euler(prepCamRot), 3 * Time.fixedDeltaTime);
             else
-                Camera.main.transform.localRotation = Quaternion.Lerp(camRot, Quaternion.Euler(new Vector3(Mathf.Lerp(minMaxCamAimPos.y, minMaxCamAimPos.x, currentForward), camRot.eulerAngles.y, camRot.eulerAngles.z)), 10 * Time.fixedDeltaTime);
+                Camera.main.transform.localRotation = Quaternion.Lerp(camRot, Quaternion.Euler(new Vector3(Mathf.Lerp(minMaxCamAimPos.y, minMaxCamAimPos.x, currentForward), camRot.eulerAngles.y, camRot.eulerAngles.z)), 3 * Time.fixedDeltaTime);
 
           
         }
@@ -213,8 +213,6 @@ namespace HotDogCannon.Player
 
             currentLeft = Mathf.Clamp(currentLeft, -1, 1);
             currentForward = Mathf.Clamp(currentForward, 0, 1);
-            var localxPos = Mathf.Lerp(minMaxLeft.x, minMaxLeft.y, Mathf.InverseLerp(-1, 1, currentLeft));
-            var localzPos = Mathf.Lerp(minMaxForward.x, minMaxForward.y, Mathf.InverseLerp(-1, 1, currentForward));
 
             radialAngle += inputDelta.x * _multipliedRotSensitivity;
             var dir = Quaternion.AngleAxis(radialAngle, Vector3.up) * transform.forward;
