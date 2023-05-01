@@ -24,9 +24,30 @@ public class CustomerManager : MonoBehaviour
 
     public static CustomerManager instance;
 
+    public Customer[] CurrentOrderingCustomers => Customers.Where(c => c.HasFoodOrder == true).ToArray();
+
+    public float MinDistanceToOtherCustomer = 6f;
+
     public Customer GetRandomAvailableCustomer()
     {
-        return Customers.Where(c => c.HasFoodOrder == false).RandomElement();
+        return Customers.Where(c => {
+
+            bool hasOrder = c.HasFoodOrder;
+
+            bool closetoCurrentCustomer = false;
+            foreach (var item in CurrentOrderingCustomers)
+            {
+                if(Vector3.Distance(item.transform.position, c.transform.position) < MinDistanceToOtherCustomer)
+                {
+                    closetoCurrentCustomer = true;
+                    break;
+                }
+            }
+
+            return hasOrder == false && closetoCurrentCustomer == false;
+
+
+        } ).RandomElement();
     }
     public Recipie GetRandomRecipie() => RecipiesInLevel.RandomElement();
 
