@@ -1344,6 +1344,7 @@ MonoBehaviour:
   minMaxDistance: {x: 0.6, y: 1.4}
   prepCamRot: {x: 10, y: 0, z: 0}
   minMaxCamAimPos: {x: -25, y: 15}
+  testOverride: 0
 --- !u!95 &1449122391803002271
 Animator:
   serializedVersion: 4
@@ -1759,8 +1760,8 @@ MonoBehaviour:
   cam: {fileID: 443189108156329232}
   speed: 20
   maxDistance: 30
-  arcPower: 2
-  arcMultiplier: 0.3
+  arcPower: 1.01
+  arcMultiplier: 2
 --- !u!1001 &4493164465628880470
 PrefabInstance:
   m_ObjectHideFlags: 0

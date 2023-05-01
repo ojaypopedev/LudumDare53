@@ -36,6 +36,7 @@ public class FoodObjectRenderer : MonoBehaviour
         //    current.transform.localScale *= 2.5f;
         //}// == "Ketchup Bottle" || e.foodName == ""))
         current.transform.parent = transform;
+        current.gameObject.SetActive(true);
 
         current.transform.position = exampleTransform.position;
         current.transform.rotation = exampleTransform.transform.rotation;
