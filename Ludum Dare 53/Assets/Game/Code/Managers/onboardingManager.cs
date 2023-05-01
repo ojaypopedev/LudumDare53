@@ -53,5 +53,8 @@ public class onboardingManager : MonoBehaviour
 
             }
         }
+
+        if (e.completesTutorial)
+            completedOnboarding = true;
     }
 }

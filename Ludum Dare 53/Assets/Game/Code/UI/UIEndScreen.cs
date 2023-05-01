@@ -32,7 +32,7 @@ public class UIEndScreen : BaseScreen
     {
         ordersCompleted.text = StatTracker.completedOrders.ToString();
         ordersFailed.text = StatTracker.failedOrders.ToString();
-        waitTime.text = StatTracker.averageTime.ToString() + "s";
+        waitTime.text = StatTracker.averageTime.ToString("F2") + "s";
         hotDogsFired.text = StatTracker.hotDogsFired.ToString();
         accuracy.text = (Mathf.RoundToInt(StatTracker.accuracy * 100)).ToString() + "%";
 

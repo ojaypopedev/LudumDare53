@@ -43,8 +43,12 @@ namespace HotDogCannon.FoodPrep
         {
             foodObjects.ForEach(f => Destroy(f.gameObject));
             foodObjects.Clear();
+        }
+
+        public void BeginSpawn()
+        {
+            StopCoroutine(StartSpawn());
             StartCoroutine(StartSpawn());
-           
         }
 
         public void OnItemGrabbed(FoodObject foodObject)

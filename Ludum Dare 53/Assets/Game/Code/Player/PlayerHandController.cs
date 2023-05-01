@@ -128,37 +128,49 @@ namespace HotDogCannon.Player
                     }
                 }
 
-                if (Input.GetMouseButtonUp(0))
+            }
+
+
+            if (Input.GetMouseButtonUp(0))
+            {
+
+                if (HotDogloaderHighlight && HotDogloaderHighlight.highlight && FoodObject.currentGrabbed)
+                {
+                    FoodObject.currentGrabbed.SetPhysics(true, false);
+                    Utils.PosAnims.AnimatPos(FoodObject.currentGrabbed.transform, FoodObject.currentGrabbed.transform.position,
+                        HotDogloaderHighlight.transform.position, 0.2f);
+
+                    FoodObject.currentGrabbed.UnGrab();
+                }
+                else
                 {
 
-                    if (HotDogloaderHighlight && HotDogloaderHighlight.highlight && FoodObject.currentGrabbed)
-                    {
-                        FoodObject.currentGrabbed.SetPhysics(true, false);
-                        Utils.PosAnims.AnimatPos(FoodObject.currentGrabbed.transform, FoodObject.currentGrabbed.transform.position,
-                            HotDogloaderHighlight.transform.position, 0.2f);
-
+                    if (FoodObject.currentGrabbed != null)
                         FoodObject.currentGrabbed.UnGrab();
-                    }
-                    else
-                    {
-
-                        if (FoodObject.currentGrabbed != null)
-                            FoodObject.currentGrabbed.UnGrab();
-                    }
                 }
             }
         }
 
         public void GunInput()
         {
+            if (FoodObject.currentGrabbed != null) return;
             gun.Refresh(new Vector2(Mathf.InverseLerp(-1, 1, currentLeft), Mathf.InverseLerp(-1, 1, currentForward)));
         }
 
         public void Gun()
         {
+
+            var camRot = Camera.main.transform.localRotation;
+
+            if (FoodObject.currentGrabbed != null)
+            {
+                Camera.main.transform.localRotation = Quaternion.Lerp(camRot, Quaternion.Euler(prepCamRot), 3 * Time.fixedDeltaTime);
+                return;
+            }
+
             var forwardDot = Vector3.Dot(Vector3.forward, transform.forward);
 
-            bool isShooting = forwardDot < -0.85f;
+            bool isShooting = forwardDot < -0.80f;
             anim.SetBool("IsShooting", isShooting);
             var wasActive = gun.isActive;
             gun.isActive = isShooting;
@@ -168,7 +180,7 @@ namespace HotDogCannon.Player
                 onPlayerEquippedGun?.Invoke(gun.isActive);
             }
 
-            var camRot = Camera.main.transform.localRotation;
+           
 
             if (!gun.isActive)
                 Camera.main.transform.localRotation = Quaternion.Lerp(camRot, Quaternion.Euler(prepCamRot), 3 * Time.fixedDeltaTime);

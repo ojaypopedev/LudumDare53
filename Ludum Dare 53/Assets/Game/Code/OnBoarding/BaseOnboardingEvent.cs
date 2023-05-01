@@ -19,6 +19,7 @@ public class BaseOnboardingEvent : MonoBehaviour
     public UnityEvent onCompleted;
 
     public bool autoNextStep;
+    public bool completesTutorial;
 
     public bool isCompleted
     {
@@ -26,11 +27,7 @@ public class BaseOnboardingEvent : MonoBehaviour
         set { PlayerPrefs.SetInt(eventName + ".onboardingComplete", value ? 1 : 0); }
     }
 
-    public bool isStarted
-    {
-        get { return PlayerPrefs.GetInt(eventName + ".started", 0) == 1; }
-        set { PlayerPrefs.SetInt(eventName + ".started", value ? 1 : 0); }
-    }
+    public bool isStarted;
 
     public virtual void StartOnboarding()
     {
