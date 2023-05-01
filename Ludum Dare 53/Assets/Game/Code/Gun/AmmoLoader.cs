@@ -10,9 +10,13 @@ namespace HotDogCannon.Player {
         public Gun linkedGun;
         public UnityEvent<FoodObject> onFoodDropped;
 
+        public ParticleSystem foodLoaderParticles;
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.attachedRigidbody == null) return;
+
+            foodLoaderParticles?.Play();
 
             var foodObj = other.attachedRigidbody.GetComponent<FoodObject>();
 

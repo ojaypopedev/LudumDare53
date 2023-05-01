@@ -19,8 +19,9 @@ public class EffectsManager : MonoBehaviour
     }
 
     [SerializeField] ParticleSystem _orderRecievedParticles;
+    [SerializeField] ParticleSystem _mergeFoodParticles;
     public static ParticleSystem OrderRecievedParticles => Instance._orderRecievedParticles;
-
+    public static ParticleSystem MergeFoodParticles => Instance._mergeFoodParticles;
     public static ParticleSystem CreateParticles(ParticleSystem prefab, Vector3 position, Transform parent = null)
     {
         ParticleSystem ps = Instantiate(prefab, position, prefab.transform.rotation, parent);
