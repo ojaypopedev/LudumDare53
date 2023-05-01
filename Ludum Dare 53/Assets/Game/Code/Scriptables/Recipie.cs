@@ -17,12 +17,25 @@ namespace HotDogCannon.FoodPrep
         {
             if (ingredients.Count != toCompare.ingredients.Count) return false;
 
-            for (int i = 0; i < ingredients.Count; i++)
+            List<Ingredient> requiredIngredients = new List<Ingredient>();
+            requiredIngredients.AddRange(ingredients);
+
+            List<Ingredient> inFood = new List<Ingredient>();
+            inFood.AddRange(toCompare.ingredients);
+           
+            foreach (var requirement in requiredIngredients)
             {
-                if (ingredients[i].Equals(toCompare.ingredients[i])==false)
+                Ingredient ingredient = inFood.Find(i=>i.foodName == requirement.foodName);
+
+                if(ingredient != null)
+                {
+                    inFood.Remove(ingredient);
+                }
+                else
                 {
                     return false;
                 }
+
             }
 
             return true;

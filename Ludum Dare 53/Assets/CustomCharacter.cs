@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class CustomCharacter : MonoBehaviour
 {
@@ -26,6 +27,27 @@ public class CustomCharacter : MonoBehaviour
         TrouserRenderers.ToList().ForEach(r => r.SetColor(customization.Trousers));
 
         optionalComponents.ToList().ForEach(e => e.SetActive(Random.value > 0.5f));
+    }
+
+    public void SetIdleAnimation()
+    {
+        Animator.Play("Sitting", -1, Random.Range(0f, 1f));
+    }
+
+    public void SetOrderAnimation()
+    {
+        Animator.Play("Order"); //, -1, Random.Range(0f, 1f));
+        //Order
+    }
+
+    public void SetSadAnimation()
+    {
+        Animator.Play("Sad");
+    }
+
+    public void SetHappyAnimation()
+    {
+        Animator.Play("Happy");
     }
 }
 

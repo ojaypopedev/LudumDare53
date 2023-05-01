@@ -37,7 +37,7 @@ public class Customer : MonoBehaviour
         character = characters[Random.Range(0, characters.Length - 1)];
         character.gameObject.SetActive(true);
         character.Setup(manager.customizations.GetRandom());
-        character.Animator.Play("Sitting", -1, Random.Range(0f, 1f));
+        character.SetIdleAnimation();
     }
     public void AssignFoodOrder(Recipie recipie, float totaltime)
     {
@@ -46,6 +46,7 @@ public class Customer : MonoBehaviour
             return;
         }
 
+        character.SetOrderAnimation();
         currentFoodOrder = new FoodOrder(recipie, this, totaltime);
 
     }
@@ -56,14 +57,29 @@ public class Customer : MonoBehaviour
             if(foodObject != null)
             {
                 EffectsManager.CreateParticles(EffectsManager.OrderRecievedParticles, transform.position + transform.forward, null);
-                CompleteFoodOrder(currentFoodOrder.recipie.CompareFoodObject(foodObject), currentFoodOrder);
+
+                bool sucessfullORder = currentFoodOrder.recipie.CompareFoodObject(foodObject);
+                CompleteFoodOrder(sucessfullORder, currentFoodOrder);
                 currentFoodOrder = null;
+
+                if(sucessfullORder)
+                {
+                    character.SetHappyAnimation();
+                    //Cheer
+                }
+                else
+                {
+                    character.SetSadAnimation();
+                    ///shake head
+                }
+
                 
             }
         }
         else
         {
-            Debug.Log("Customer has no food order!");
+            character.SetSadAnimation();
+            //Shake head
         }
 
     }
